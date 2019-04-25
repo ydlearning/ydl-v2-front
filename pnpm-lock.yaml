@@ -1,7 +1,9 @@
 dependencies:
+  '@babel/polyfill': 7.4.3
   core-js: 2.6.5
   vue: 2.6.10
   vue-router: 3.0.6
+  vuetify: 1.5.13
   vuex: 3.1.0
 devDependencies:
   '@vue/cli-plugin-babel': 3.6.0
@@ -14,6 +16,7 @@ devDependencies:
   lint-staged: 8.1.5
   sass: 1.19.0
   sass-loader: 7.1.0
+  vue-cli-plugin-vuetify: 0.5.0
   vue-template-compiler: 2.6.10
 lockfileVersion: 5
 packages:
@@ -657,6 +660,13 @@ packages:
       '@babel/core': ^7.0.0-0
     resolution:
       integrity: sha512-lnSNgkVjL8EMtnE8eSS7t2ku8qvKH3eqNf/IwIfnSPUqzgqYmRwzdsQWv4mNQAN9Nuo6Gz1Y0a4CSmdpu1Pp6g==
+  /@babel/polyfill/7.4.3:
+    dependencies:
+      core-js: 2.6.5
+      regenerator-runtime: 0.13.2
+    dev: false
+    resolution:
+      integrity: sha512-rkv8WIvJshA5Ev8iNMGgz5WZkRtgtiPexiT7w5qevGTuT7ZBfM3de9ox1y9JR5/OXb/sWGBbWlHNa7vQKqku3Q==
   /@babel/preset-env/7.3.4_@babel+core@7.4.3:
     dependencies:
       '@babel/core': 7.4.3
@@ -6766,7 +6776,6 @@ packages:
     resolution:
       integrity: sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
   /regenerator-runtime/0.13.2:
-    dev: true
     resolution:
       integrity: sha512-S/TQAZJO+D3m9xeN1WTI8dLKBBiRgXBlTJvbWjCThHWZj9EvHK70Ff50/tYj2J/fvBY6JtFVwRuazHN2E7M9BA==
   /regenerator-transform/0.13.4:
@@ -8218,6 +8227,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
+  /vue-cli-plugin-vuetify/0.5.0:
+    dev: true
+    resolution:
+      integrity: sha512-TigfiZUs7SN3Z6uxKilqJUtYxte8vp0F4QxabCli6hkKPqU97JzAZc3P7AL6omkRAd2DMI26fOrIGjuALTvXww==
   /vue-eslint-parser/2.0.3_eslint@4.19.1:
     dependencies:
       debug: 3.2.6
@@ -8295,6 +8308,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+  /vuetify/1.5.13:
+    dev: false
+    peerDependencies:
+      vue: ^2.5.18
+    resolution:
+      integrity: sha512-mUOs9znDmMO/A2I117B/ZHyFlwSqkKplhSL8G2EnS+m0rvZv2Uqjo9idOBbdhaJ3A9sJWT6wDUFywEYuuIcu+g==
   /vuex/3.1.0:
     dev: false
     resolution:
@@ -8614,6 +8633,7 @@ packages:
     resolution:
       integrity: sha512-keuNEbNSnsOTOuGCt3UJW69jDE3O4P+UHAakO7vSeFMnjaitcmlbij/a3oNb9g1Y1KvSKH/7O1R2PQ4m4TRylw==
 specifiers:
+  '@babel/polyfill': ^7.0.0-rc.1
   '@vue/cli-plugin-babel': ^3.6.0
   '@vue/cli-plugin-eslint': ^3.6.0
   '@vue/cli-service': ^3.6.0
@@ -8626,6 +8646,8 @@ specifiers:
   sass: ^1.18.0
   sass-loader: ^7.1.0
   vue: ^2.6.10
+  vue-cli-plugin-vuetify: ^0.5.0
   vue-router: ^3.0.3
   vue-template-compiler: ^2.5.21
+  vuetify: ^1.5.5
   vuex: ^3.0.1
