@@ -70,9 +70,9 @@ Wikipage: [wiki](../../wiki)
   
 ## Tech Stack YDL
 
-<img src="/images/stack_features.jpg" alt="Tech stack">
+<img alt="Tech stack" target="_blank" src="/images/stack_features.jpg" href="https://raw.githubusercontent.com/ydlearning/ydl-v2-front/master/images/stack_features.jpg">
 
-View bigger image file: [Image Link](/images/stack_features.jpg)
+View bigger image file: [Image Link](https://raw.githubusercontent.com/ydlearning/ydl-v2-front/master/images/stack_features.jpg)
 
 ---
 
