@@ -24,6 +24,20 @@
   <a target="_blank" href="#badge">
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge">
   </a>
+  <!-- License -->
+  <a target="_blank" href="https://www.gnu.org/licenses/agpl-3.0">
+    <img alt="License: AGPL v3" src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=for-the-badge">
+  </a>
+    <br>
+
+  <!-- Version NPM -->
+  <a target="_blank" href="https://github.com/dark-theme-styles/Dark-Theme-TUB">
+    <img alt="NPM Version" src="https://img.shields.io/npm/v/npm.svg?color=informational&style=for-the-badge">
+  </a>
+  <!-- Version VUE -->
+  <a target="_blank" href="https://github.com/dark-theme-styles/Dark-Theme-TUB">
+    <img alt="VUE Version" src="https://img.shields.io/badge/vue-V3.3.5-brightgreen.svg?color=informational&style=for-the-badge">
+  </a>
 </p>
 <br>
 
