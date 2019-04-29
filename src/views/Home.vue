@@ -1,11 +1,9 @@
 <template lang="pug">
-  p Home
+    p Home
 </template>
 
-
 <script>
-  export default {
-    components: {
-    }
-  }
+export default {
+    components: {}
+};
 </script>
