@@ -1,6 +1,6 @@
 module.exports = {
     assetsDir: "src/assets",
-    publicPath: "/",
+    publicPath: "ydl-v2-front/",
     outputDir: "./docs",
     runtimeCompiler: undefined,
     productionSourceMap: undefined,
