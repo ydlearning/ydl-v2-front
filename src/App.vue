@@ -1,25 +1,15 @@
-<template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-toolbar>
-
-    <v-content>
-      <router-view/>
-    </v-content>
-  </v-app>
+<template lang="pug">
+  v-app(dark)
+    v-toolbar(app flat color="primary")
+      v-toolbar-title.headline
+        span Y&D
+        span.font-weight-light Learning
+      v-spacer
+      v-toolbar-items
+        v-btn(flat to="/").tile Home
+        v-btn(flat to="About") About
+    v-content
+      router-view
 </template>
 
 <script>
@@ -33,3 +23,10 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+html
+  // remove scroll bar
+  overflow: hidden
+</style>
+

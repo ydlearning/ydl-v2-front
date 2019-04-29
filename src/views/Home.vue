@@ -1,13 +1,11 @@
-<template>
-  <HelloWorld />
+<template lang="pug">
+  p Home
 </template>
 
-<script>
-  import HelloWorld from '../components/HelloWorld'
 
+<script>
   export default {
     components: {
-      HelloWorld
     }
   }
 </script>
