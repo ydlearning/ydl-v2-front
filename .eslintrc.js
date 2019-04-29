@@ -14,6 +14,8 @@ module.exports = {
         parser: "babel-eslint"
     },
 
+    plugins: ["pug"],
+
     extends: [
         "plugin:vue/strongly-recommended",
         "eslint:recommended",
