@@ -1,4 +1,3 @@
 <template lang="pug">
-  p About
+    p About
 </template>
-
