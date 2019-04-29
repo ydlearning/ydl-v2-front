@@ -1,5 +1,6 @@
 <template lang="pug">
-    p Home
+    v-layout
+        v-img(:src="require('../assets/YDL-Logo_white_borders.png')")
 </template>
 
 <script>
