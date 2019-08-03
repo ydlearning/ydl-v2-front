@@ -1,0 +1,4 @@
+{
+  "outDir": "./documentation",
+  "markdownDir": "./documentation/components"
+}
