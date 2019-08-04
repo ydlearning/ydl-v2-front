@@ -4,12 +4,12 @@
   <h1 align="center">Young And Digital Learning V2</h1>
   <p align="center">
   <!-- Website up status -->
-  <a target="_blank" href="https://stats.uptimerobot.com/gkNylh6kW">
-    <img alt="Website" src="https://img.shields.io/website/https/ydlearning.com.svg?down_message=offline&style=for-the-badge">
+  <a target="_blank" href="https://stats.uptimerobot.com/jnNBohE9w">
+    <img alt="Website up" src="https://img.shields.io/website/https/ydlearning.github.io.svg?down_message=offline&style=for-the-badge">
   </a>
   <!-- Website Uptime -->
-  <a target="_blank" href="https://stats.uptimerobot.com/gkNylh6kW">
-    <img alt="Uptime Robot ratio (7 days)" src="https://img.shields.io/uptimerobot/ratio/7/m782514105-1ce7905797e182036125da74.svg?style=for-the-badge">
+  <a target="_blank" href="https://stats.uptimerobot.com/jnNBohE9w">
+    <img alt="Uptime Robot ratio (7 days)" src="https://img.shields.io/uptimerobot/ratio/7/m782514222-44cd38ed633d998b4cdf9f76.svg?style=for-the-badge">
   </a>
   <!-- Vulnerabilities -->
   <a target="_blank" href="https://snyk.io/test/github/ydlearning/ydl-v2-front">
@@ -43,7 +43,7 @@
 
 ## Frontend
 
-### ydl-front submodule frontend
+### ydl-front frontend
 
 Website for Y&D Learning made with Vue.
 
@@ -59,7 +59,7 @@ Version 2 is a further development of Young And Digital Learning.
 ## Links 
 Our organization: [YoungAndDigitalLearning](https://github.com/ydlearning)
 
-Homepage: [www.ydlearning.com](https://ydlearning.com/)
+Homepage: [www.ydlearning.com](https://ydlearning.github.io)
 
 Wikipage: [wiki](../../wiki)
 
