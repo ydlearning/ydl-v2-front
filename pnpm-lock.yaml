@@ -1,6 +1,7 @@
 dependencies:
   core-js: 3.2.1
   eslint-plugin-prettier: 3.1.0_eslint@6.1.0
+  graphql: 14.4.2
   pug: 2.0.4
   serve: 11.1.0
   vue: 2.6.10
@@ -4857,6 +4858,14 @@ packages:
     dev: true
     resolution:
       integrity: sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=
+  /graphql/14.4.2:
+    dependencies:
+      iterall: 1.2.2
+    dev: false
+    engines:
+      node: '>= 6.x'
+    resolution:
+      integrity: sha512-6uQadiRgnpnSS56hdZUSvFrVcQ6OF9y6wkxJfKquFtHlnl7+KSuWwSJsdwiK1vybm1HgcdbpGkCpvhvsVQ0UZQ==
   /gzip-size/5.1.1:
     dependencies:
       duplexer: 0.1.1
@@ -5794,6 +5803,10 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-1P/yWsxPlDtn7QeRD+ULKQPaIaN6yF368GZ2vDfv0AL0NwpStafjWCDDdn0k8wgFMWpVAqG7oJhxHnlud42i9w==
+  /iterall/1.2.2:
+    dev: false
+    resolution:
+      integrity: sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
   /javascript-stringify/1.6.0:
     dev: true
     resolution:
@@ -10648,6 +10661,7 @@ specifiers:
   eslint-plugin-prettier: ^3.1.0
   eslint-plugin-pug: ^1.1.1
   eslint-plugin-vue: ^5.2.3
+  graphql: ^14.4.2
   lint-staged: ^9.2.1
   pug: ^2.0.4
   pug-plain-loader: ^1.0.0
