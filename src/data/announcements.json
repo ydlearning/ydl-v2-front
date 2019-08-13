@@ -1,0 +1,32 @@
+{
+    "data": {
+        "allAnnouncements": {
+            "announcements": [
+                {
+                    "title": "***REMOVED***",
+                    "content": "Dear YDL-User,\n ***REMOVED*** The payment is based on TV-L E11.",
+                    "date": "2019-08-01T13:49:42+02:00",
+                    "User": {
+                        "username": "YDL Management"
+                    }
+                },
+                {
+                    "title": "***REMOVED***",
+                    "content": "Dear YDL-User,\n on 28 March 2019 in the period from 13:30 to 18:00 maintenance work on ISIS will take place. During this time ISIS cannot be used. Please set up any deadlines for submission or registration in such a way that they do not fall within the maintenance period.",
+                    "date": "2019-03-26T16:47:37+01:00",
+                    "User": {
+                        "username": "YDL Management"
+                    }
+                },
+                {
+                    "title": "***REMOVED***",
+                    "content": "Dear YDL-User,\n we have moved all courses of the winter semester 2018/2019 to the archive area, just like last semester. For this purpose, new categories 'WS18/19' have been created in the respective archive areas and the current courses have been moved there.",
+                    "date": "2019-03-15T14:08:35+01:00",
+                    "User": {
+                        "username": "***REMOVED***"
+                    }
+                }
+            ]
+        }
+    }
+}
