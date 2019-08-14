@@ -10,13 +10,15 @@
                     h2.text-center.display-3.font-weight-regular.page-header Y&D Learning
                     br 
                     br
-                    h4.text-center.display-2 News
-                    p Test
+                v-flex
+                    TheNews
 </template>
 
 <script>
+import TheNews from "@/components/TheNews";
+
 export default {
-    components: {}
+    components: { TheNews }
 };
 </script>
 
