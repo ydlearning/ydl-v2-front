@@ -25,4 +25,6 @@ export default {
 
 .ql-snow.ql-toolbar
     background-color: gray
+.ql-stroke
+    fill: white
 </style>

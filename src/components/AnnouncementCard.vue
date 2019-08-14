@@ -1,7 +1,7 @@
 <template lang="pug">
     v-card
         v-toolbar(color="primary" flat)
-            // pa-0 to remove the padding on the left from the list item
+            //- pa-0 to remove the padding on the left from the list item
             v-list-item.pa-0
                 v-list-item-content
                     v-list-item-title.headline {{title}}
@@ -10,6 +10,7 @@
                             v-col {{author}}
                             v-spacer
                             v-col.text-right {{new Date(date).format('MM/DD/YYYY hh:mm A')}}
+        //- Vue2Editor
         v-card-text
             div(v-html="content")
 </template>
@@ -36,8 +37,8 @@ export default {
             default: "author"
         },
         date: {
-            type: Date,
-            default: new Date()
+            type: String,
+            default: ""
         }
     }
 };

@@ -44,13 +44,13 @@ v-app#inspire
 									label='E-mail' 
 									data-vv-name='email' 
 									required)
-								br
+								//- br							
 								//- Password:
-								//- @v-validate: required | max:100 | min:8
+								//- @v-validate: required | min:8 | max:100 
 								//- @required: true
 								v-text-field(
 									v-model='password'
-									v-validate="'required|max:100|min:8'" 
+									v-validate="'required|min:8|max:100'" 
 									:counter='100' 
 									name="password" 
 									type="password" 
@@ -58,7 +58,6 @@ v-app#inspire
 									placeholder="Password" ref="password" 
 									:error-messages="errors.collect('password')"
 									clearable
-									hint="At least 8 characters, Min 1 character, 1 number and 1 spezial character"
 									persistent-hint: false)
 								v-progress-linear(
 									v-model='progress'
@@ -69,6 +68,13 @@ v-app#inspire
 									active)
 								span.help.is-danger(
 									v-show="errors.has('password')")
+								br
+								div Password has to be at least:
+								div ● 8 characters long
+								div Has to include min.: 
+								div ● 1 character
+								div ● 1 number
+								div ● 1 spezial character 
 
 								//- Passwored repeat:
 								v-text-field(

@@ -33,6 +33,21 @@ export default new Router({
             path: "/signup",
             name: "signup",
             component: () => import(/* webpackChunkName: "about" */ "./views/Signup.vue")
+        },
+        {
+            path: "/dashboard",
+            name: "dashboard",
+            component: () => import(/* webpackChunkName: "about" */ "./views/Dashboard.vue")
+        },
+        {
+            path: "/courses",
+            name: "courses",
+            component: () => import(/* webpackChunkName: "about" */ "./views/AllCourses.vue")
+        },
+        {
+            path: "/calendar",
+            name: "calendar",
+            component: () => import(/* webpackChunkName: "about" */ "./views/Calendar.vue")
         }
     ]
 });

@@ -1,6 +1,6 @@
 <template lang="pug">
-    v-container
-        v-row(v-for="announcement in announcements" :key="announcement.title")
+    v-container.remove-top-padding
+        v-row.remove-top-padding(v-for="announcement in announcements" :key="announcement.title")
             v-col(max-width=800)
                 AnnouncementCard(
                     :title="announcement.title"
@@ -30,4 +30,7 @@ export default {
 };
 </script>
 
-<style lang="sass"></style>
+<style lang="sass">
+.remove-top-padding
+    padding-top: 0
+</style>
