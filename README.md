@@ -11,9 +11,10 @@
   <a target="_blank" href="https://stats.uptimerobot.com/jnNBohE9w">
     <img alt="Uptime Robot ratio (7 days)" src="https://img.shields.io/uptimerobot/ratio/7/m782514222-44cd38ed633d998b4cdf9f76.svg?style=for-the-badge">
   </a>
-  <!-- Vulnerabilities -->
+  <br>
+  <!-- Vulnerabilities
   <a target="_blank" href="https://snyk.io/test/github/ydlearning/ydl-v2-front">
-    <img alt="Snyk Vulnerabilities for GitHub Repo" src="https://img.shields.io/snyk/vulnerabilities/github/ydlearning/ydl-v2-front.svg?style=for-the-badge">
+    <img alt="Snyk Vulnerabilities for GitHub Repo" src="https://img.shields.io/snyk/vulnerabilities/github/ydlearning/ydl-v2-front.svg?style=for-the-badge"> -->
   </a>
   <!-- Code Quality Codacy -->
 <a target="_blank" href="https://www.codacy.com/app/YD-Learning/ydl-v2-front?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ydlearning/ydl-v2-front&amp;utm_campaign=Badge_Grade">
