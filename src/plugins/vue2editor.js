@@ -1,0 +1,6 @@
+import Vue from "vue";
+import Vue2Editor from "vue2-editor";
+
+Vue.use(Vue2Editor);
+
+export default new Vue2Editor();
