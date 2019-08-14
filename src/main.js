@@ -5,6 +5,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+// override the format function for the date object
 import {} from "./vendor/datePrototypes";
 Vue.config.productionTip = false;
 
