@@ -68,10 +68,12 @@ v-app#inspire
 									active)
 								span.help.is-danger(v-show="errors.has('password')")
 								v-alert.ma-1(dense type="info" text) Password has to be at least:
-									v-alert.caption.ma-1(dense :type="corrections[0]" text) 8 characters long
-									v-alert.caption.ma-1(dense :type="corrections[1]" text) at least 1 character
-									v-alert.caption.ma-1(dense :type="corrections[2]" text) at least 1 number
-									v-alert.caption.ma-1(dense :type="corrections[3]" text) at least 1 special character
+									//- iterate over each condition for rendering as alert
+									- var items = ["8 characters long", "at least 1 character", "at least 1 number", "at least 1 special character"]
+									each item, index in items
+										//- "+index+" escapes the javascript input for the :type variable so the pug variable can be inserted
+										v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item
+									
 
 
 								//- Passwored repeat:
@@ -80,7 +82,7 @@ v-app#inspire
 									name="password_confirmation" 
 									type="password" 
 									:class="{'is-danger': errors.has('password_confirmation')}" 
-									placeholder="Password, Again" 
+									placeholder="Confirm Password" 
 									data-vv-as="password"
 									clearable)
 								span.help.is-danger(
@@ -91,7 +93,7 @@ v-app#inspire
 									v-validate="'required'" 
 									:items='items' 
 									:error-messages="errors.collect ('select')" 
-									label='Sign up as Student / Teacher (Role)' 
+									label='Role' 
 									data-vv-name='select' 
 									required
 									:menu-props="{ top: true, offsetY: true }")
@@ -126,10 +128,32 @@ export default {
     components: {},
     methods: {
         check_password: function(value) {
+            //- check password length
             if (value.length >= 8) {
                 this.corrections[0] = "success";
             } else {
                 this.corrections[0] = "error";
+            }
+
+            //- check for character
+            if (/[aA-zZ]/.test(value)) {
+                this.corrections[1] = "success";
+            } else {
+                this.corrections[1] = "error";
+            }
+
+            //- check for number
+            if (/\d/.test(value)) {
+                this.corrections[2] = "success";
+            } else {
+                this.corrections[2] = "error";
+            }
+
+            //- check for special character
+            if (/[+-]/.test(value)) {
+                this.corrections[3] = "success";
+            } else {
+                this.corrections[3] = "error";
             }
         }
     }
