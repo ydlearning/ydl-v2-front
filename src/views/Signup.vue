@@ -49,6 +49,7 @@ v-app#inspire
 								//- @v-validate: required | min:8 | max:100 
 								//- @required: true
 								v-text-field(
+									v-on:input="check_password"
 									v-model='password'
 									v-validate="'required|min:8|max:100'" 
 									:counter='100' 
@@ -63,18 +64,15 @@ v-app#inspire
 									v-model='progress'
 									:value="progress" 
 									:color="color" 
-									absolute="" 
 									height="7"
 									active)
-								span.help.is-danger(
-									v-show="errors.has('password')")
-								br
-								div Password has to be at least:
-								div ● 8 characters long
-								div Has to include min.: 
-								div ● 1 character
-								div ● 1 number
-								div ● 1 spezial character 
+								span.help.is-danger(v-show="errors.has('password')")
+								v-alert.ma-1(dense type="info" text) Password has to be at least:
+									v-alert.caption.ma-1(dense :type="corrections[0]" text) 8 characters long
+									v-alert.caption.ma-1(dense :type="corrections[1]" text) at least 1 character
+									v-alert.caption.ma-1(dense :type="corrections[2]" text) at least 1 number
+									v-alert.caption.ma-1(dense :type="corrections[3]" text) at least 1 special character
+
 
 								//- Passwored repeat:
 								v-text-field(
@@ -111,7 +109,8 @@ export default {
     data: () => ({
         password: "",
         custom: true,
-        items: [{ text: "Student" }, { text: "Teacher" }]
+        items: [{ text: "Student" }, { text: "Teacher" }],
+        corrections: ["error", "error", "error", "error"]
     }),
     computed: {
         progress() {
@@ -124,7 +123,16 @@ export default {
             return this.items[0];
         }
     },
-    components: {}
+    components: {},
+    methods: {
+        check_password: function(value) {
+            if (value.length >= 8) {
+                this.corrections[0] = "success";
+            } else {
+                this.corrections[0] = "error";
+            }
+        }
+    }
 };
 </script>
 
