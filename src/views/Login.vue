@@ -39,9 +39,11 @@ v-app#inspire
 								span.help.is-danger(
 									v-show="errors.has('password')")
 
-								a Forgot username? [TODO]
+								a Forgot username?
+								v-chip(x-small color="warning") TODO
 								br
-								a Forgot password? [TODO]
+								a Forgot password?
+								v-chip(x-small color="warning") TODO
 						v-card-actions
 							v-btn(color='primary' to="/Signup") Go to sign up
 							v-spacer
