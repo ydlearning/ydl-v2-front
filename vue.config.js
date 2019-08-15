@@ -5,6 +5,12 @@ module.exports = {
     runtimeCompiler: undefined,
     productionSourceMap: undefined,
     parallel: undefined,
-    css: undefined,
+    css: {
+        loaderOptions: {
+            sass: {
+                data: `@import "~@/sass/main.sass"`
+            }
+        }
+    },
     lintOnSave: undefined
 };
