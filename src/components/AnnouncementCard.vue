@@ -24,18 +24,22 @@ export default {
         Vue2Editor
     },
     props: {
+        // Title of Announcement
         title: {
             type: String,
             default: "title"
         },
+        // Content of Announcement
         content: {
             type: String,
             default: "content"
         },
+        // Author for Announcement
         author: {
             type: String,
             default: "author"
         },
+        // Date of Announcement
         date: {
             type: String,
             default: ""

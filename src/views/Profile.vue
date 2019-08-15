@@ -1,5 +1,5 @@
 <template lang="pug">
-v-layout(align-center justify-center)
+    v-layout(align-center justify-center)
         v-card(flat color="transparent")
             v-container
                 v-flex

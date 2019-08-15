@@ -63,13 +63,18 @@ export default new Router({
             children: [
                 {
                     path: "",
-                    name: "edit-profile",
+                    name: "Edit profile",
                     component: () => import("./views/SettingsEditProfile.vue")
                 },
                 {
                     path: "change-password",
-                    name: "change-password",
+                    name: "Change password",
                     component: () => import("./views/SettingsChangePassword.vue")
+                },
+                {
+                    path: "change-email",
+                    name: "E-mail settings",
+                    component: () => import("./views/SettingsEmailSettings.vue")
                 }
             ]
         },
