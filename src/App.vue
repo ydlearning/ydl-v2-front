@@ -39,7 +39,7 @@
                 v-btn(text to="About") About
                 v-menu(bottom offset-y)
                     template(v-slot:activator='{ on: menu }')
-                        v-btn(color='primary' depressed v-on='{ ...tooltip, ...menu }') Log in / Sign up
+                        v-btn(color='primary' depressed v-on='{...menu }') Log in / Sign up
                             v-icon(right) mdi-account-circle-outline
                     v-list
                         v-list-item(v-if="!isLoggedIn" to="/Login")
