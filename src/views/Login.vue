@@ -52,7 +52,12 @@ v-app#inspire
 
 <script>
 export default {
-    components: {}
+    data: () => {
+        return {
+            password: "",
+            email: ""
+        };
+    }
 };
 </script>
 
