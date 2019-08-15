@@ -23,6 +23,7 @@
 					v-list-item-content
 						v-list-item-title Calendar
 
+				//- [if not logged in]
 				template(v-if="isLoggedIn")
 					//- My courses
 					v-list-item(to="/mycourses")
@@ -33,13 +34,9 @@
 
 		v-app-bar(app text color="primary" clipped-left dense)
 			v-app-bar-nav-icon(@click.stop="drawer = !drawer")
-			//- router-link(to="/" color="rgb(200,200,200)")
-			//- v-btn(color="transparent" depressed tile to="/")
 			v-toolbar-title.headline
 				span Y&D
 				span.font-weight-light Learning
-			//- a.link(href="/ydl-v2-front/#/") Hi
-			//- router-link.link(to="/News") Test
 			v-spacer
 			v-toolbar-items
 				v-btn(text to="/").tile Home 
@@ -48,26 +45,29 @@
 
 				//- v-menu LOGIN / SIGN UP
 				v-menu(bottom offset-y)
-					template(v-slot:activator='{ on: menu }')
-						//- v-btn(
-						//- 	color='primary' 
-						//- 	depressed v-on='{ ...menu }' 
-						//- 	@click.stop="menuClick = !menuClick") Login / Sign up
-						//- 		v-icon(v-if="!menuClick") mdi-menu-up 
-						//- 		v-icon(v-if="menuClick") mdi-menu-down 
-						//- 		v-list-item(left)
-						//- 			v-icon(right large) mdi-account-circle-outline
+					template(v-slot:activator='{ on: menu }' v-if="!isLoggedIn")
 						v-btn(
 							color='primary' 
 							depressed v-on='{ ...menu }' 
-							@click.stop="menuClick = !menuClick") Hi {{ user.username }}
+							@click.stop="menuClick = !menuClick"
+						) Login / Sign up
+							v-icon(v-if="!menuClick") mdi-menu-up 
+							v-icon(v-if="menuClick") mdi-menu-down 
+							v-list-item(left)
+								v-icon(right large) mdi-account-circle-outline
+					template(v-slot:activator='{ on: menu }' v-else)
+						v-btn(
+							color='primary' 
+							depressed v-on='{ ...menu }' 
+							@click.stop="menuClick = !menuClick"
+						) Hi {{ user.username }}
 							v-icon(v-if="!menuClick") mdi-menu-up 
 							v-icon(v-if="menuClick") mdi-menu-down 
 							v-list-item(left)
 								v-icon(right large) mdi-account-circle-outline
 					v-list
 						//- [if not logged in]
-						template(v-if="isLoggedIn")
+						template(v-if="!isLoggedIn")
 
 							//- Login
 							v-list-item(to="/login")
@@ -104,7 +104,9 @@
 
 						//- Logout
 						//- [if logged in]
-						v-list-item(v-if="isLoggedIn" @click='')
+						v-list-item(
+							@click="logout()" 
+							v-if="isLoggedIn")
 							v-list-item-icon.rotate-180
 								v-icon mdi-logout-variant
 							v-list-item-title [Logout]
@@ -121,6 +123,11 @@ export default {
             drawer: false,
             menuClick: false
         };
+    },
+    methods: {
+        logout() {
+            this.$store.dispatch("logout");
+        }
     },
     computed: mapState(["isLoggedIn", "user"])
 };

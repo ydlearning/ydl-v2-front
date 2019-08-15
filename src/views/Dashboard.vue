@@ -4,7 +4,6 @@ v-layout(align-center justify-center)
             v-container
                 v-flex
                     h3.text-center.display-2.text-center.font-weight-regular My dashboard
-                    p sasdasd
 </template>
 
 <script>

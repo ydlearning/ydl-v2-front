@@ -17,7 +17,9 @@
                                 :error-messages="errors.collect('username')" 
                                 label='Username' 
                                 data-vv-name='username' 
-                                required)
+                                required
+                                hint="Username cannot be changed later! Choose wisely!"
+                                persistent-hint=false)
 
                             //- Full name:
                             //- @v-validate: required | max:50 | alpha_spaces
@@ -70,8 +72,6 @@
                                     //- "+index+" escapes the javascript input for the :type variable so the pug variable can be inserted
                                     v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item
                                 
-
-
                             //- Passwored repeat:
                             v-text-field(
                                 v-validate="'required|confirmed:password'" 
@@ -96,7 +96,7 @@
                     v-card-actions
                         v-btn(color='primary' to="/Login" outlined) Go to login
                         v-spacer
-                        v-btn(color='primary') Sign up
+                        v-btn(color='primary' @click="") Sign up
                         //- br
                         //- v-btn.mr-4(@click='submit') submit
                         //- v-btn(@click='clear') clear
@@ -162,8 +162,4 @@ export default {
 };
 </script>
 
-<style lang="sass">
-html
-	// remove scroll bar
-	// overflow: hidden
-</style>
+<style lang="sass"></style>
