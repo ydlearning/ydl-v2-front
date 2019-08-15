@@ -48,6 +48,21 @@ export default new Router({
             path: "/calendar",
             name: "calendar",
             component: () => import(/* webpackChunkName: "about" */ "./views/Calendar.vue")
+        },
+        {
+            path: "/profile",
+            name: "profile",
+            component: () => import(/* webpackChunkName: "about" */ "./views/Profile.vue")
+        },
+        {
+            path: "/settings",
+            name: "settings",
+            component: () => import(/* webpackChunkName: "about" */ "./views/Settings.vue")
+        },
+        {
+            path: "/courses",
+            name: "courses",
+            component: () => import(/* webpackChunkName: "about" */ "./views/Courses.vue")
         }
     ]
 });
