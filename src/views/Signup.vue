@@ -7,8 +7,6 @@ v-app#inspire
 					v-card.elevation-12
 						v-toolbar(color='primary' flat)
 							v-toolbar-title Sign up
-							v-spacer
-							v-tooltip(bottom)
 						v-card-text
 							v-form
 								//- Username
@@ -108,21 +106,27 @@ v-app#inspire
 
 <script>
 export default {
-    data: () => ({
-        password: "",
-        custom: true,
-        items: [{ text: "Student" }, { text: "Teacher" }],
-        corrections: ["error", "error", "error", "error"]
-    }),
+    data() {
+        return {
+            password: "",
+            custom: true,
+            items: [{ text: "Student" }, { text: "Teacher" }],
+            corrections: ["error", "error", "error", "error"],
+            defaultItem: "",
+            email: "",
+            name: "",
+            username: ""
+        };
+    },
+    mounted() {
+        this.defaultItem = this.items[0];
+    },
     computed: {
         progress() {
             return Math.min(100, this.password.length * 6);
         },
         color() {
             return ["error", "warning", "success"][Math.floor(this.progress / 40)];
-        },
-        defaultItem() {
-            return this.items[0];
         }
     },
     components: {},
