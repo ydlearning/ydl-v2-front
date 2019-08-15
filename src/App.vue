@@ -1,14 +1,14 @@
 <template lang="pug">
 	v-app
 		v-navigation-drawer(v-model="drawer" app clipped)
-			v-list(dense='')
+			v-list(dense)
 				//- My Dashboard
 				v-list-item(to="/dashboard")
 					v-list-item-action
 						v-icon mdi-home
 					v-list-item-content
 						v-list-item-title My dashboard
-						
+
 				//- All Courses
 				v-list-item(to="/courses")
 					v-list-item-action
@@ -23,13 +23,13 @@
 					v-list-item-content
 						v-list-item-title Calendar
 
-				//- My courses
 				template(v-if="isLoggedIn")
-					v-list-item(to="/courses")
+					//- My courses
+					v-list-item(to="/mycourses")
 						v-list-item-action
 							v-icon mdi-folder-account-outline
 						v-list-item-content
-							v-list-item-title My courses
+							v-list-item-title [My courses]
 
 		v-app-bar(app text color="primary" clipped-left dense)
 			v-app-bar-nav-icon(@click.stop="drawer = !drawer")
@@ -49,8 +49,21 @@
 				//- v-menu LOGIN / SIGN UP
 				v-menu(bottom offset-y)
 					template(v-slot:activator='{ on: menu }')
-						v-btn(color='primary' depressed v-on='{ ...menu }') Login / Sign up
-							v-list-item
+						//- v-btn(
+						//- 	color='primary' 
+						//- 	depressed v-on='{ ...menu }' 
+						//- 	@click.stop="menuClick = !menuClick") Login / Sign up
+						//- 		v-icon(v-if="!menuClick") mdi-menu-up 
+						//- 		v-icon(v-if="menuClick") mdi-menu-down 
+						//- 		v-list-item(left)
+						//- 			v-icon(right large) mdi-account-circle-outline
+						v-btn(
+							color='primary' 
+							depressed v-on='{ ...menu }' 
+							@click.stop="menuClick = !menuClick") Hi {{ user.username }}
+							v-icon(v-if="!menuClick") mdi-menu-up 
+							v-icon(v-if="menuClick") mdi-menu-down 
+							v-list-item(left)
 								v-icon(right large) mdi-account-circle-outline
 					v-list
 						//- [if not logged in]
@@ -105,10 +118,11 @@ export default {
     name: "App",
     data() {
         return {
-            drawer: false
+            drawer: false,
+            menuClick: false
         };
     },
-    computed: mapState(["isLoggedIn"])
+    computed: mapState(["isLoggedIn", "user"])
 };
 </script>
 
@@ -126,6 +140,7 @@ export default {
 html
 	// remove scroll bar
 	// overflow: hidden
+
 	/* own scrollbar */
 	/* scrollbar firefox */
 	scrollbar-color: rgb(110, 110, 110) rgb(1, 1, 1)
@@ -138,7 +153,6 @@ html
 		/* Track */
 		box-shadow: inset 0 0 5px grey
 		border-radius: 8px
-
 	::-webkit-scrollbar-thumb
 		/* Handle */
 		background: rgb(110, 110, 110)
@@ -149,6 +163,7 @@ html
 	::-webkit-scrollbar-track-piece
 		/* not handle on */
 		background: rgb(1, 1, 1)
+
 	.link
 		// color: rgb(250,250,250)!important
 .rotate-180
