@@ -4,12 +4,14 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
+// const router = new Router({
 export default new Router({
     routes: [
         {
             path: "/",
             name: "home",
-            component: Home
+            component: Home,
+            meta: { requiresAuth: false }
         },
         {
             path: "/about",
@@ -22,47 +24,81 @@ export default new Router({
         {
             path: "/news",
             name: "news",
-            component: () => import(/* webpackChunkName: "about" */ "./views/News.vue")
+            component: () => import("./views/News.vue")
         },
         {
             path: "/login",
             name: "login",
-            component: () => import(/* webpackChunkName: "about" */ "./views/Login.vue")
+            component: () => import("./views/Login.vue")
         },
         {
             path: "/signup",
             name: "signup",
-            component: () => import(/* webpackChunkName: "about" */ "./views/Signup.vue")
+            component: () => import("./views/Signup.vue")
         },
         {
             path: "/dashboard",
             name: "dashboard",
-            component: () => import(/* webpackChunkName: "about" */ "./views/Dashboard.vue")
+            component: () => import("./views/Dashboard.vue")
         },
         {
             path: "/courses",
             name: "courses",
-            component: () => import(/* webpackChunkName: "about" */ "./views/AllCourses.vue")
+            component: () => import("./views/AllCourses.vue")
         },
         {
             path: "/calendar",
             name: "calendar",
-            component: () => import(/* webpackChunkName: "about" */ "./views/Calendar.vue")
+            component: () => import("./views/Calendar.vue")
         },
         {
             path: "/profile",
             name: "profile",
-            component: () => import(/* webpackChunkName: "about" */ "./views/Profile.vue")
+            component: () => import("./views/Profile.vue")
         },
         {
             path: "/settings",
             name: "settings",
-            component: () => import(/* webpackChunkName: "about" */ "./views/Settings.vue")
+            component: () => import("./views/Settings.vue"),
+            children: [
+                {
+                    path: "",
+                    name: "edit-profile",
+                    component: () => import("./views/SettingsEditProfile.vue")
+                },
+                {
+                    path: "change-password",
+                    name: "change-password",
+                    component: () => import("./views/SettingsChangePassword.vue")
+                }
+            ]
         },
         {
-            path: "/courses",
-            name: "courses",
-            component: () => import(/* webpackChunkName: "about" */ "./views/Courses.vue")
+            path: "/mycourses",
+            name: "mycourses",
+            component: () => import(/* webpackChunkName: "about" */ "./views/MyCourses.vue")
         }
     ]
 });
+
+// router.beforeEach((to, from, next) => {
+//     console.debug("Fire");
+//     if (to.matched.some(record => record.meta.requiresAuth)) {
+//         // this route requires auth, check if logged in
+//         // if not, redirect to login page.
+//         console.debug("redirect");
+//         if (true) {
+//             console.debug("redirect");
+//             next({
+//                 path: "/login",
+//                 query: { redirect: to.fullPath }
+//             });
+//         } else {
+//             next();
+//         }
+//     } else {
+//         next(); // make sure to always call next()!
+//     }
+// });
+
+// export default router;
