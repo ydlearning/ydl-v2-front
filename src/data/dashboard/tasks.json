@@ -1,0 +1,24 @@
+{
+    "data": {
+        "allTasks": [
+            {
+                "name": "Upload Exercise 1",
+                "course_name": "Management, Practice and Law",
+                "due_to": "2019-08-17T01:03:00",
+                "type": "Assignment"
+            },
+            {
+                "name": "Quiz 2",
+                "course_name": "Mathematics",
+                "due_to": "2019-08-17T11:20:00",
+                "type": "Quiz"
+            },
+            {
+                "name": "Upload Exercise 2",
+                "course_name": "Management, Practice and Law",
+                "due_to": "2019-08-20T01:03:00",
+                "type": "Assignment"
+            }
+        ]
+    }
+}
