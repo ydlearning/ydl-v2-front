@@ -43,17 +43,24 @@
 					v-card-actions
 						v-btn(color='primary' to="/Signup" outlined) Go to sign up
 						v-spacer
-						v-btn(color='primary' to="/Login") Log in
+						v-btn(color='primary' @click="login()" ) Log in
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-    data: () => {
+    data() {
         return {
             password: "",
             email: ""
         };
-    }
+    },
+    methods: {
+        login() {
+            this.$store.dispatch("login");
+        }
+    },
+    computed: mapState(["isLoggedIn"])
 };
 </script>
 
