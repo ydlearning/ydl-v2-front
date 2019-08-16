@@ -1,0 +1,21 @@
+{
+    "data": {
+        "allNotifications": [
+            {
+                "subject": "Management, Practice and Law",
+                "headline": "Correction of the 1st homework assignment",
+                "date": "2019-08-10T20:20:38+0000"
+            },
+            {
+                "subject": "Principles of Construction",
+                "headline": "Information on the written exam",
+                "date": "2019-08-15T10:20:38+0000"
+            },
+            {
+                "subject": "Principles of Structural Design",
+                "headline": "Survey for all newcomers",
+                "date": "2019-08-18T20:20:38+0000"
+            }
+        ]
+    }
+}
