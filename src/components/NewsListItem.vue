@@ -19,7 +19,7 @@
 import Vue2Editor from "@/components/Vue2Editor";
 
 export default {
-    name: "AnnouncementCard",
+    name: "NewsListITem",
     components: {
         Vue2Editor
     },

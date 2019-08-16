@@ -2,16 +2,16 @@
     v-card.remove-top-padding(max-width=850 flat color="transparent")
         //- v-card-title.text-center.justify-center.display-3.text-center.font-weight-regular News
         v-card-text.remove-top-padding
-            AnnouncementLayout
+            NewsList
 </template>
 
 <script>
-import AnnouncementLayout from "@/components/AnnouncementLayout";
+import NewsList from "@/components/NewsList";
 
 export default {
     name: "TheNews",
     components: {
-        AnnouncementLayout
+        NewsList
     }
 };
 </script>
