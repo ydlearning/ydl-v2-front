@@ -1,10 +1,124 @@
 <template lang="pug">
-    p Settings change password
+    v-container(align-center justify-center)
+        v-card(flat color="transparent")
+            v-toolbar(color='primary' flat)
+                v-toolbar-title {{ this.$route.name }}
+            v-card-text
+                v-form
+                    //- Password:
+                    //- @v-validate: required | min:8 | max:100 
+                    //- @required: true
+                    v-text-field(
+                        v-on:input="check_password"
+                        v-model='oldPassword'
+                        v-validate="'required|min:8|max:100'" 
+                        :counter='100' 
+                        name="password" 
+                        type="password" 
+                        :class="{'is-danger': errors.has('password')}" 
+                        placeholder="Old Password" ref="oldpassword" 
+                        :error-messages="errors.collect('password')"
+                        clearable
+                        persistent-hint: false)
+                    span.help.is-danger(v-show="errors.has('password')")
+                    br
+                    //- Password:
+                    //- @v-validate: required | min:8 | max:100 
+                    //- @required: true
+                    v-text-field(
+                        v-on:input="check_password"
+                        v-model='password'
+                        v-validate="'required|min:8|max:100'" 
+                        :counter='100' 
+                        name="password" 
+                        type="password" 
+                        :class="{'is-danger': errors.has('password')}" 
+                        placeholder="Password" ref="password" 
+                        :error-messages="errors.collect('password')"
+                        clearable
+                        persistent-hint: false)
+                    v-progress-linear(
+                        v-model='progress'
+                        :value="progress" 
+                        :color="color" 
+                        height="7"
+                        active)
+                    span.help.is-danger(v-show="errors.has('password')")
+                    v-alert.ma-1(dense type="info" text) Password has to be at least:
+                        //- iterate over each condition for rendering as alert
+                        - var items = ["8 characters long", "at least 1 character", "at least 1 number", "at least 1 special character"]
+                        each item, index in items
+                            //- "+index+" escapes the javascript input for the :type variable so the pug variable can be inserted
+                            v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item    
+
+                    //- Passwored repeat:
+                    v-text-field(
+                        v-validate="'required|confirmed:password'" 
+                        name="password_confirmation" 
+                        type="password" 
+                        :class="{'is-danger': errors.has('password_confirmation')}" 
+                        placeholder="Confirm Password" 
+                        data-vv-as="password"
+                        clearable)
+                    span.help.is-danger(
+                        v-show="errors.has('password_confirmation')") {{ errors.first('password_confirmation') }} 
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-    components: {}
+    data() {
+        return {
+            password: "",
+            oldPassword: "",
+            corrections: ["error", "error", "error", "error"]
+        };
+    },
+    mounted() {
+        this.defaultItem = this.items[0];
+    },
+    computed: {
+        ...mapState(["isLoggedIn", "user"]),
+        progress() {
+            return Math.min(100, this.password.length * 6);
+        },
+        color() {
+            return ["error", "warning", "success"][Math.floor(this.progress / 40)];
+        }
+    },
+    components: {},
+    methods: {
+        check_password: function(value) {
+            //- check password length
+            if (value.length >= 8) {
+                this.corrections[0] = "success";
+            } else {
+                this.corrections[0] = "error";
+            }
+
+            //- check for character
+            if (/[aA-zZ]/.test(value)) {
+                this.corrections[1] = "success";
+            } else {
+                this.corrections[1] = "error";
+            }
+
+            //- check for number
+            if (/\d/.test(value)) {
+                this.corrections[2] = "success";
+            } else {
+                this.corrections[2] = "error";
+            }
+
+            //- check for special character
+            if (/[+-]/.test(value)) {
+                this.corrections[3] = "success";
+            } else {
+                this.corrections[3] = "error";
+            }
+        }
+    }
 };
 </script>
 

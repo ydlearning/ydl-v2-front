@@ -19,13 +19,18 @@
                                         v-icon mdi-account-edit
                                     v-list-item-content
                                         v-list-item-title Edit profile
+                                v-list-item(to="/settings/change-email")
+                                    v-list-item-icon
+                                        v-icon mdi-email-outline
+                                    v-list-item-content
+                                        v-list-item-title E-Mail settings
                                 v-list-item(to="/settings/change-password")
                                     v-list-item-icon
                                         v-icon mdi-lock-outline
                                     v-list-item-content
                                         v-list-item-title Change Password
                 v-col(cols="9")
-                    v-card(color="pink")
+                    v-card()
                         router-view
 </template>
 
