@@ -1,15 +1,33 @@
 <template lang="pug">
-v-layout(align-center justify-center)
-        v-card(flat color="transparent")
-            v-container
-                v-flex
-                    h3.text-center.display-2.text-center.font-weight-regular My dashboard
-                    p sasdasd
+    v-container.pa-0(fluid)
+        v-row(no-gutters)
+            v-col(cols=12 sm=9)
+                v-row(no-gutters)
+                    v-col.pb-2.pt-4.px-4
+                        v-card.pa-2(tile)
+                            v-toolbar.orange(flat) Profile
+                            p LLl
+                v-row(no-gutters)
+                    v-col.pt-2.pb-4.px-4
+                        v-card.pa-2(tile)
+                            v-card-title Favorite Courses
+            v-col.pa-4(cols=12 sm=3)
+                v-card.pa-2.fill-height(tile)
+                    TheNotification
+                    
+                            
 </template>
 
 <script>
+import TheNotification from "@/components/TheNotification";
+
 export default {
-    components: {}
+    components: {
+        TheNotification
+    },
+    mounted() {
+        console.debug(this.$route.name);
+    }
 };
 </script>
 
