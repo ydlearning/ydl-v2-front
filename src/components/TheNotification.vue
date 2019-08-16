@@ -1,20 +1,19 @@
 <template lang="pug">
-    v-card
-        v-card-title
-            span.title Notifications
-            v-spacer
-            v-btn(icon text color="blue")
-                v-icon mdi-window-restore
+    BaseDashboardItem(
+        title="Notification"
+    )
         NotificationList
 </template>
 
 <script>
 import NotificationList from "@/components/NotificationList";
+import BaseDashboardItem from "@/components/BaseDashboardItem";
 
 export default {
     name: "TheNotification",
     components: {
-        NotificationList
+        NotificationList,
+        BaseDashboardItem
     }
 };
 </script>
