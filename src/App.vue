@@ -1,37 +1,6 @@
 <template lang="pug">
 	v-app
-		v-navigation-drawer(v-model="drawer" app clipped)
-			v-list(dense)
-				//- My Dashboard
-				v-list-item(to="/dashboard")
-					v-list-item-action
-						v-icon mdi-home
-					v-list-item-content
-						v-list-item-title My dashboard
-
-				//- All Courses
-				v-list-item(to="/courses")
-					v-list-item-action
-						v-icon mdi-folder-multiple-outline
-					v-list-item-content
-						v-list-item-title All courses
-
-				//- Calendar
-				v-list-item(to="/calendar")
-					v-list-item-action
-						v-icon mdi-calendar-account-outline
-					v-list-item-content
-						v-list-item-title Calendar
-
-				template(v-if="isLoggedIn")
-					//- My courses
-					v-list-item(to="/mycourses")
-						v-list-item-action
-							v-icon mdi-folder-account-outline
-						v-list-item-content
-							v-list-item-title [My courses]
-
-		v-app-bar(app text color="primary" clipped-left dense)
+		v-app-bar(app text color="primary" dense clipped-left)
 			v-app-bar-nav-icon(@click.stop="drawer = !drawer")
 			//- router-link(to="/" color="rgb(200,200,200)")
 			//- v-btn(color="transparent" depressed tile to="/")
@@ -108,7 +77,39 @@
 							v-list-item-icon.rotate-180
 								v-icon mdi-logout-variant
 							v-list-item-title [Logout]
+		v-navigation-drawer(v-model="drawer" app clipped)
+			v-list(dense)
+				//- My Dashboard
+				v-list-item(to="/dashboard")
+					v-list-item-action
+						v-icon mdi-home
+					v-list-item-content
+						v-list-item-title My dashboard
+
+				//- All Courses
+				v-list-item(to="/courses")
+					v-list-item-action
+						v-icon mdi-folder-multiple-outline
+					v-list-item-content
+						v-list-item-title All courses
+
+				//- Calendar
+				v-list-item(to="/calendar")
+					v-list-item-action
+						v-icon mdi-calendar-account-outline
+					v-list-item-content
+						v-list-item-title Calendar
+
+				template(v-if="isLoggedIn")
+					//- My courses
+					v-list-item(to="/mycourses")
+						v-list-item-action
+							v-icon mdi-folder-account-outline
+						v-list-item-content
+							v-list-item-title [My courses]
 		v-content
+			v-toolbar 
+				v-toolbar-title {{this.$route.name}}
 			router-view
 </template>
 
