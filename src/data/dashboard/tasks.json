@@ -4,13 +4,13 @@
             {
                 "name": "Upload Exercise 1",
                 "course_name": "Management, Practice and Law",
-                "due_to": "2019-08-17T01:03:00",
+                "due_to": "2019-08-17T17:03:00",
                 "type": "Assignment"
             },
             {
                 "name": "Quiz 2",
                 "course_name": "Mathematics",
-                "due_to": "2019-08-17T11:20:00",
+                "due_to": "2019-08-20T11:20:00",
                 "type": "Quiz"
             },
             {

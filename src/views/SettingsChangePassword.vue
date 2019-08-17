@@ -9,18 +9,17 @@
                     //- @v-validate: required | min:8 | max:100 
                     //- @required: true
                     v-text-field(
-                        v-on:input="check_password"
                         v-model='oldPassword'
-                        v-validate="'required|min:8|max:100'" 
-                        :counter='100' 
-                        name="password" 
+                        v-validate="`required|min:8|max:${maxCounter}`" 
+                        :counter="maxCounter"
+                        name="password_old" 
                         type="password" 
-                        :class="{'is-danger': errors.has('password')}" 
+                        :class="{'is-danger': errors.has('password_old')}" 
                         placeholder="Old Password" ref="oldpassword" 
-                        :error-messages="errors.collect('password')"
+                        :error-messages="errors.collect('password_old')"
+                        data-vv-as="old password"
                         clearable
                         persistent-hint: false)
-                    span.help.is-danger(v-show="errors.has('password')")
                     br
                     //- Password:
                     //- @v-validate: required | min:8 | max:100 
@@ -28,8 +27,8 @@
                     v-text-field(
                         v-on:input="check_password"
                         v-model='password'
-                        v-validate="'required|min:8|max:100'" 
-                        :counter='100' 
+                        v-validate="`required|min:8|max:${maxCounter}`" 
+                        :counter="maxCounter" 
                         name="password" 
                         type="password" 
                         :class="{'is-danger': errors.has('password')}" 
@@ -43,7 +42,6 @@
                         :color="color" 
                         height="7"
                         active)
-                    span.help.is-danger(v-show="errors.has('password')")
                     v-alert.ma-1(dense type="info" text) Password has to be at least:
                         //- iterate over each condition for rendering as alert
                         - var items = ["8 characters long", "at least 1 character", "at least 1 number", "at least 1 special character"]
@@ -57,11 +55,10 @@
                         name="password_confirmation" 
                         type="password" 
                         :class="{'is-danger': errors.has('password_confirmation')}" 
+                        :error-messages="errors.collect('password_confirmation')"
                         placeholder="Confirm Password" 
                         data-vv-as="password"
                         clearable)
-                    span.help.is-danger(
-                        v-show="errors.has('password_confirmation')") {{ errors.first('password_confirmation') }} 
 </template>
 
 <script>
@@ -72,7 +69,8 @@ export default {
         return {
             password: "",
             oldPassword: "",
-            corrections: ["error", "error", "error", "error"]
+            corrections: ["error", "error", "error", "error"],
+            maxCounter: 100
         };
     },
     mounted() {
@@ -84,6 +82,11 @@ export default {
             return Math.min(100, this.password.length * 6);
         },
         color() {
+            // TODO:
+            // for (var i = 0; i < this.corrections.length(); i++) {
+            // 	if (this.corrections[i] === "success") {
+            // 	}
+            // }
             return ["error", "warning", "success"][Math.floor(this.progress / 40)];
         }
     },
