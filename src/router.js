@@ -58,7 +58,7 @@ export default new Router({
         },
         {
             path: "/settings",
-            name: "settings",
+            name: "Settings",
             component: () => import("./views/Settings.vue"),
             children: [
                 {
