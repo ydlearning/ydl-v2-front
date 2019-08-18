@@ -1,12 +1,17 @@
 <template lang="pug">
 	v-container(align-center justify-center)
 		v-card(flat color="transparent")
+			v-snackbar(
+				v-model="snackbar" 
+				absolute 
+				top 
+				right 
+				color="success")
+					span Apply changes successful!
+					v-icon(dark) mdi-check-circle
 			v-toolbar(color='primary' flat)
 				v-toolbar-title {{ this.$route.name }}
 			v-card-text
-				v-snackbar(v-model="snackbar" absolute top right color="success")
-					span Registration successful!
-					v-icon(dark) mdi-check-circle
 				v-form(ref="form" @submit.prevent="submit")
 					//- Password:
 					//- @v-validate: required | min:8 | max:128 
@@ -75,23 +80,25 @@
 						v-model="form.terms" 
 						color="success")
 						template(v-slot:label)
-								div
+								div(@click.stop="")
 									| Do you accept the 
 									a(href="javascript:;") terms
 									|  and 
 									a(href="javascript:;") conditions
 									| ?
 
-			v-card-actions
-				v-btn(
-					color="primary"
-					@click="resetForm"
-					outlined) Cancel
-				v-spacer
-				v-btn(
-					color="primary"
-					type="submit"
-					:disabled="!formIsValid") Apply changes
+					v-card-actions
+						v-btn(
+							color="primary"
+							@click="resetForm"
+							outlined) Cancel
+						v-spacer
+						v-btn(
+							color="primary"
+							type="submit"
+							@click=""
+							:disabled="!formIsValid") Apply changes
+							
 
 </template>
 
@@ -121,22 +128,16 @@ export default {
     computed: {
         ...mapState(["isLoggedIn", "user"]),
         progress() {
+            //- check if this.form.password is defined
+            if (!this.form.password) {
+                return 0;
+            }
             return Math.min(100, this.form.password.length * 6);
         },
         color() {
-            // TODO:
-            // for (var i = 0; i < this.corrections.length(); i++) {
-            // 	if (this.corrections[i] === "success") {
-            // 	}
-            // }
             return ["error", "warning", "success"][Math.floor(this.progress / 40)];
         },
         formIsValid() {
-            // for (var i = 0; i < this.corrections.length; i++) {
-            //     if (this.corrections[i] === "error") {
-            //         return false
-            //     }
-            // }
             return (
                 this.form.password &&
                 this.form.passwordOld &&
@@ -156,6 +157,11 @@ export default {
     components: {},
     methods: {
         check_password: function(value) {
+            //- check if value is defined
+            if (!value) {
+                return;
+            }
+
             //- check password length
             if (value.length >= 8) {
                 this.corrections[0] = "success";
@@ -191,7 +197,8 @@ export default {
         },
         submit() {
             this.snackbar = true;
-            this.resetForm();
+            console.log("Ausführen");
+            // this.resetForm();
         }
     }
 };
