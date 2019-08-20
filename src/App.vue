@@ -110,7 +110,7 @@
 							v-list-item-title [My courses]
 		v-content
 			v-toolbar(v-if ="this.$route.name != 'home'") 
-				v-toolbar-title {{this.$route.name}}
+				v-toolbar-title {{ this.$route.matched[0].name }}
 			router-view
 </template>
 

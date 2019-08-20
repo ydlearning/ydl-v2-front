@@ -44,13 +44,13 @@
                                 required)
                             //- br							
                             //- Password:
-                            //- @v-validate: required | min:8 | max:100 
+                            //- @v-validate: required | min:8 | max:128 
                             //- @required: true
                             v-text-field(
                                 v-on:input="check_password"
                                 v-model='password'
-                                v-validate="'required|min:8|max:100'" 
-                                :counter='100' 
+                                v-validate="{ required: true, min: 8, max: 128, regex: /^([a-zA-Z0-9$&+:;=?@#'<>.^*()%!-{}]+)$/ }"
+                                :counter="maxCounter" 
                                 name="password" 
                                 type="password" 
                                 :class="{'is-danger': errors.has('password')}" 
@@ -64,25 +64,23 @@
                                 :color="color" 
                                 height="7"
                                 active)
-                            span.help.is-danger(v-show="errors.has('password')")
                             v-alert.ma-1(dense type="info" text) Password has to be at least:
                                 //- iterate over each condition for rendering as alert
-                                - var items = ["8 characters long", "at least 1 character", "at least 1 number", "at least 1 special character"]
+                                - var items = ["8 characters long", "at least 1 character", "at least 1 number", "at least 1 special character, allowed: $&+:;=?@#'<>.^*()%!-{}"]
                                 each item, index in items
                                     //- "+index+" escapes the javascript input for the :type variable so the pug variable can be inserted
-                                    v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item
-                                
+                                    v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item    
+
                             //- Passwored repeat:
                             v-text-field(
                                 v-validate="'required|confirmed:password'" 
                                 name="password_confirmation" 
                                 type="password" 
                                 :class="{'is-danger': errors.has('password_confirmation')}" 
+                                :error-messages="errors.collect('password_confirmation')"
                                 placeholder="Confirm Password" 
                                 data-vv-as="password"
                                 clearable)
-                            span.help.is-danger(
-                                v-show="errors.has('password_confirmation')") {{ errors.first('password_confirmation') }} 
                             
                             v-select(
                                 v-model='defaultItem' 
@@ -152,7 +150,7 @@ export default {
             }
 
             //- check for special character
-            if (/[+-]/.test(value)) {
+            if (/[$&+:;=?@#'<>.^*()%!-{}]/.test(value)) {
                 this.corrections[3] = "success";
             } else {
                 this.corrections[3] = "error";
