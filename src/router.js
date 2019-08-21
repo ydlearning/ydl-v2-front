@@ -44,7 +44,7 @@ export default new Router({
         {
             path: "/courses",
             name: "courses",
-            component: () => import("./views/AllCourses.vue")
+            component: () => import("./views/Courses.vue")
         },
         {
             path: "/calendar",
