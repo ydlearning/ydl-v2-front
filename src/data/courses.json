@@ -6,7 +6,8 @@
                     "name": "German",
                     "courses": [
                         {
-                            "name": "A1.1"
+                            "name": "A1.1",
+                            "shortDescription": "This course is about the basics of German. Here you will learn to ..."
                         },
                         {
                             "name": "A1.1 (2)"

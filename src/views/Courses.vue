@@ -13,6 +13,8 @@
             v-col
                 v-card(width=512)
                     v-card-title
+                        v-btn(v-show="step>=2" icon @click="decreaseStep" small)
+                            v-icon mdi-arrow-left
                         span {{ currentTitle }}
                         v-spacer
                         v-chip(v-show="selectedItem") {{ selectedItem }}
@@ -21,15 +23,25 @@
                             v-window-item(:value="1")
                                 v-list
                                     v-list-item-group(v-model="selectedItem")
-                                        v-list-item(v-for="category in categories" :key="category.name" :value="category.name" @click="selectItem(category.name)")
+                                        v-list-item(v-for="category in categories" :key="category.name" :value="category.name" @click="increaseStep(category.name)")
                                             v-list-item-content
                                                 v-list-item-title {{category.name}}
                             v-window-item(:value="2")
-                                v-list
-                                    v-list-item-group(v-if="filteredItems[0]")
-                                        v-list-item(v-for="course in filteredItems[0].courses" :key="course.name")
-                                            v-list-item-content
-                                                v-list-item-title {{course.name}}                                          
+                                v-expansion-panels(v-if="filteredItems[0]")
+                                    v-expansion-panel(v-for="course in filteredItems[0].courses" :key="course.name")
+                                        v-expansion-panel-header
+                                            v-row(no-gutters align="center")
+                                                v-icon.mr-2(small) mdi-lock-open
+                                                span {{ course.name }}
+                                        v-expansion-panel-content
+                                            v-divider
+                                            v-card-text {{ course.shortDescription }}
+                                            v-divider
+                                            v-card-actions
+                                                v-spacer
+                                                //- maybe put this button inside the header
+                                                v-btn Enroll
+                                            
 </template>
 
 <script>
@@ -68,9 +80,13 @@ export default {
         }
     },
     methods: {
-        selectItem(itemName) {
+        increaseStep(itemName) {
             this.items[0].text = itemName;
             this.step++;
+        },
+        decreaseStep() {
+            this.selectedItem = null;
+            this.step--;
         }
     }
 };
