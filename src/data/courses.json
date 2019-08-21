@@ -1,0 +1,100 @@
+{
+    "data": {
+        "AllCategories": {
+            "category": [
+                {
+                    "name": "German",
+                    "courses": [
+                        {
+                            "name": "A1.1"
+                        },
+                        {
+                            "name": "A1.1 (2)"
+                        },
+                        {
+                            "name": "B2.2"
+                        }
+                    ]
+                },
+                {
+                    "name": "English",
+                    "courses": [
+                        {
+                            "name": "A2.2 (4)"
+                        },
+                        {
+                            "name": "B1.1"
+                        },
+                        {
+                            "name": "B1.2"
+                        },
+                        {
+                            "name": "FULL B Conv./Communication Skills (4)"
+                        },
+                        {
+                            "name": "B2-C2 Creative Writing & Literature"
+                        }
+                    ]
+                },
+                {
+                    "name": "French",
+                    "courses": [
+                        {
+                            "name": "A2.1"
+                        }
+                    ]
+                },
+                {
+                    "name": "Arabic",
+                    "courses": [
+                        {
+                            "name": "A1.1"
+                        },
+                        {
+                            "name": "A2.1"
+                        },
+                        {
+                            "name": "A2.2"
+                        }
+                    ]
+                },
+                {
+                    "name": "Bulgarian",
+                    "courses": [
+                        {
+                            "name": "B1.1"
+                        }
+                    ]
+                },
+                {
+                    "name": "Chinese",
+                    "courses": [
+                        {
+                            "name": "A1.1"
+                        },
+                        {
+                            "name": "A1.2"
+                        },
+                        {
+                            "name": "A2.1"
+                        },
+                        {
+                            "name": "A2.2"
+                        },
+                        {
+                            "name": "B2 (1)"
+                        }
+                    ]
+                },
+                {
+                    "name": "Dutch",
+                    "courses": [
+                        {
+                            "name": "A2.2 (16)"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
