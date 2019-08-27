@@ -1,27 +1,32 @@
 <template lang="pug">
 //- Password:
-//- @v-validate: required | min:8 | max:128 
+//- @v-validate: required
 //- @required: true
 v-text-field(
-    v-model='password'
     v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: regexExpression }" 
     :counter="maxCounterPassword"
     name="password" 
-    :data-vv-as="passwordFieldName"
-    :placeholder="passwordFieldPlaceholder" 
+    :data-vv-as="fieldName"
+    :label="fieldLabel" 
     :class="{'is-danger': errors.has('password')}" 
     ref="password" 
     :error-messages="errors.collect('password')"
-    clearable=true
-    :append-icon=" showEyePassword ? 'mdi-eye' : 'mdi-eye-off'"
-    @click:append="showEyePassword = !showEyePassword"
-    :type="showEyePassword ? 'text' : 'password'")
+    :clearable="fieldClearable"
+    :append-icon=" showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+    @click:append="showPassword = !showPassword"
+    :type="showPassword ? 'text' : 'password'"
+    @input="$emit('input',$event)"
+)
 </template>
 
 <script>
 export default {
     name: "ThePasswordField",
     props: {
+        value: {
+            type: String,
+            default: ""
+        },
         minCounterPassword: {
             type: Number,
             default: 0,
@@ -37,32 +42,29 @@ export default {
             default: "",
             required: true
         },
-        passwordFieldName: {
+        fieldName: {
             type: String,
             default: "",
             required: true
         },
-        passwordFieldPlaceholder: {
+        fieldLabel: {
             type: String,
             default: "",
             required: true
         },
-        showEyePassword: {
+        showPassword: {
             type: Boolean,
             default: false,
             required: false
         },
-        passwordFieldClearable: {
+        fieldClearable: {
             type: Boolean,
-            default: false,
+            default: true,
             required: false
         }
     },
     data() {
-        return {
-            // regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/
-            password: ""
-        };
+        return {};
     }
 };
 </script>
