@@ -7,12 +7,13 @@ import store from "./store";
 
 // override the format function for the date object
 import {} from "./vendor/datePrototypes";
+
 Vue.config.productionTip = false;
 
 new Vue({
     router,
     store,
-    vuetify,
     veevalidate,
+    vuetify,
     render: h => h(App)
 }).$mount("#app");

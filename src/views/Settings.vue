@@ -1,7 +1,7 @@
 <template lang="pug">
 //- align-center justify-center
 v-container(fluid)
-    v-row.yellow.justify-center.align-center
+    v-row.justify-center.align-center
         v-card(flat color="transparent" width="90%" )
             //- v-container
             TheSettings
