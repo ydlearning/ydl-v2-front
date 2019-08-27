@@ -9,13 +9,13 @@ export default new Router({
     routes: [
         {
             path: "/",
-            name: "home",
+            name: "Home",
             component: Home,
             meta: { requiresAuth: false }
         },
         {
             path: "/about",
-            name: "about",
+            name: "About",
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
@@ -23,17 +23,17 @@ export default new Router({
         },
         {
             path: "/news",
-            name: "news",
+            name: "News",
             component: () => import("./views/News.vue")
         },
         {
             path: "/login",
-            name: "login",
+            name: "Login",
             component: () => import("./views/Login.vue")
         },
         {
             path: "/signup",
-            name: "signup",
+            name: "Sign up",
             component: () => import("./views/Signup.vue")
         },
         {
@@ -43,17 +43,17 @@ export default new Router({
         },
         {
             path: "/courses",
-            name: "courses",
+            name: "Courses",
             component: () => import("./views/Courses.vue")
         },
         {
             path: "/calendar",
-            name: "calendar",
+            name: "Calendar",
             component: () => import("./views/Calendar.vue")
         },
         {
             path: "/profile",
-            name: "profile",
+            name: "Profile",
             component: () => import("./views/Profile.vue")
         },
         {
@@ -80,7 +80,7 @@ export default new Router({
         },
         {
             path: "/mycourses",
-            name: "mycourses",
+            name: "My-Courses",
             component: () => import(/* webpackChunkName: "about" */ "./views/MyCourses.vue")
         }
     ]
