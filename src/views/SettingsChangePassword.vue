@@ -1,6 +1,7 @@
 <template lang="pug">
 	v-container(align-center justify-center)
 		v-card(flat color="transparent")
+			//- div {{ form.password }} // debug
 			v-snackbar(
 				v-model="snackbar" 
 				absolute 
@@ -33,20 +34,29 @@
 
 					//- Old password
 					ThePasswordField(
+						v-model="form.password"
 						:minCounterPassword= "minCounterPassword" 
 						:maxCounterPassword= "maxCounterPassword"
 						:regexExpression= "regexExpression"
-						passwordFieldName= "Old password"
-						passwordFieldPlaceholder= "Old password"
-						showEyePassword=true
-						passwordFieldClearable=true
+						fieldName= "Old password"
+						fieldLabel= "Old password"
 					)
 					br 
+
+					ThePasswordNewField(
+						v-model="form.passwordSet"
+						:minCounterPassword= "minCounterPassword" 
+						:maxCounterPassword= "maxCounterPassword"
+						:regexExpression= "regexExpression"
+						:regexExpressionSpecialChars= "regexExpressionSpecialChars"
+						fieldName= "New password"
+						fieldLabel= "New password"
+					)
 
 					//- Password:
 					//- @v-validate: required | min:8 | max:128 
 					//- @required: true
-					v-text-field(
+					//- v-text-field(
 						v-on:input="check_password"
 						v-model="form.passwordSet"
 						v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: regexExpression }"
@@ -57,16 +67,16 @@
 						data-vv-as="'New Password'"
 						:error-messages="errors.collect('password_set')"
 						clearable
-						:append-icon=" showEye2 ? 'mdi-eye' : 'mdi-eye-off'"
-						@click:append="showEye2 = !showEye2"
-						:type="showEye2 ? 'text' : 'password'")
-					v-progress-linear(
+						:append-icon=" showEyePasswordSet ? 'mdi-eye' : 'mdi-eye-off'"
+						@click:append="showEyePasswordSet = !showEyePasswordSet"
+						:type="showEyePasswordSet ? 'text' : 'password'")
+					//- v-progress-linear(
 						v-model='progress'
 						:value="progress" 
 						:color="color" 
 						height="7"
 						active)
-					v-alert.ma-1(dense type="info" text) Password has to be 
+					//- v-alert.ma-1(dense type="info" text) Password has to be 
 						span.font-weight-bold at least:
 						//- iterate over each condition for rendering as alert
 						- var items = ["• 8 characters long", "• include 1 character", "• include 1 number", "• 1 special character, allowed: $&+:;=?@#'<>.^*()%!-{}"]
@@ -115,6 +125,7 @@
 
 <script>
 import ThePasswordField from "@/components/ThePasswordField";
+import ThePasswordNewField from "@/components/ThePasswordNewField";
 import { mapState } from "vuex";
 
 export default {
@@ -129,7 +140,7 @@ export default {
         return {
             // 1. pw field name: 'Old password'
             form: Object.assign({}, defaultForm),
-            corrections: ["error", "error", "error", "error"],
+            // corrections: ["error", "error", "error", "error"],
             minCounterPassword: 8,
             maxCounterPassword: 128,
             regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/,
@@ -138,27 +149,32 @@ export default {
             // passwordFieldPlaceholder: "Old password",
             passwordFieldClearable: true,
             showEyePassword: false,
-            showEye2: false,
+            showEyePasswordSet: false,
             showEye3: false,
             snackbar: false,
             defaultForm
+            // wasweisich: "HHHHH"
         };
     },
+    mounted() {
+        // alert("Hi "); // Test
+    },
     components: {
-        ThePasswordField
+        ThePasswordField,
+        ThePasswordNewField
     },
     computed: {
         ...mapState(["isLoggedIn", "user"]),
-        progress() {
-            //- check if this.form.password is defined
-            if (!this.form.passwordSet) {
-                return 0;
-            }
-            return Math.min(100, this.form.passwordSet.length * 6);
-        },
-        color() {
-            return ["error", "warning", "success"][Math.floor(this.progress / 40)];
-        },
+        // progress() {
+        //     //- check if this.form.password is defined
+        //     if (!this.form.passwordSet) {
+        //         return 0;
+        //     }
+        //     return Math.min(100, this.form.passwordSet.length * 6);
+        // },
+        // color() {
+        //     return ["error", "warning", "success"][Math.floor(this.progress / 40)];
+        // },
         //- returns true if the form and all fields are valid
         formIsValid() {
             return (
@@ -181,41 +197,41 @@ export default {
         }
     },
     methods: {
-        check_password: function(value) {
-            //- check if value is defined
-            if (!value) {
-                return;
-            }
+        // check_password: function(value) {
+        //     //- check if value is defined
+        //     if (!value) {
+        //         return;
+        //     }
 
-            //- check password length
-            if (value.length >= 8) {
-                this.corrections[0] = "success";
-            } else {
-                this.corrections[0] = "error";
-            }
+        //     //- check password length
+        //     if (value.length >= 8) {
+        //         this.corrections[0] = "success";
+        //     } else {
+        //         this.corrections[0] = "error";
+        //     }
 
-            //- check for character
-            if (/[a-zA-Z]/.test(value)) {
-                this.corrections[1] = "success";
-            } else {
-                this.corrections[1] = "error";
-            }
+        //     //- check for character
+        //     if (/[a-zA-Z]/.test(value)) {
+        //         this.corrections[1] = "success";
+        //     } else {
+        //         this.corrections[1] = "error";
+        //     }
 
-            //- check for number
-            if (/\d/.test(value)) {
-                this.corrections[2] = "success";
-            } else {
-                this.corrections[2] = "error";
-            }
+        //     //- check for number
+        //     if (/\d/.test(value)) {
+        //         this.corrections[2] = "success";
+        //     } else {
+        //         this.corrections[2] = "error";
+        //     }
 
-            //- check for special character
-            if (this.regexExpressionSpecialChars.test(value)) {
-                this.corrections[3] = "success";
-                // [+-@!#%$^?!:.;,()[] {}]
-            } else {
-                this.corrections[3] = "error";
-            }
-        },
+        //     //- check for special character
+        //     if (this.regexExpressionSpecialChars.test(value)) {
+        //         this.corrections[3] = "success";
+        //         // [+-@!#%$^?!:.;,()[] {}]
+        //     } else {
+        //         this.corrections[3] = "error";
+        //     }
+        // },
         //- resets the complete form
         resetForm() {
             this.form = Object.assign({}, this.defaultForm);
