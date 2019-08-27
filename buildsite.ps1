@@ -1,4 +1,6 @@
-﻿Write-Host -ForegroundColor Yellow "Build site - script";
+﻿$env:Path += ";.\node_modules\.bin\"
+
+Write-Host -ForegroundColor Yellow "Build site - script";
 
 Write-Host -ForegroundColor Yellow "1: Run lint";
 pnpm run lint;

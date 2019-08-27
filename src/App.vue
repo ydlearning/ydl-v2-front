@@ -141,11 +141,9 @@ export default {
 	background-repeat: repeat
 	background-attachment: scroll
 	background-size: auto
-
 html
 	// remove scroll bar
 	// overflow: hidden
-
 	/* own scrollbar */
 	/* scrollbar firefox */
 	scrollbar-color: rgb(110, 110, 110) rgb(1, 1, 1)
@@ -168,7 +166,6 @@ html
 	::-webkit-scrollbar-track-piece
 		/* not handle on */
 		background: rgb(1, 1, 1)
-
 	.link
 		// color: rgb(250,250,250)!important
 .rotate-180

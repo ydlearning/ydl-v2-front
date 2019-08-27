@@ -20,7 +20,6 @@
 
 <script>
 import TheNews from "@/components/TheNews";
-
 export default {
     components: { TheNews }
 };
