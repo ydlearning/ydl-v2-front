@@ -16,23 +16,32 @@
 					//- Password:
 					//- @v-validate: required | min:8 | max:128 
 					//- @required: true
-					v-text-field(
-						v-model='form.passwordOld'
-						v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/ }"
+					//- v-text-field(
+						v-model='form.password'
+						v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: regexExpression }" 
 						:counter="maxCounterPassword"
-						name="password_old" 
-						:class="{'is-danger': errors.has('password_old')}" 
-						placeholder="Old password" ref="password_old" 
-						:error-messages="errors.collect('password_old')"
-						data-vv-as="'Old password'"
-						clearable
-						persistent-hint: false
-						:append-icon=" showEye1 ? 'mdi-eye' : 'mdi-eye-off'"
-						@click:append="showEye1 = !showEye1"
-						:type="showEye1 ? 'text' : 'password'")
-					br
+						name="password" 
+						:data-vv-as="passwordFieldName"
+						:placeholder="passwordFieldPlaceholder" 
+						:class="{'is-danger': errors.has('password')}" 
+						ref="password" 
+						:error-messages="errors.collect('password')"
+						:clearable="passwordFieldClearable"
+						:append-icon=" showEyePassword ? 'mdi-eye' : 'mdi-eye-off'"
+						@click:append="showEyePassword = !showEyePassword"
+						:type="showEyePassword ? 'text' : 'password'")
 
-					//- ThePasswordField
+					//- Old password
+					ThePasswordField(
+						:minCounterPassword= "minCounterPassword" 
+						:maxCounterPassword= "maxCounterPassword"
+						:regexExpression= "regexExpression"
+						passwordFieldName= "Old password"
+						passwordFieldPlaceholder= "Old password"
+						showEyePassword=true
+						passwordFieldClearable=true
+					)
+					br 
 
 					//- Password:
 					//- @v-validate: required | min:8 | max:128 
@@ -40,7 +49,7 @@
 					v-text-field(
 						v-on:input="check_password"
 						v-model="form.passwordSet"
-						v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/ }"
+						v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: regexExpression }"
 						:counter="maxCounterPassword" 
 						name="password_set"  
 						:class="{'is-danger': errors.has('password_set')}" 
@@ -105,24 +114,30 @@
 </template>
 
 <script>
-// import ThePasswordField from "@/components/ThePasswordField";
+import ThePasswordField from "@/components/ThePasswordField";
 import { mapState } from "vuex";
 
 export default {
     name: "SettingsChangePassword",
     data() {
         const defaultForm = Object.freeze({
+            password: "",
             passwordSet: "",
-            passwordOld: "",
             passwordRepeat: "",
             terms: false
         });
         return {
+            // 1. pw field name: 'Old password'
             form: Object.assign({}, defaultForm),
             corrections: ["error", "error", "error", "error"],
             minCounterPassword: 8,
             maxCounterPassword: 128,
-            showEye1: false,
+            regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/,
+            regexExpressionSpecialChars: /[$&+,:;=?@#'<>.^*()%!-]/,
+            // passwordFieldName: "'Old password'",
+            // passwordFieldPlaceholder: "Old password",
+            passwordFieldClearable: true,
+            showEyePassword: false,
             showEye2: false,
             showEye3: false,
             snackbar: false,
@@ -130,7 +145,7 @@ export default {
         };
     },
     components: {
-        // ThePasswordField
+        ThePasswordField
     },
     computed: {
         ...mapState(["isLoggedIn", "user"]),
@@ -149,7 +164,7 @@ export default {
             return (
                 //- check if value ist set
                 this.form.passwordSet &&
-                this.form.passwordOld &&
+                this.form.password &&
                 this.form.passwordRepeat &&
                 this.form.terms &&
                 //- check if all fields are valid
@@ -159,7 +174,7 @@ export default {
                 this.corrections[3] === "success" &&
                 //- check that there anrent errors
                 !this.errors.has("password_set") &&
-                !this.errors.has("password_old") &&
+                !this.errors.has("password") &&
                 !this.errors.has("password_confirmation")
             );
             // return true; // test
@@ -194,7 +209,7 @@ export default {
             }
 
             //- check for special character
-            if (/[$&+,:;=?@#'<>.^*()%!-]/.test(value)) {
+            if (this.regexExpressionSpecialChars.test(value)) {
                 this.corrections[3] = "success";
                 // [+-@!#%$^?!:.;,()[] {}]
             } else {
