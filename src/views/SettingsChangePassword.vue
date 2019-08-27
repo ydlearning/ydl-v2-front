@@ -31,19 +31,22 @@
 						@click:append="showEye1 = !showEye1"
 						:type="showEye1 ? 'text' : 'password'")
 					br
+
+					//- ThePasswordField
+
 					//- Password:
 					//- @v-validate: required | min:8 | max:128 
 					//- @required: true
 					v-text-field(
 						v-on:input="check_password"
-						v-model="form.password"
+						v-model="form.passwordSet"
 						v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/ }"
 						:counter="maxCounterPassword" 
-						name="password"  
-						:class="{'is-danger': errors.has('password')}" 
-						placeholder="New password" ref="password" 
+						name="password_set"  
+						:class="{'is-danger': errors.has('password_set')}" 
+						placeholder="New password" ref="password_set" 
 						data-vv-as="'New Password'"
-						:error-messages="errors.collect('password')"
+						:error-messages="errors.collect('password_set')"
 						clearable
 						:append-icon=" showEye2 ? 'mdi-eye' : 'mdi-eye-off'"
 						@click:append="showEye2 = !showEye2"
@@ -54,16 +57,17 @@
 						:color="color" 
 						height="7"
 						active)
-					v-alert.ma-1(dense type="info" text) Password has to be at least:
+					v-alert.ma-1(dense type="info" text) Password has to be 
+						span.font-weight-bold at least:
 						//- iterate over each condition for rendering as alert
-						- var items = ["8 characters long", "at least 1 character", "at least 1 number", "at least 1 special character, allowed: $&+:;=?@#'<>.^*()%!-{}"]
+						- var items = ["• 8 characters long", "• include 1 character", "• include 1 number", "• 1 special character, allowed: $&+:;=?@#'<>.^*()%!-{}"]
 						each item, index in items
 							//- "+index+" escapes the javascript input for the :type variable so the pug variable can be inserted
 							v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item    
 
 					//- Passwored repeat:
 					v-text-field(
-						v-validate="'required|confirmed:password'" 
+						v-validate="'required|confirmed:password_set'" 
 						v-model='form.passwordRepeat'
 						name="password_confirmation" 
 						:counter="maxCounterPassword"
@@ -98,17 +102,17 @@
 							type="submit"
 							@click=""
 							:disabled="!formIsValid") Apply changes
-							
-
 </template>
 
 <script>
+// import ThePasswordField from "@/components/ThePasswordField";
 import { mapState } from "vuex";
 
 export default {
+    name: "SettingsChangePassword",
     data() {
         const defaultForm = Object.freeze({
-            password: "",
+            passwordSet: "",
             passwordOld: "",
             passwordRepeat: "",
             terms: false
@@ -125,36 +129,42 @@ export default {
             defaultForm
         };
     },
+    components: {
+        // ThePasswordField
+    },
     computed: {
         ...mapState(["isLoggedIn", "user"]),
         progress() {
             //- check if this.form.password is defined
-            if (!this.form.password) {
+            if (!this.form.passwordSet) {
                 return 0;
             }
-            return Math.min(100, this.form.password.length * 6);
+            return Math.min(100, this.form.passwordSet.length * 6);
         },
         color() {
             return ["error", "warning", "success"][Math.floor(this.progress / 40)];
         },
+        //- returns true if the form and all fields are valid
         formIsValid() {
             return (
-                this.form.password &&
+                //- check if value ist set
+                this.form.passwordSet &&
                 this.form.passwordOld &&
                 this.form.passwordRepeat &&
                 this.form.terms &&
+                //- check if all fields are valid
                 this.corrections[0] === "success" &&
                 this.corrections[1] === "success" &&
                 this.corrections[2] === "success" &&
                 this.corrections[3] === "success" &&
+                //- check that there anrent errors
+                !this.errors.has("password_set") &&
                 !this.errors.has("password_old") &&
-                !this.errors.has("password") &&
                 !this.errors.has("password_confirmation")
             );
-            // return true;
+            // return true; // test
         }
     },
-    components: {},
     methods: {
         check_password: function(value) {
             //- check if value is defined
@@ -191,14 +201,16 @@ export default {
                 this.corrections[3] = "error";
             }
         },
+        //- resets the complete form
         resetForm() {
             this.form = Object.assign({}, this.defaultForm);
             this.$refs.form.reset();
         },
+        //- submit form fields
         submit() {
             this.snackbar = true;
             console.log("Ausführen");
-            // this.resetForm();
+            // this.resetForm(); // resets form after submit
         }
     }
 };
