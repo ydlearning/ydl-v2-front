@@ -46,21 +46,21 @@
 
 ### ydl-front frontend
 
-Website for Y&D Learning made with Vue.
+Website for Y&D Learning made with Vue CLI + Vuetify.
 
-This project was completed for the module "Programming Lab: Social Networking" at TU Berlin.
+Version 1 (V1) of this this project was completed for the module "Programming Lab: Social Networking" at TU Berlin.
 
 ### Version 2 (V2)
 
-Version 2 is a further development of Young And Digital Learning.
+Version 2 is a further development of Young And Digital Learning. The UI was completely redesigned using Vuetify.
 
 ## Setup tutorial
 [Setup](Setup.md)
 
 ## Links 
-Our organization: [YoungAndDigitalLearning](https://github.com/ydlearning)
+Our organization on GitHub: [ydlearning](https://github.com/ydlearning)
 
-Homepage: [www.ydlearning.com](https://ydlearning.github.io)
+Homepage: [www.ydlearning.github.io/ydl-v2-front](https://ydlearning.github.io/ydl-v2-front/)
 
 Wikipage: [wiki](../../wiki)
 
