@@ -5,17 +5,18 @@
 v-text-field(
     v-validate="{ required: true, min: minCounterPassword, max: maxCounterPassword, regex: regexExpression }" 
     :counter="maxCounterPassword"
-    name="password" 
+    :name="passwordName" 
     :data-vv-as="fieldName"
     :label="fieldLabel" 
-    :class="{'is-danger': errors.has('password')}" 
-    ref="password" 
-    :error-messages="errors.collect('password')"
+    :class="{'is-danger': errors.has(passwordName)}" 
+    :ref="passwordName" 
+    :error-messages="errors.collect(passwordName)"
     :clearable="fieldClearable"
     :append-icon=" showPassword ? 'mdi-eye' : 'mdi-eye-off'"
     @click:append="showPassword = !showPassword"
-    :type="showPassword ? 'text' : 'password'"
+    :type="showPassword ? 'text' : passwordName"
     @input="$emit('input',$event)"
+    @update:error="$emit('errorCheck',errors.has(passwordName))"
 )
 </template>
 
@@ -51,6 +52,11 @@ export default {
             type: String,
             default: "",
             required: true
+        },
+        passwordName: {
+            type: String,
+            default: "password",
+            required: false
         },
         showPassword: {
             type: Boolean,
