@@ -34,8 +34,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Tools
 
-nodejs 12.x
--
+### nodejs 12.x
+
 dependencies
 ``` bash
 pnpm install vue-cli
@@ -47,9 +47,23 @@ vue create
 vue add vuetify
 ```
 
-Vuese
--
-generate documentation
-```
+### Vuese
+
+``` bash
+# generate documentation
 vuese gen
+```
+
+### Commitizen
+
+``` bash
+# install
+pnpm i -g commitizen
+pnpm install -g cz-conventional-changelog
+
+# Windows:
+Set-Content -path "~/.czrc" -value '{ "path": "cz-conventional-changelog" }'
+
+# use
+git cz
 ```
