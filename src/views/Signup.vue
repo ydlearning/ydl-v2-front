@@ -4,7 +4,7 @@
             v-col(cols='12' sm='8' md='4')
                 v-card.elevation-12
                     v-toolbar(color='primary' flat)
-                        v-toolbar-title Sign up
+                        v-toolbar-title {{ this.$route.name }}
                     v-card-text
                         v-form
                             //- Username
