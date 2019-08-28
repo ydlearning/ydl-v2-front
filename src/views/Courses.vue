@@ -40,7 +40,9 @@
                                             v-card-actions
                                                 v-spacer
                                                 //- maybe put this button inside the header
-                                                v-btn(to="/courses/1") Enroll
+                                                v-btn(
+                                                    :to="{ name: 'MyCoursesEnrolled', params: {id: 1}}"
+                                                ) Enroll
                                             
 </template>
 
