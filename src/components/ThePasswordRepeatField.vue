@@ -1,19 +1,19 @@
 <template lang="pug">
 //- Password:
 v-text-field(
-    v-model='passwordRepeat'
     v-validate="{ required: true, confirmed: confirmationField }"
     :counter="maxCounterPassword"
-    name="password"
+    :name="passwordName"
     :data-vv-as="fieldName"
     :label="fieldLabel"
-    :class="{'is-danger': errors.has('password')}" 
-    :error-messages="errors.collect('password')"
+    :class="{'is-danger': errors.has(passwordName)}" 
+    :error-messages="errors.collect(passwordName)"
     :clearable="fieldClearable"
     :append-icon=" showPassword ? 'mdi-eye' : 'mdi-eye-off'"
     @click:append="showPassword = !showPassword"
-    :type="showPassword ? 'text' : 'password'"
+    :type="showPassword ? 'text' : passwordName"
     @input="$emit('input',$event)"
+    @update:error="$emit('errorCheck',errors.has(passwordName))"
 )
 </template>
 
@@ -63,6 +63,11 @@ export default {
         fieldClearable: {
             type: Boolean,
             default: true,
+            required: false
+        },
+        passwordName: {
+            type: String,
+            default: "password",
             required: false
         }
     },
