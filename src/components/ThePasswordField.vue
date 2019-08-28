@@ -13,7 +13,7 @@ v-text-field(
     :error-messages="errors.collect(passwordName)"
     :clearable="fieldClearable"
     :append-icon=" showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-    @click:append="showPassword = !showPassword"
+@click:append="showPassword = !showPassword"
     :type="showPassword ? 'text' : passwordName"
     @input="$emit('input',$event)"
     @update:error="$emit('errorCheck',errors.has(passwordName))"
