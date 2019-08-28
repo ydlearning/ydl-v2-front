@@ -47,6 +47,11 @@ export default new Router({
             component: () => import("./views/Courses.vue")
         },
         {
+            path: "/courses/:id",
+            name: "MyCourses",
+            component: () => import("./views/Course.vue")
+        },
+        {
             path: "/calendar",
             name: "Calendar",
             component: () => import("./views/Calendar.vue")
