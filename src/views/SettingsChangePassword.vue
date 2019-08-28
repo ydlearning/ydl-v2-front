@@ -111,21 +111,20 @@
 						@errorCheck="passwordRepeatHasErrors=$event"
 					)
 
-					v-checkbox(
-						v-model="form.terms" 
-						color="success")
-						template(v-slot:label)
-								div(@click.stop="")
-									| Do you accept the 
-									a(href="javascript:;") terms
-									|  and 
-									a(href="javascript:;") conditions
-									| ?
+					//- v-checkbox(
+					//- 	v-model="form.terms" 
+					//- 	color="success")
+					//- 	template(v-slot:label)
+					//- 			div(@click.stop="")
+					//- 				| Do you accept the 
+					//- 				a(href="javascript:;") terms
+					//- 				|  and 
+					//- 				a(href="javascript:;") conditions
+					//- 				| ?
 
-					//- 					this.form.password 
-					//- this.form.passwordSet
-					//- this.form.passwordRepeat
-					//- this.form.terms
+					TheTermsCheckbox(
+						v-model="form.terms" 
+					)
 
 					v-card-actions
 						v-btn(
@@ -144,6 +143,7 @@
 import ThePasswordField from "@/components/ThePasswordField";
 import ThePasswordNewField from "@/components/ThePasswordNewField";
 import ThePasswordRepeatField from "@/components/ThePasswordRepeatField";
+import TheTermsCheckbox from "@/components/TheTermsCheckbox";
 import { mapState } from "vuex";
 
 export default {
@@ -181,7 +181,8 @@ export default {
     components: {
         ThePasswordField,
         ThePasswordNewField,
-        ThePasswordRepeatField
+        ThePasswordRepeatField,
+        TheTermsCheckbox
     },
     computed: {
         ...mapState(["isLoggedIn", "user"]),
