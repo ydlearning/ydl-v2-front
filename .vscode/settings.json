@@ -21,5 +21,15 @@
     ],
     "eslint.autoFixOnSave": true,
     "editor.formatOnSave": false,
-    "vetur.validation.template": false
+    "vetur.validation.template": false,
+    // Exclude (hide) files / folders in search in Vscode
+    "search.exclude" : {
+        "node_modules/": true,
+        "docs/": true,
+        "pnpm-lock.yaml": true
+    },
+    // Exclude (hide) files / folders in Vscode
+    "files.exclude" : {
+        "node_modules/": true
+    }
 }
