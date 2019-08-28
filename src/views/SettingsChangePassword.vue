@@ -3,8 +3,7 @@
 		v-card(flat color="transparent")
 			//- div {{ form.password }} // debug
 			v-snackbar(
-				v-model="snackbar" 
-				absolute 
+				v-model="snackbar"  
 				top 
 				right 
 				color="success")
@@ -38,20 +37,11 @@
 						:minCounterPassword= "minCounterPassword" 
 						:maxCounterPassword= "maxCounterPassword"
 						:regexExpression= "regexExpression"
-						fieldName= "Old password"
-						fieldLabel= "Old password"
+						fieldName="Old password"
+						fieldLabel="Old password"
+						@errorCheck="passwordHasErrors=$event"
 					)
 					br 
-
-					ThePasswordNewField(
-						v-model="form.passwordSet"
-						:minCounterPassword= "minCounterPassword" 
-						:maxCounterPassword= "maxCounterPassword"
-						:regexExpression= "regexExpression"
-						:regexExpressionSpecialChars= "regexExpressionSpecialChars"
-						fieldName= "New password"
-						fieldLabel= "New password"
-					)
 
 					//- Password:
 					//- @v-validate: required | min:8 | max:128 
@@ -83,9 +73,20 @@
 						each item, index in items
 							//- "+index+" escapes the javascript input for the :type variable so the pug variable can be inserted
 							v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item    
+					
+					ThePasswordNewField(
+						v-model="form.passwordSet"
+						:minCounterPassword= "minCounterPassword" 
+						:maxCounterPassword= "maxCounterPassword"
+						:regexExpression= "regexExpression"
+						:regexExpressionSpecialChars= "regexExpressionSpecialChars"
+						fieldName="New password"
+						fieldLabel="New password"
+						@errorCheck="passwordSetHasErrors=$event"
+					)
 
 					//- Passwored repeat:
-					v-text-field(
+					//- v-text-field(
 						v-validate="'required|confirmed:password_set'" 
 						v-model='form.passwordRepeat'
 						name="password_confirmation" 
@@ -99,6 +100,17 @@
 						@click:append="showEye3 = !showEye3"
 						:type="showEye3 ? 'text' : 'password'")
 
+					ThePasswordRepeatField(
+						v-model="form.passwordRepeat"
+						:minCounterPassword= "minCounterPassword" 
+						:maxCounterPassword= "maxCounterPassword"
+						:regexExpression= "regexExpression"
+						:confirmationField= "form.passwordSet"
+						fieldName="Repeat password"
+						fieldLabel="Repeat password"
+						@errorCheck="passwordRepeatHasErrors=$event"
+					)
+
 					v-checkbox(
 						v-model="form.terms" 
 						color="success")
@@ -109,6 +121,11 @@
 									|  and 
 									a(href="javascript:;") conditions
 									| ?
+
+					//- 					this.form.password 
+					//- this.form.passwordSet
+					//- this.form.passwordRepeat
+					//- this.form.terms
 
 					v-card-actions
 						v-btn(
@@ -126,6 +143,7 @@
 <script>
 import ThePasswordField from "@/components/ThePasswordField";
 import ThePasswordNewField from "@/components/ThePasswordNewField";
+import ThePasswordRepeatField from "@/components/ThePasswordRepeatField";
 import { mapState } from "vuex";
 
 export default {
@@ -138,7 +156,6 @@ export default {
             terms: false
         });
         return {
-            // 1. pw field name: 'Old password'
             form: Object.assign({}, defaultForm),
             // corrections: ["error", "error", "error", "error"],
             minCounterPassword: 8,
@@ -147,13 +164,15 @@ export default {
             regexExpressionSpecialChars: /[$&+,:;=?@#'<>.^*()%!-]/,
             // passwordFieldName: "'Old password'",
             // passwordFieldPlaceholder: "Old password",
-            passwordFieldClearable: true,
-            showEyePassword: false,
-            showEyePasswordSet: false,
-            showEye3: false,
+            // passwordFieldClearable: true,
+            // showEyePassword: false,
+            // showEyePasswordSet: false,
+            // showEye3: false,
             snackbar: false,
-            defaultForm
-            // wasweisich: "HHHHH"
+            defaultForm,
+            passwordHasErrors: false,
+            passwordSetHasErrors: false,
+            passwordRepeatHasErrors: false
         };
     },
     mounted() {
@@ -161,7 +180,8 @@ export default {
     },
     components: {
         ThePasswordField,
-        ThePasswordNewField
+        ThePasswordNewField,
+        ThePasswordRepeatField
     },
     computed: {
         ...mapState(["isLoggedIn", "user"]),
@@ -179,19 +199,19 @@ export default {
         formIsValid() {
             return (
                 //- check if value ist set
-                this.form.passwordSet &&
                 this.form.password &&
+                this.form.passwordSet &&
                 this.form.passwordRepeat &&
                 this.form.terms &&
                 //- check if all fields are valid
-                this.corrections[0] === "success" &&
-                this.corrections[1] === "success" &&
-                this.corrections[2] === "success" &&
-                this.corrections[3] === "success" &&
-                //- check that there anrent errors
-                !this.errors.has("password_set") &&
-                !this.errors.has("password") &&
-                !this.errors.has("password_confirmation")
+                // this.corrections[0] === "success" &&
+                // this.corrections[1] === "success" &&
+                // this.corrections[2] === "success" &&
+                // this.corrections[3] === "success" &&
+                //- check that there aren’t errors
+                !this.passwordHasErrors &&
+                !this.passwordSetHasErrors &&
+                !this.passwordRepeatHasErrors
             );
             // return true; // test
         }
