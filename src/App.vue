@@ -79,41 +79,14 @@
 								v-icon mdi-logout-variant
 							v-list-item-title [Logout]
 		v-navigation-drawer(v-model="drawer" app clipped)
-			v-list(dense)
-				//- My Dashboard
-				v-list-item(to="/dashboard")
-					v-list-item-action
-						v-icon mdi-home
-					v-list-item-content
-						v-list-item-title My dashboard
-
-				//- All Courses
-				v-list-item(to="/courses")
-					v-list-item-action
-						v-icon mdi-folder-multiple-outline
-					v-list-item-content
-						v-list-item-title All courses
-
-				//- Calendar
-				v-list-item(to="/calendar")
-					v-list-item-action
-						v-icon mdi-calendar-account-outline
-					v-list-item-content
-						v-list-item-title Calendar
-
-				template(v-if="isLoggedIn")
-					//- My courses
-					v-list-item(to="/mycourses")
-						v-list-item-action
-							v-icon mdi-folder-account-outline
-						v-list-item-content
-							v-list-item-title [My courses]
+			TheDashboardList
 		v-content
 			router-view
 </template>
 
 <script>
 import { mapState } from "vuex";
+import TheDashboardList from "@/components/TheDashboardList";
 export default {
     name: "App",
     data() {
@@ -121,6 +94,9 @@ export default {
             drawer: false,
             menuClick: false
         };
+    },
+    components: {
+        TheDashboardList
     },
     methods: {
         logout() {
