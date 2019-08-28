@@ -49,6 +49,17 @@ export default new Router({
         {
             path: "/courses/:id",
             name: "MyCourses",
+            // props: {
+            //     showWelcomeScreen: true
+            // },
+            component: () => import("./views/Course.vue")
+        },
+        {
+            path: "/courses/:id",
+            name: "MyCoursesEnrolled",
+            props: {
+                showWelcomeScreen: true
+            },
             component: () => import("./views/Course.vue")
         },
         {
