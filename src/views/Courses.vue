@@ -40,7 +40,7 @@
                                             v-card-actions
                                                 v-spacer
                                                 //- maybe put this button inside the header
-                                                v-btn Enroll
+                                                v-btn(to="/courses/1") Enroll
                                             
 </template>
 
