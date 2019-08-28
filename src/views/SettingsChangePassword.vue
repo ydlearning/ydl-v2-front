@@ -7,8 +7,9 @@
 				top 
 				right 
 				color="success")
-					span Apply changes successful!
+					span Changes apply successfully!
 					v-icon(dark) mdi-check-circle
+			//- Snackbar - Info Cancel, form cleared!
 			v-snackbar(
 				v-model="snackbarError"  
 				top 
@@ -48,10 +49,10 @@
 					//- Repeat password field
 					ThePasswordRepeatField(
 						v-model="form.passwordRepeat"
-						:minCounterPassword= "minCounterPassword" 
-						:maxCounterPassword= "maxCounterPassword"
-						:regexExpression= "regexExpression"
-						:confirmationField= "form.passwordSet"
+						:minCounterPassword="minCounterPassword" 
+						:maxCounterPassword="maxCounterPassword"
+						:regexExpression="regexExpression"
+						:confirmationField="form.passwordSet"
 						fieldName="Repeat password"
 						fieldLabel="Repeat password"
 						@errorCheck="passwordRepeatHasErrors=$event"
@@ -63,17 +64,25 @@
 					)
 
 					v-card-actions
-						v-btn(
-							color="primary"
-							@click="resetForm"
-							outlined) Cancel
+						v-tooltip(bottom color="red")
+							template(v-slot:activator="{ on: tooltip }")
+								v-btn(
+									color="primary"
+									@click="resetForm"
+									outlined
+									v-on="{ ...tooltip }"
+									) Cancel
+							span
+								v-icon(size="15px") mdi-alert
+								|  All Fields will be deleted!
 						v-spacer
-
 						v-btn(
 							color="primary"
 							type="submit"
 							@click=""
-							:disabled="!formIsValid") Apply changes
+							:disabled="!formIsValid"
+							v-on="{ ...tooltip }"
+							) Apply changes
 </template>
 
 <script>
@@ -142,7 +151,6 @@ export default {
         //- submit form fields
         submit() {
             this.snackbar = true;
-            console.log("Ausführen");
             // this.resetForm(); // resets form after submit
         }
     }
