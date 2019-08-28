@@ -11,7 +11,7 @@ export default new Vuex.Store({
             username: "Max-Mustermann",
             name: "Max Mustermann",
             email: {
-                adress: "max.mustermann@muster.mann",
+                address: "max.mustermann@muster.mann",
                 isVerified: false,
                 status: "public" //public | private | contacts
             },
