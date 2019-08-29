@@ -31,15 +31,16 @@
                     template(v-slot:badge)
                         span {{ selected.length }}
                     v-btn Download
-            v-divider
-            v-row(no-gutters)
-                v-col.pa-4
-                    span.subheading Filter by File Type:
-                    v-chip-group(v-model="selectedFileTypes" multiple active-class="success black--text" column)
-                        v-chip(v-for="resource in resources" :key="resource.fileType" :value="resource.fileType") {{ resource.fileType }}
-                    span.subheading Filter by Type:
-                    v-chip-group(v-model="selectedTypes" multiple active-class="success black--text" column)
-                        v-chip(v-for="resource in resources") {{ resource.type }}
+            template(v-if="showAdvancedSettings" )
+                v-divider
+                v-row(no-gutters)
+                    v-col.pa-4
+                        span.subheading Filter by File Type:
+                        v-chip-group(v-model="selectedFileTypes" multiple active-class="success black--text" column)
+                            v-chip(v-for="resource in resources" :key="resource.fileType" :value="resource.fileType") {{ resource.fileType }}
+                        span.subheading Filter by Type:
+                        v-chip-group(v-model="selectedTypes" multiple active-class="success black--text" column)
+                            v-chip(v-for="resource in resources" :key="resource.type" :value="resource.type") {{ resource.type }}
 
 </template>
 
@@ -87,7 +88,7 @@ export default {
             showDialog: false,
             selected: [],
             isSelectAllSelected: false,
-            showAdvancedSettings: true,
+            showAdvancedSettings: false,
             selectedFileTypes: [],
             selectedTypes: []
         };
