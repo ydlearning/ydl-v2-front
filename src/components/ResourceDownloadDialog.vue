@@ -118,9 +118,6 @@ export default {
         checkboxChanged(value) {
             value ? this.selectAll() : (this.selected = []);
         }
-    },
-    mounted() {
-        this.showDialog = true;
     }
 };
 </script>
