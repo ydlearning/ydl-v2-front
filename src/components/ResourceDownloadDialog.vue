@@ -37,10 +37,10 @@
                     v-col.pa-4
                         span.subheading Filter by File Type:
                         v-chip-group(v-model="selectedFileTypes" multiple active-class="success black--text" column)
-                            v-chip(v-for="resource in resources" :key="resource.fileType" :value="resource.fileType") {{ resource.fileType }}
+                            v-chip(v-for="fileType in fileTypesOnly" :key="fileType" :value="fileType") {{ fileType }}
                         span.subheading Filter by Type:
                         v-chip-group(v-model="selectedTypes" multiple active-class="success black--text" column)
-                            v-chip(v-for="resource in resources" :key="resource.type" :value="resource.type") {{ resource.type }}
+                            v-chip(v-for="type in typesOnly" :key="type" :value="type") {{ type }}
 
 </template>
 
@@ -104,6 +104,28 @@ export default {
                     this.selectedFileTypes.includes(x.fileType) ||
                     this.selectedTypes.includes(x.type)
             );
+        },
+        fileTypesOnly() {
+            var filetypes = [];
+            for (var i = 0; i < this.resources.length; i++) {
+                if (filetypes.includes(this.resources[i].fileType)) {
+                    continue;
+                }
+
+                filetypes.push(this.resources[i].fileType);
+            }
+            return filetypes;
+        },
+        typesOnly() {
+            var types = [];
+            for (var i = 0; i < this.resources.length; i++) {
+                if (types.includes(this.resources[i].type)) {
+                    continue;
+                }
+
+                types.push(this.resources[i].type);
+            }
+            return types;
         }
     },
     methods: {
