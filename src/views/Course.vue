@@ -20,7 +20,7 @@ export default {
     props: {
         showWelcomeScreen: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     components: {
