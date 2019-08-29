@@ -94,11 +94,15 @@ export default {
     },
     computed: {
         filteredResources() {
-            if (this.selectedFileTypes.length === 0) {
+            if (this.selectedFileTypes.length === 0 && this.selectedTypes.length === 0) {
                 return this.resources;
             }
 
-            return this.resources.filter(x => this.selectedFileTypes.includes(x.fileType));
+            return this.resources.filter(
+                x =>
+                    this.selectedFileTypes.includes(x.fileType) ||
+                    this.selectedTypes.includes(x.type)
+            );
         }
     },
     methods: {
