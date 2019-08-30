@@ -20,45 +20,20 @@
 			v-toolbar(color='primary' flat)
 				v-toolbar-title {{ this.$route.name }}
 			v-card-text
+				//- Current E-Mail field
+				TheEmailNewField(
+					v-model="user.email.address"
+					:maxCounterEmail="100"
+					fieldName="Current E-mail"
+					fieldLabel="Current E-mail"
+					@errorCheck="emailNewHasErrors=$event"
+					:fieldReadonly="true"
+					:fieldPlaceholder="user.email.address"
+					:copySymbol="false"
+					fieldId="1"
+				)
+
 				v-form(ref="form" @submit.prevent="submit")
-					//- E-mail: Current
-					//- @v-validate: required | max:100 | min:8
-					//- @required: true
-					//- v-text-field(
-						v-model='user.email.address' 
-						v-validate="'required|email|max:100'" 
-						:error-messages="errors.collect('email')" 
-						label='Current E-mail' 
-						data-vv-name='email' 
-						required
-						readonly
-					//- )
-
-					//- v-model="user.email.address"
-					TheEmailNewField(
-						v-model="user.email.address"
-						:maxCounterEmail="100"
-						fieldName="Current E-mail"
-						fieldLabel="Current E-mail"
-						@errorCheck="emailNewHasErrors=$event"
-						:fieldReadonly="true"
-						:fieldPlaceholder="user.email.address"
-						:copySymbol="false"
-						fieldId="1"
-					)
-
-					//- E-mail: new
-					//- @v-validate: required | max:100 | min:8
-					//- @required: true
-					//- v-text-field(
-						v-model='newEmail' 
-						v-validate="'required|email|max:100'" 
-						:error-messages="errors.collect('email')" 
-						label='New E-mail' 
-						data-vv-name='email' 
-						required
-						clearable
-						ref="newEmail")
 						
 					TheEmailNewField(
 						v-model="form.emailNew"
@@ -69,6 +44,8 @@
 						:copySymbol="false"
 						fieldId="2"
 					)
+
+					
 
 					//- E-mail: repeat
 					//- @v-validate: required | max:100 | min:8
