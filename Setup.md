@@ -64,6 +64,9 @@ pnpm install -g cz-conventional-changelog
 # Windows:
 Set-Content -path "~/.czrc" -value '{ "path": "cz-conventional-changelog" }'
 
+# Mac:
+echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+
 # use
 git cz
 ```
