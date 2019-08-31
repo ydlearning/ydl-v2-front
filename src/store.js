@@ -22,7 +22,7 @@ export default new Vuex.Store({
             name: "Computergraphics",
             term: "WS",
             start: "2019-08-31T22:34:54+0000",
-            end: "2019-10-31T22:34:54+0000",
+            end: "2020-10-31T22:34:54+0000",
             content: {
                 announcement: {
                     body: {
