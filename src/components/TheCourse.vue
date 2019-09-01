@@ -22,7 +22,7 @@
                             )
                         template(v-slot:resourceDownload)
                             ResourceDownloadDialog(
-                                :resources="current_course.content.announcement.resources"
+                                :resources="current_course.content.announcement.resources.filter(x => x.download)"
                             )
                     CourseContentItem(
                         v-for="content in current_course.content.contents" :key="content.name"
@@ -40,7 +40,7 @@
                             )
                         template(v-slot:resourceDownload)
                             ResourceDownloadDialog(
-                                :resources="content.resources"
+                                :resources="content.resources.filter(x => x.download)"
                             )
 
 </template>
