@@ -15,7 +15,7 @@
                     v-list-item(v-for="resource in filteredResources" :key="resource.name")
                         template(v-slot:default="{ active, toggle }")
                             v-list-item-icon
-                                v-icon {{ fileTypeIconMapping[resource.fileType] }}
+                                v-icon {{ fileTypeIconMapping[resource.type] }}
                             v-list-item-content
                                 v-list-item-title {{ resource.name }}
                             v-list-item-action
@@ -58,7 +58,10 @@ export default {
             //- default with Array/Object must be a function
             default: () => ({
                 pdf: "mdi-file-pdf",
-                movie: "mdi-file-video"
+                movie: "mdi-file-video",
+                quiz: "mdi-help-circle",
+                //- TODO: just workaround
+                forum: "mdi-forum"
             })
         },
         resources: {
