@@ -3,7 +3,7 @@
         v-list-item-group
             v-list-item(v-for="resource in resources" :key="resource.name")
                 v-list-item-icon
-                    v-icon {{ fileTypeIconMapping[resource.fileType] }}
+                    v-icon {{ fileTypeIconMapping[resource.type] }}
                 v-list-item-content
                     v-list-item-title {{ resource.name }}
 </template>
@@ -18,8 +18,9 @@ export default {
             default: () => ({
                 pdf: "mdi-file-pdf",
                 movie: "mdi-file-video",
+                quiz: "mdi-help-circle",
                 //- TODO: just workaround
-                null: "mdi-forum"
+                forum: "mdi-forum"
             })
         },
         resources: {
