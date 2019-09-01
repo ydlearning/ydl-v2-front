@@ -4,11 +4,14 @@ v-card(flat)
         v-toolbar(dense)
             v-toolbar-title {{ title }}
             v-spacer
-            ResourceDownloadDialog
+            slot(name="resourceDownload")
+            //- ResourceDownloadDialog
         v-card-text
-            CourseContentItemContent
-        v-divider
-        CourseContentItemResourcesList
+            slot(name="content")
+            //- CourseContentItemContent
+        v-divider(v-if="hasBody")
+        slot(name="resourceList")
+        //- CourseContentItemResourcesList
 </template>
 
 <script>
@@ -22,6 +25,10 @@ export default {
         title: {
             type: String,
             default: "<title>"
+        },
+        hasBody: {
+            type: Boolean,
+            default: false
         }
     },
     components: {
