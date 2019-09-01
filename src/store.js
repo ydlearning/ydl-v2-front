@@ -32,27 +32,31 @@ export default new Vuex.Store({
                     resources: [
                         {
                             name: "Announcements",
-                            category: "forum",
-                            type: "link"
+                            category: "link",
+                            type: "forum",
+                            download: null
                         },
                         {
                             name: "Studentforum",
-                            category: "forum",
-                            type: "link"
+                            category: "link",
+                            type: "forum",
+                            download: null
                         },
                         {
                             name: "Script",
                             category: "script",
                             type: "pdf",
                             uploaded: "2019-08-27T22:34:54+0000",
-                            last_edit: "2019-08-28T22:34:54+0000"
+                            last_edit: "2019-08-28T22:34:54+0000",
+                            download: "#"
                         },
                         {
                             name: "OpenGL Cheat Sheet (v2)",
                             category: null,
                             type: "pdf",
                             uploaded: "2019-08-29T22:34:54+0000",
-                            last_edit: "2019-08-30T22:34:54+0000"
+                            last_edit: "2019-08-30T22:34:54+0000",
+                            download: "#"
                         }
                     ]
                 },
@@ -67,21 +71,24 @@ export default new Vuex.Store({
                                 category: "lecture",
                                 type: "pdf",
                                 uploaded: "2019-08-29T22:34:54+0000",
-                                last_edit: "2019-08-29T22:34:54+0000"
+                                last_edit: "2019-08-29T22:34:54+0000",
+                                download: "#"
                             },
                             {
                                 name: "CG Lecture 00",
                                 category: "movie",
                                 type: "movie",
                                 uploaded: "2019-08-29T22:34:54+0000",
-                                last_edit: "2019-08-29T22:34:54+0000"
+                                last_edit: "2019-08-29T22:34:54+0000",
+                                download: "#"
                             },
                             {
                                 name: "CG Quiz for Lecture 00",
                                 category: "interactive learning",
                                 type: "quiz",
                                 uploaded: "2019-08-29T22:34:54+0000",
-                                last_edit: "2019-08-29T22:34:54+0000"
+                                last_edit: "2019-08-29T22:34:54+0000",
+                                download: "#"
                             }
                         ]
                     },
@@ -95,28 +102,32 @@ export default new Vuex.Store({
                                 category: "lecture",
                                 type: "pdf",
                                 uploaded: "2019-08-29T22:34:54+0000",
-                                last_edit: "2019-08-29T22:34:54+0000"
+                                last_edit: "2019-08-29T22:34:54+0000",
+                                download: "#"
                             },
                             {
                                 name: "CG Lecture 01",
                                 category: "movie",
                                 type: "movie",
                                 uploaded: "2019-08-29T22:34:54+0000",
-                                last_edit: "2019-08-29T22:34:54+0000"
+                                last_edit: "2019-08-29T22:34:54+0000",
+                                download: "#"
                             },
                             {
                                 name: "CG Quiz for Lecture 01",
                                 category: "interactive learning",
                                 type: "quiz",
                                 uploaded: "2019-08-29T22:34:54+0000",
-                                last_edit: "2019-08-29T22:34:54+0000"
+                                last_edit: "2019-08-29T22:34:54+0000",
+                                download: "#"
                             },
                             {
                                 name: "Reference Card for OpenGL Pipeline",
                                 category: "cheat sheet",
                                 type: "pdf",
                                 uploaded: "2019-08-29T22:34:54+0000",
-                                last_edit: "2019-08-29T22:34:54+0000"
+                                last_edit: "2019-08-29T22:34:54+0000",
+                                download: "#"
                             }
                         ]
                     }
