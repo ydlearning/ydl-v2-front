@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    name: "FavoriteCourseItem",
+    name: "CourseItem",
     props: {
         header: {
             type: String,
