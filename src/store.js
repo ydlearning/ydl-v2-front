@@ -18,6 +18,152 @@ export default new Vuex.Store({
             password: "AbCd1234+-",
             role: "Student"
         },
+        my_courses: [
+            {
+                name: "Computergraphics",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 3",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Computergraphics",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 3",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Computergraphics",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 3",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Computergraphics",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Analysis 3",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 1",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            },
+            {
+                name: "Linear Algebra 2",
+                term: "WS",
+                start: "2019-08-31T22:34:54+0000",
+                end: "2020-10-31T22:34:54+0000"
+            }
+        ],
         current_course: {
             name: "Computergraphics",
             term: "WS",
