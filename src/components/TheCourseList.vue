@@ -14,22 +14,28 @@
                             value="Mana"
                         )
             v-row
-                v-col(v-for="n in 8" :key="n" cols=12 sm=6 lg=3)
-                    FavoriteCourseItem(
-                        header="Frontend Course"
+                v-col(v-for="course in courses" :key="course.name" cols=12 sm=6 lg=3)
+                    CourseItem(
+                        :header="course.name"
                     )
 
 </template>
 
 <script>
 import BaseDashboardItem from "@/components/BaseDashboardItem";
-import FavoriteCourseItem from "@/components/FavoriteCourseItem";
+import CourseItem from "@/components/CourseItem";
 
 export default {
-    name: "TheFavoriteCourse",
+    name: "TheCourseList",
     components: {
         BaseDashboardItem,
-        FavoriteCourseItem
+        CourseItem
+    },
+    props: {
+        courses: {
+            type: Array,
+            default: () => []
+        }
     }
 };
 </script>
