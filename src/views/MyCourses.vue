@@ -3,7 +3,7 @@
         v-row.ma-0
             v-col(cols=12 sm=9)
                 TheCourseList(:courses="my_courses")
-            v-col.float-left(cols=12 sm=3)
+            v-col.fixed.fixed--right(cols=12 sm=3)
                 TheCourseFilter
 
 </template>
@@ -23,4 +23,9 @@ export default {
 };
 </script>
 
-<style lang="sass"></style>
+<style lang="sass" scoped>
+.fixed
+    position: fixed
+.fixed--right
+    right: 0
+</style>
