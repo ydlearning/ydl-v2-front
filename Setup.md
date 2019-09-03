@@ -54,6 +54,10 @@ vue add vuetify
 vuese gen
 ```
 
+``` bash
+pnpm i -g vuese
+```
+
 ### Commitizen
 
 ``` bash
