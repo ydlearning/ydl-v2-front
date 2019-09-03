@@ -223,5 +223,5 @@ yarn-debug.log*
 yarn-error.log*
 
 ### Own ###
-
-.documentation/
+documentation/*
+!documentation/Readme.md
