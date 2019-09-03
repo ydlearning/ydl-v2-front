@@ -52,6 +52,9 @@ vue add vuetify
 ``` bash
 # generate documentation
 vuese gen
+
+# serve documentation
+vuese serve --open
 ```
 
 ``` bash
