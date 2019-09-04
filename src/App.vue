@@ -5,6 +5,7 @@
 			v-toolbar-title.headline
 				span Y&D
 				span.font-weight-light Learning
+				span {{ process }}
 			v-spacer
 			v-toolbar-items
 				v-btn(text to="/").tile Home 
@@ -82,11 +83,13 @@
 			TheDashboardList
 		v-content
 			router-view
+		TheDebug
 </template>
 
 <script>
 import { mapState } from "vuex";
 import TheDashboardList from "@/components/TheDashboardList";
+import TheDebug from "@/components/TheDebug";
 export default {
     name: "App",
     data() {
@@ -96,14 +99,20 @@ export default {
         };
     },
     components: {
-        TheDashboardList
+        TheDashboardList,
+        TheDebug
     },
     methods: {
         logout() {
             this.$store.dispatch("logout");
         }
     },
-    computed: mapState(["isLoggedIn", "user"])
+    mounted() {
+        console.log(process.env.NODE_ENV);
+    },
+    computed: {
+        ...mapState(["isLoggedIn", "user"])
+    }
 };
 </script>
 
