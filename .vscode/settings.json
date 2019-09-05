@@ -26,7 +26,8 @@
     "search.exclude" : {
         "node_modules/": true,
         "docs/": true,
-        "pnpm-lock.yaml": true
+        "pnpm-lock.yaml": true,
+        "public/favicons/": true
     },
     // Exclude (hide) files / folders in Vscode
     "files.exclude" : {

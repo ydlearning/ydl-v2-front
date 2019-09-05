@@ -1,4 +1,6 @@
 {
-  "outDir": "./docs/documentation",
+  "title": "components",
+  "genType": "docute",
+  "outDir": "./documentation",
   "markdownDir": "./components"
 }
