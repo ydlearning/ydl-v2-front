@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         ping() {
-            var url = "https://api.ring-cafe-shop.de";
+            var url = process.env.VUE_APP_API_URL;
 
             fetch(url, { mode: "no-cors" })
                 .then(response => {
