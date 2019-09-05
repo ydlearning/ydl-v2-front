@@ -62,7 +62,7 @@ export default {
             snackbarSuccess: false,
             snackbarError: false,
             defaultForm,
-            fullNameHasErrors: false,
+            fullNameHasErrors: false
         };
     },
     computed: {

@@ -44,7 +44,7 @@ export default {
             type: Boolean,
             default: false,
             required: true
-        }, 
+        },
         snackbarError: {
             type: Boolean,
             default: false,
