@@ -4,12 +4,12 @@ v-checkbox(
     @change="$emit('change',$event)"    
 )
     template(v-slot:label)
-            div(@click.stop="")
-                | Do you accept the 
-                a(href="javascript:;") terms
-                |  and 
-                a(href="javascript:;") conditions
-                | ?
+        div(@click.stop="")
+            | Do you accept the 
+            a(href="javascript:;") terms
+            |  and 
+            a(href="javascript:;") conditions
+            | ?
 </template>
 
 <script>
