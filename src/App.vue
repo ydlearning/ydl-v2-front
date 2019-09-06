@@ -83,7 +83,7 @@
 			TheDashboardList
 		v-content
 			router-view
-		TheDebug
+		TheDebug(v-show="show_debug_ui")
 </template>
 
 <script>
@@ -109,9 +109,13 @@ export default {
     },
     mounted() {
         console.log(process.env.NODE_ENV);
+        console.log(process.env.VUE_APP_API_SHOW_UI);
     },
     computed: {
-        ...mapState(["isLoggedIn", "user"])
+        ...mapState(["isLoggedIn", "user"]),
+        show_debug_ui() {
+            return process.env.VUE_APP_API_SHOW_UI == "true";
+        }
     }
 };
 </script>
