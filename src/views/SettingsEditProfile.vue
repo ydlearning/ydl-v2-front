@@ -1,68 +1,104 @@
 <template lang="pug">
     v-container(align-center justify-center)
         v-card(flat color="transparent")
-            //- v-container
-            //-     v-flex
-            //-         h3.text-center.title.text-center.font-weight-regular 
-            //-         //- p sdjhasjdh
-            //- TODO: .text-center
+
+            TheSettingsSnackbar(
+                :snackbarSuccess='snackbarSuccess'
+                :snackbarError='snackbarError'
+                @snackbarRemoveSuccess="snackbarSuccess=false"
+                @snackbarRemoveError="snackbarError=false")
+
             v-toolbar(color='primary' flat)
                 v-toolbar-title {{ this.$route.name }}
             v-card-text
-                v-form
-                    //- Username
-                    //- @v-validate: required | min:3 | max:50 | alpha_dash
-                    //- @required: true
-                    //- @disabled: true
-                    v-text-field(
-                        v-model='user.username'
-                        v-validate="'required|min:3|max:40|alpha_dash'" 
-                        :error-messages="errors.collect('username')" 
-                        label='Username' 
-                        data-vv-name='username' 
-                        required
-                        disabled)
+                
+                v-text-field(
+                    v-model='user.name'
+                    readonly=false
+                    disabled=true
+                    label="Username")
 
-                    //- Full name:
-                    //- @v-validate: required | max:50 | alpha_spaces
-                    //- @required: true
-                    v-text-field(
-                        v-model='user.name' 
-                        v-validate="'required|max:50|alpha_spaces'" 
-                        :error-messages="errors.collect('name')" 
-                        label='Full Name' 
-                        data-vv-name='name' 
-                        required)
+                v-text-field(
+                    v-model='user.role'
+                    readonly=false
+                    disabled=true
+                    label="Role")
 
-                    v-select(
-                        v-model='user.role' 
-                        v-validate="'required'" 
-                        :items='items' 
-                        :error-messages="errors.collect ('select')" 
-                        label='Role' 
-                        data-vv-name='select' 
-                        required
-                        :menu-props="{ top: true, offsetY: true }"
-                        disabled=false)
-                        //- maybe diabled?    
+                v-form(ref="form" @submit.prevent="submit")
+                    
+                    TheFullNameField(
+                        v-model="form.fullname"
+                        :minCounter="0"
+                        :maxCounter="50"
+                        fieldName="Full name"
+                        fieldLabel="Full name"
+                        @errorCheck="fullNameHasErrors=$event")
 
-                v-card-actions
-                    v-btn(color='primary' @click="") Apply changes
+                    TheSettingsButtons(
+                        @cancel="resetForm"
+                        @apply="submit"
+                        :formIsValid="formIsValid")
 </template>
 
 <script>
+import TheUsernameField from "@/components/TheUsernameField";
+import TheFullNameField from "@/components/TheFullNameField";
+import TheRoleSelect from "@/components/TheRoleSelect";
+import TheSettingsButtons from "@/components/TheSettingsButtons";
+import TheSettingsSnackbar from "@/components/TheSettingsSnackbar";
 import { mapState } from "vuex";
 
 export default {
+    name: "SettingsEmailSettings",
     data() {
+        const defaultForm = Object.freeze({
+            fullname: "",
+            role: ""
+        });
         return {
-            newEmail: "",
+            form: Object.assign({}, defaultForm),
             defaultItem: "Student",
-            items: [{ text: "Student" }, { text: "Teacher" }]
+            items: [{ text: "Student" }, { text: "Teacher" }],
+            snackbarSuccess: false,
+            snackbarError: false,
+            defaultForm,
+            fullNameHasErrors: false
         };
     },
-    computed: mapState(["isLoggedIn", "user"]),
-    components: {}
+    computed: {
+        ...mapState(["isLoggedIn", "user"]),
+        //- returns true if the form and all fields are valid
+        formIsValid() {
+            return (
+                //- check if value ist set
+                this.form.fullname !== "" &&
+                //- check if all fields havn't errors
+                !this.fullNameHasErrors
+            );
+        }
+    },
+    components: {
+        TheUsernameField,
+        TheFullNameField,
+        TheRoleSelect,
+        TheSettingsButtons,
+        TheSettingsSnackbar
+    },
+    methods: {
+        //- resets the complete form
+        resetForm() {
+            this.snackbarError = true;
+            this.form = Object.assign({}, this.defaultForm);
+            this.$refs.form.reset();
+        },
+
+        //- submit form fields
+        submit() {
+            this.snackbarSuccess = true;
+            // this.resetForm(); // resets form after submit
+            // this.$refs.form.reset();
+        }
+    }
 };
 </script>
 

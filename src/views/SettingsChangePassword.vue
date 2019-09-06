@@ -1,88 +1,63 @@
 <template lang="pug">
-	v-container(align-center justify-center)
-		v-card(flat color="transparent")
-			//- Snackbar - Info Apply changes successful!
-			v-snackbar(
-				v-model="snackbar"  
-				top 
-				right 
-				color="success")
-					span Changes apply successfully!
-					v-icon(dark) mdi-check-circle
-			//- Snackbar - Info Cancel, form cleared!
-			v-snackbar(
-				v-model="snackbarError"  
-				top 
-				right 
-				color="error")
-					span Cancel, form cleared!
-					v-icon(dark) mdi-alert
-			v-toolbar(color='primary' flat)
-				v-toolbar-title {{ this.$route.name }}
-			v-card-text
-				v-form(ref="form" @submit.prevent="submit")
+    v-container(align-center justify-center)
+        v-card(flat color="transparent")
+        
+            TheSettingsSnackbar(
+                :snackbarSuccess='snackbarSuccess'
+                :snackbarError='snackbarError'
+                @snackbarRemoveSuccess="snackbarSuccess=false"
+                @snackbarRemoveError="snackbarError=false")
 
-					//- Old password field
-					ThePasswordField(
-						v-model="form.password"
-						:minCounterPassword= "minCounterPassword" 
-						:maxCounterPassword= "maxCounterPassword"
-						:regexExpression= "regexExpression"
-						fieldName="Old password"
-						fieldLabel="Old password"
-						@errorCheck="passwordHasErrors=$event"
-					)
-					br 
-					
-					//- New password field
-					ThePasswordNewField(
-						v-model="form.passwordSet"
-						:minCounterPassword= "minCounterPassword" 
-						:maxCounterPassword= "maxCounterPassword"
-						:regexExpression= "regexExpression"
-						:regexExpressionSpecialChars= "regexExpressionSpecialChars"
-						fieldName="New password"
-						fieldLabel="New password"
-						@errorCheck="passwordSetHasErrors=$event"
-					)
+            v-toolbar(color='primary' flat)
+                v-toolbar-title {{ this.$route.name }}
+            v-card-text
+                v-form(ref="form" @submit.prevent="submit")
 
-					//- Repeat password field
-					ThePasswordRepeatField(
-						v-model="form.passwordRepeat"
-						:minCounterPassword="minCounterPassword" 
-						:maxCounterPassword="maxCounterPassword"
-						:regexExpression="regexExpression"
-						:confirmationField="form.passwordSet"
-						fieldName="Repeat password"
-						fieldLabel="Repeat password"
-						@errorCheck="passwordRepeatHasErrors=$event"
-					)
+                    //- Old password field
+                    ThePasswordField(
+                        v-model="form.password"
+                        :minCounterPassword= "minCounterPassword" 
+                        :maxCounterPassword= "maxCounterPassword"
+                        :regexExpression= "regexExpression"
+                        fieldName="Old password"
+                        fieldLabel="Old password"
+                        @errorCheck="passwordHasErrors=$event"
+                    )
+                    br 
+                    
+                    //- New password field
+                    ThePasswordNewField(
+                        v-model="form.passwordSet"
+                        :minCounterPassword= "minCounterPassword" 
+                        :maxCounterPassword= "maxCounterPassword"
+                        :regexExpression= "regexExpression"
+                        :regexExpressionSpecialChars= "regexExpressionSpecialChars"
+                        fieldName="New password"
+                        fieldLabel="New password"
+                        @errorCheck="passwordSetHasErrors=$event"
+                    )
 
-					//- Terms checkbox
-					TheTermsCheckbox(
-						v-model="form.terms" 
-					)
+                    //- Repeat password field
+                    ThePasswordRepeatField(
+                        v-model="form.passwordRepeat"
+                        :minCounterPassword="minCounterPassword" 
+                        :maxCounterPassword="maxCounterPassword"
+                        :regexExpression="regexExpression"
+                        :confirmationField="form.passwordSet"
+                        fieldName="Repeat password"
+                        fieldLabel="Repeat password"
+                        @errorCheck="passwordRepeatHasErrors=$event"
+                    )
 
-					v-card-actions
-						v-tooltip(bottom color="red")
-							template(v-slot:activator="{ on: tooltip }")
-								v-btn(
-									color="primary"
-									@click="resetForm"
-									outlined
-									v-on="{ ...tooltip }"
-									) Cancel
-							span
-								v-icon(size="15px") mdi-alert
-								|  All Fields will be deleted!
-						v-spacer
-						v-btn(
-							color="primary"
-							type="submit"
-							@click=""
-							:disabled="!formIsValid"
-							v-on="{ ...tooltip }"
-							) Apply changes
+                    //- Terms checkbox
+                    TheTermsCheckbox(
+                        v-model="form.terms" 
+                    )
+
+                    TheSettingsButtons(
+                        @cancel="resetForm"
+                        @apply="submit"
+                        :formIsValid="formIsValid")
 </template>
 
 <script>
@@ -90,6 +65,8 @@ import ThePasswordField from "@/components/ThePasswordField";
 import ThePasswordNewField from "@/components/ThePasswordNewField";
 import ThePasswordRepeatField from "@/components/ThePasswordRepeatField";
 import TheTermsCheckbox from "@/components/TheTermsCheckbox";
+import TheSettingsButtons from "@/components/TheSettingsButtons";
+import TheSettingsSnackbar from "@/components/TheSettingsSnackbar";
 import { mapState } from "vuex";
 
 export default {
@@ -107,7 +84,7 @@ export default {
             maxCounterPassword: 128,
             regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/,
             regexExpressionSpecialChars: /[$&+,:;=?@#'<>.^*()%!-]/,
-            snackbar: false,
+            snackbarSuccess: false,
             snackbarError: false,
             defaultForm,
             passwordHasErrors: false,
@@ -120,7 +97,9 @@ export default {
         ThePasswordField,
         ThePasswordNewField,
         ThePasswordRepeatField,
-        TheTermsCheckbox
+        TheTermsCheckbox,
+        TheSettingsButtons,
+        TheSettingsSnackbar
     },
     computed: {
         ...mapState(["isLoggedIn", "user"]),
@@ -129,9 +108,9 @@ export default {
         formIsValid() {
             return (
                 //- check if value ist set
-                this.form.password &&
-                this.form.passwordSet &&
-                this.form.passwordRepeat &&
+                this.form.password !== "" &&
+                this.form.passwordSet !== "" &&
+                this.form.passwordRepeat !== "" &&
                 this.form.terms &&
                 //- check if all fields havn't errors
                 !this.passwordHasErrors &&
@@ -150,7 +129,7 @@ export default {
 
         //- submit form fields
         submit() {
-            this.snackbar = true;
+            this.snackbarSuccess = true;
             // this.resetForm(); // resets form after submit
         }
     }
