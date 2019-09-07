@@ -33,7 +33,7 @@
                                 v-model="form.password"
                                 :minCounterPassword="getMinCounterPassword" 
                                 :maxCounterPassword="getMaxCounterPassword"
-                                :regexExpression= "regexExpression"
+                                :regexExpression= "getRegex"
                                 fieldName="Password"
                                 fieldLabel="Password"
                                 @errorCheck="passwordHasErrors=$event"
@@ -84,10 +84,6 @@ export default {
         return {
             form: Object.assign({}, defaultForm),
             defaultForm,
-            // minCounterPassword: 8,
-            // maxCounterPassword: 128,
-            regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/,
-            // maxCounterEmail: 100,
             emailHasErrors: false,
             passwordHasErrors: false,
             snackbarSuccess: false
@@ -115,13 +111,10 @@ export default {
         },
         getMaxCounterEmail() {
             return parseInt(process.env.VUE_APP_EMAIL_MAX_COUNTER);
+        },
+        getRegex() {
+            return new RegExp(process.env.VUE_APP_PASSWORD_REGEX);
         }
-        // getRegexTest() {
-        //     return new RegExp("^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$");
-        // },
-        // getRegex() {
-        //     return new RegExp(process.env.VUE_APP_PASSWORD_REGEX, "m");
-        // }
     },
     methods: {
         login() {
