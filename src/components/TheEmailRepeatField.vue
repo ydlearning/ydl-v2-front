@@ -7,6 +7,7 @@ v-text-field(
     :error-messages="errors.collect(fieldName)" 
     :clearable="fieldClearable"
     :ref="emailName"
+    prepend-icon="mdi-email-outline"
     @input="$emit('input',$event)"
     @update:error="$emit('errorCheck',errors.has(fieldName))"
 )
