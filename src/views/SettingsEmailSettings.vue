@@ -8,31 +8,36 @@
                 @snackbarRemoveSuccess="snackbarSuccess=false"
                 @snackbarRemoveError="snackbarError=false")
 
+            //- Toolbar / App Title
             v-toolbar(color='primary' flat)
                 v-toolbar-title {{ this.$route.name }}
+
             v-card-text
 
+                //- Current E-mail field
                 v-text-field(
                     v-model='user.email.address'
                     readonly=false
                     disabled=true
                     label="Current E-mail")
 
+                //- Form
                 v-form(ref="form" @submit.prevent="submit")
                         
-                    TheEmailNewField(
+                    //- New E-mail
+                    TheEmailField(
                         v-model="form.emailNew"
-                        :maxCounterEmail="maxCounterEmail"
+                        :maxCounterEmail="getMaxCounterEmail"
                         fieldName="New E-mail"
                         fieldLabel="New E-mail"
                         @errorCheck="emailNewHasErrors=$event"
                         :copySymbol="false"
-                        fieldId="2"
                     )
 
+                    //- Repeat E-mail
                     TheEmailRepeatField(
                         v-model="form.emailRepeat"
-                        :maxCounterEmail="maxCounterEmail"
+                        :maxCounterEmail="getMaxCounterEmail"
                         fieldName="Repeat E-mail"
                         fieldLabel="Repeat E-mail"
                         :confirmationField="form.emailNew"
@@ -47,13 +52,14 @@
 
 <script>
 import { mapState } from "vuex";
-import TheEmailNewField from "@/components/TheEmailNewField";
+import TheEmailField from "@/components/TheEmailField";
 import TheEmailRepeatField from "@/components/TheEmailRepeatField";
 import TheSettingsButtons from "@/components/TheSettingsButtons";
 import TheSettingsSnackbar from "@/components/TheSettingsSnackbar";
 
 export default {
     data() {
+        //- Form to store variables
         const defaultForm = Object.freeze({
             emailNew: "",
             emailRepeat: ""
@@ -80,6 +86,10 @@ export default {
                 !this.emailNewHasErrors &&
                 !this.emailRepeatHasErrors
             );
+        },
+        //- Getter for environment variables
+        getMaxCounterEmail() {
+            return parseInt(process.env.VUE_APP_EMAIL_MAX_COUNTER);
         }
     },
     methods: {
@@ -97,7 +107,7 @@ export default {
         }
     },
     components: {
-        TheEmailNewField,
+        TheEmailField,
         TheEmailRepeatField,
         TheSettingsButtons,
         TheSettingsSnackbar
