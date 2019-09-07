@@ -3,8 +3,7 @@ div
     //- Snackbar - Info - successful!
     v-snackbar(
         :value="snackbarSuccess"  
-        top 
-        right 
+        top  
         color="success"
         @input="$emit('snackbarRemoveSuccess')")
             span {{ successText }} successfully!
@@ -13,7 +12,6 @@ div
     v-snackbar(
         :value="snackbarError"  
         top 
-        right 
         color="error"
         @input="$emit('snackbarRemoveError')")
             span {{ errorText }}
