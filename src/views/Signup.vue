@@ -51,8 +51,8 @@
                                 v-model="form.passwordSet"
                                 :minCounterPassword="getMinCounterPassword" 
                                 :maxCounterPassword="getMaxCounterPassword"
-                                :regexExpression="regexExpression"
-                                :regexExpressionSpecialChars="regexExpressionSpecialChars"
+                                :regexExpression="getRegex"
+                                :regexExpressionSpecialChars="getRegexSpecialCharacters"
                                 fieldName="New password"
                                 fieldLabel="New password"
                                 @errorCheck="passwordSetHasErrors=$event"
@@ -63,13 +63,14 @@
                                 v-model="form.passwordRepeat"
                                 :minCounterPassword="getMinCounterPassword" 
                                 :maxCounterPassword="getMaxCounterPassword"
-                                :regexExpression="regexExpression"
+                                :regexExpression="getRegex"
                                 :confirmationField="form.passwordSet"
                                 fieldName="Repeat password"
                                 fieldLabel="Repeat password"
                                 @errorCheck="passwordRepeatHasErrors=$event"
                             )
 
+                            //- Role select field
                             TheRoleSelect(
                                 v-model="form.role"
                                 fieldName="Role"
@@ -80,11 +81,14 @@
                             //- Terms checkbox
                             //- TODO: Get this working (it's true all the time)
                             TheTermsCheckbox(
-                                v-model="form.terms"
-                            )
+                                v-model="form.terms")
+                            //- TheTermsCheckbox(
+                                v-model="testProp")
 
                             //- Debug: Get this working with form.role
-                            //- span terms: {{ this.form.terms !== "" }}
+                            //- span terms: {{ this.form.terms }}
+                            //- br
+                            //- span testProp: {{ this.testProp }}
 
                     //- Card buttons
                     TheLoginButtons(
@@ -126,14 +130,13 @@ export default {
             snackbarSuccess: false,
             items: [{ text: "Student" }, { text: "Teacher" }],
             defaultItem: "",
-            regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/,
-            regexExpressionSpecialChars: /[$&+,:;=?@#'<>.^*()%!-]/,
             usernameHasErrors: false,
             fullNameHasErrors: false,
             emailHasErrors: false,
             passwordSetHasErrors: false,
             passwordRepeatHasErrors: false,
-            roleHasErrors: false
+            roleHasErrors: false,
+            testProp: false
         };
     },
     mounted() {
@@ -182,6 +185,12 @@ export default {
         },
         getMaxCounterPassword() {
             return parseInt(process.env.VUE_APP_PASSWORD_MAX_COUNTER);
+        },
+        getRegex() {
+            return new RegExp(process.env.VUE_APP_PASSWORD_REGEX);
+        },
+        getRegexSpecialCharacters() {
+            return new RegExp(process.env.VUE_APP_PASSWORD_REGEX);
         }
     },
     components: {
