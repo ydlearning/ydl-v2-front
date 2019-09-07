@@ -19,20 +19,6 @@
                         //- Form
                         v-form(ref="form" @submit.prevent="submit")
 
-                            //- Username
-                            //- @v-validate: required | min:3 | max:50 | alpha_dash
-                            //- @required: true
-                            //- v-text-field(
-                                v-model='username'
-                                :counter='40'
-                                v-validate="'required|min:3|max:40|alpha_dash'" 
-                                :error-messages="errors.collect('username')" 
-                                label='Username' 
-                                data-vv-name='username' 
-                                required
-                                hint="Username cannot be changed later! Choose wisely!"
-                                persistent-hint=false)
-
                             //- Username field
                             TheUsernameField(
                                 v-model="form.username"
@@ -41,17 +27,6 @@
                                 fieldName="Username"
                                 fieldLabel="Username"
                                 @errorCheck="usernameHasErrors=$event")
-
-                            //- Full name:
-                            //- @v-validate: required | max:50 | alpha_spaces
-                            //- @required: true
-                            //- v-text-field(
-                                v-model='name' 
-                                v-validate="'required|max:50|alpha_spaces'" 
-                                :error-messages="errors.collect('name')" 
-                                label='Full Name' 
-                                data-vv-name='name' 
-                                required)
 
                             //- Full name field
                             TheFullNameField(
@@ -62,17 +37,6 @@
                                 fieldLabel="Full name"
                                 @errorCheck="fullNameHasErrors=$event")
 
-                            //- E-mail:
-                            //- @v-validate: required | email | max:100
-                            //- @required: true
-                            //- v-text-field(
-                                v-model='email' 
-                                v-validate="'required|email|max:100'" 
-                                :error-messages="errors.collect('email')" 
-                                label='E-mail' 
-                                data-vv-name='email' 
-                                required)
-
                             //- E-mail field
                             TheEmailField(
                                 v-model="form.email"
@@ -81,34 +45,6 @@
                                 fieldLabel="E-mail"
                                 @errorCheck="emailHasErrors=$event"						
                             )
-
-                            //- Password:
-                            //- @v-validate: required | min:8 | max:128 
-                            //- @required: true
-                            //- v-text-field(
-                                v-on:input="check_password"
-                                v-model='password'
-                                v-validate="{ required: true, min: 8, max: 128, regex: /^([a-zA-Z0-9$&+:;=?@#'<>.^*()%!-{}]+)$/ }"
-                                :counter="maxCounter" 
-                                name="password" 
-                                type="password" 
-                                :class="{'is-danger': errors.has('password')}" 
-                                placeholder="Password" ref="password" 
-                                :error-messages="errors.collect('password')"
-                                clearable
-                                persistent-hint: false)
-                            //- v-progress-linear(
-                                v-model='progress'
-                                :value="progress" 
-                                :color="color" 
-                                height="7"
-                                active)
-                            //- v-alert.ma-1(dense type="info" text) Password has to be at least:
-                                //- iterate over each condition for rendering as alert
-                                - var items = ["8 characters long", "at least 1 character", "at least 1 number", "at least 1 special character, allowed: $&+:;=?@#'<>.^*()%!-{}"]
-                                each item, index in items
-                                    //- "+index+" escapes the javascript input for the :type variable so the pug variable can be inserted
-                                    v-alert.caption.ma-1.pa-1(:type="corrections["+index+"]" text)= item    
 
                             //- New password field
                             ThePasswordSetField.mt-4(
@@ -122,17 +58,6 @@
                                 @errorCheck="passwordSetHasErrors=$event"
                             )
 
-                            //- Passwored repeat:
-                            //- v-text-field(
-                                v-validate="'required|confirmed:password'" 
-                                name="password_confirmation" 
-                                type="password" 
-                                :class="{'is-danger': errors.has('password_confirmation')}" 
-                                :error-messages="errors.collect('password_confirmation')"
-                                placeholder="Confirm Password" 
-                                data-vv-as="password"
-                                clearable)
-
                             //- Repeat password field
                             ThePasswordRepeatField(
                                 v-model="form.passwordRepeat"
@@ -144,16 +69,6 @@
                                 fieldLabel="Repeat password"
                                 @errorCheck="passwordRepeatHasErrors=$event"
                             )
-                            
-                            //- v-select(
-                                v-model='defaultItem' 
-                                v-validate="'required'" 
-                                :items='items' 
-                                :error-messages="errors.collect ('select')" 
-                                label='Role' 
-                                data-vv-name='select' 
-                                required
-                                :menu-props="{ top: true, offsetY: true }")
 
                             TheRoleSelect(
                                 v-model="form.role"
@@ -169,15 +84,7 @@
                             )
 
                             //- Debug: Get this working with form.role
-                            span terms: {{ this.form.terms !== "" }}
-
-                    //- v-card-actions
-                        v-btn(color='primary' to="/Login" outlined) Go to login
-                        v-spacer
-                        v-btn(color='primary' @click="") Sign up
-                        br
-                        v-btn.mr-4(@click='submit') submit
-                        v-btn(@click='clear') clear
+                            //- span terms: {{ this.form.terms !== "" }}
 
                     //- Card buttons
                     TheLoginButtons(
@@ -227,12 +134,6 @@ export default {
             passwordSetHasErrors: false,
             passwordRepeatHasErrors: false,
             roleHasErrors: false
-            // password: "",
-            // custom: true,
-            // corrections: ["error", "error", "error", "error"],
-            // email: "",
-            // name: "",
-            // username: "",
         };
     },
     mounted() {
@@ -282,12 +183,6 @@ export default {
         getMaxCounterPassword() {
             return parseInt(process.env.VUE_APP_PASSWORD_MAX_COUNTER);
         }
-        // progress() {
-        //     return Math.min(100, this.password.length * 6);
-        // },
-        // color() {
-        //     return ["error", "warning", "success"][Math.floor(this.progress / 40)];
-        // }
     },
     components: {
         TheLoginSnackbar,
@@ -301,32 +196,6 @@ export default {
         TheTermsCheckbox
     },
     methods: {
-        // check_password: function(value) {
-        //     //- check password length
-        //     if (value.length >= 8) {
-        //         this.corrections[0] = "success";
-        //     } else {
-        //         this.corrections[0] = "error";
-        //     }
-        //     //- check for character
-        //     if (/[aA-zZ]/.test(value)) {
-        //         this.corrections[1] = "success";
-        //     } else {
-        //         this.corrections[1] = "error";
-        //     }
-        //     //- check for number
-        //     if (/\d/.test(value)) {
-        //         this.corrections[2] = "success";
-        //     } else {
-        //         this.corrections[2] = "error";
-        //     }
-        //     //- check for special character
-        //     if (/[$&+:;=?@#'<>.^*()%!-{}]/.test(value)) {
-        //         this.corrections[3] = "success";
-        //     } else {
-        //         this.corrections[3] = "error";
-        //     }
-        // },
         //- Resets the complete form
         resetForm() {
             this.form = Object.assign({}, this.defaultForm);
