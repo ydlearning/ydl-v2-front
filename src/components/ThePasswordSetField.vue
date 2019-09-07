@@ -14,6 +14,7 @@ div
 		:ref="passwordName" 
 		:error-messages="errors.collect(passwordName)"
 		:clearable="fieldClearable"
+        prepend-icon="mdi-key-variant"
 		:append-icon=" showPassword ? 'mdi-eye' : 'mdi-eye-off'"
 		@click:append="showPassword = !showPassword"
 		:type="showPassword ? 'text' : passwordName"
@@ -40,7 +41,7 @@ div
 <script>
 import { mapState } from "vuex";
 export default {
-    name: "ThePasswordNewField",
+    name: "ThePasswordSetField",
     props: {
         value: {
             type: String,
@@ -136,7 +137,6 @@ export default {
             if (this.regexExpressionSpecialChars.test(value)) {
                 this.corrections[3] = "success";
                 this.hasAnyError();
-                // [+-@!#%$^?!:.;,()[] {}]
             } else {
                 this.corrections[3] = "error";
                 this.hasAnyError();
@@ -149,10 +149,6 @@ export default {
             );
         }
     },
-    // [0] === "success" &&
-    //                     this.corrections[1] === "success" &&
-    //                     this.corrections[2] === "success" &&
-    //                     this.corrections[3] === "success")
     computed: {
         ...mapState(["isLoggedIn", "user"]),
         progress() {
