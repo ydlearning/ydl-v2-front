@@ -135,6 +135,7 @@ export default {
         //- Submit form fields
         submit() {
             this.snackbarSuccess = true;
+            this.login();
             // this.resetForm(); // resets form after submit
         }
     },
