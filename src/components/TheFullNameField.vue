@@ -13,6 +13,7 @@ v-text-field(
     :disabled="fieldDisable"
     :placeholder="fieldPlaceholder"
     :readonly="fieldReadonly"
+    prepend-icon="mdi-account-card-details-outline"
     :append-icon=" copySymbol ? 'mdi-content-copy' : ''"
     @click:append="copyToClipboard()"
 )
