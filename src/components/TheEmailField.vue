@@ -13,6 +13,7 @@ v-text-field(
     :disabled="fieldDisable"
     :placeholder="fieldPlaceholder"
     :readonly="fieldReadonly"
+    prepend-icon="mdi-email-outline"
     :append-icon=" copySymbol ? 'mdi-content-copy' : ''"
     @click:append="copyToClipboard()"
 )
@@ -20,7 +21,7 @@ v-text-field(
 
 <script>
 export default {
-    name: "TheEmailNewField",
+    name: "TheEmailField",
     props: {
         value: {
             type: String,
@@ -89,15 +90,6 @@ export default {
 
             /* unselect the range */
             window.getSelection().removeAllRanges();
-
-            // navigator.clipboard
-            //     .writeText(this.value)
-            //     .then(() => {
-            //         alert("Copy successful!");
-            //     })
-            //     .catch(error => {
-            //         console.log(error);
-            //     });
         }
     },
     data() {
