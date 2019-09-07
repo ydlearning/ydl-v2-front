@@ -19,7 +19,8 @@
                     v-model='user.email.address'
                     readonly=false
                     disabled=true
-                    label="Current E-mail")
+                    label="Current E-mail"
+                    prepend-icon="mdi-email-outline")
 
                 //- Form
                 v-form(ref="form" @submit.prevent="submit")

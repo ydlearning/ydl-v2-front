@@ -20,14 +20,16 @@
                     v-model='user.name'
                     readonly=false
                     disabled=true
-                    label="Username")
+                    label="Username"
+                    prepend-icon="mdi-account")
 
                 //- E-mail
                 v-text-field(
                     v-model='user.role'
                     readonly=false
                     disabled=true
-                    label="Role")
+                    label="Role"
+                    prepend-icon="mdi-email-outline")
 
                 //- Form
                 v-form(ref="form" @submit.prevent="submit")
