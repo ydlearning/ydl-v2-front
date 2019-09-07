@@ -4,25 +4,20 @@
             v-col(cols='12' sm='8' md='4')
                 v-card.elevation-12
 
+                    //- Success / Error snackbar
+                    TheLoginSnackbar(
+                        :snackbarSuccess='snackbarSuccess'
+                        successText="Login"
+                        @snackbarRemoveSuccess="snackbarSuccess=false"
+                    )
+
                     //- Toolbar / App Title
                     v-toolbar(color='primary' flat)
                         v-toolbar-title {{ this.$route.name }}
 
                     v-card-text
-
                         //- Form
                         v-form(ref="form" @submit.prevent="submit")
-                            //- E-mail:
-                            //- @v-validate: required | max:100 | min:8
-                            //- @required: true
-                            //- v-text-field(
-                                v-model='email' 
-                                v-validate="'required|email|max:100'" 
-                                :error-messages="errors.collect('email')" 
-                                label='E-mail' 
-                                data-vv-name='email' 
-                                required
-                                clearable)
 
                             //- E-mail field
                             TheEmailField(
@@ -32,22 +27,6 @@
                                 fieldLabel="E-mail"
                                 @errorCheck="emailHasErrors=$event"						
                             )
-
-                            //- Password:
-                            //- @v-validate: required | max:100 | min:8
-                            //- @required: true
-                            //- v-text-field(
-                                v-model='password'
-                                v-validate="'required|max:100|min:8'" 
-                                :counter='100' 
-                                name="password" 
-                                type="password" 
-                                :class="{'is-danger': errors.has('password')}" 
-                                placeholder="Password" ref="password" 
-                                :error-messages="errors.collect('password')"
-                                clearable)
-                            //- span.help.is-danger(
-                                v-show="errors.has('password')")
                             
                             //- Password field
                             ThePasswordField(
@@ -60,46 +39,82 @@
                                 @errorCheck="passwordHasErrors=$event"
                             )
 
-                            a Forgot username?
-                            v-chip(x-small color="warning") TODO
+                            //- a(to="/signup") Forgot username?
+                            //- v-chip(x-small color="warning") TODO
+
+                            //- Forgot username Button
+                            v-btn.mb-1(
+                                outlined
+                                rounded
+                                color="primary"
+                                x-small
+                                to="") Forgot username?
                             br
-                            a Forgot password?
-                            v-chip(x-small color="warning") TODO
-                    v-card-actions
+
+                            //- a Forgot password?
+                            //- v-chip(x-small color="warning") TODO
+
+                            //- Forgot username password
+                            v-btn(
+                                outlined
+                                rounded
+                                color="primary"
+                                x-small
+                                to="") Forgot password?
+
+                    //- v-card-actions
                         v-btn(color='primary' to="/Signup" outlined) Go to sign up
                         v-spacer
                         v-btn(color='primary' @click="login()" ) Log in
+
+                    //- Card buttons
+                    TheLoginButtons(
+                        @goto="javascript;"
+                        @action="submit"
+                        :formIsValid="formIsValid"
+                        goTo="/signup"
+                        goToText="sign up"
+                        actionText="login")
 </template>
 
 <script>
+import TheLoginSnackbar from "@/components/TheLoginSnackbar";
 import TheEmailField from "@/components/TheEmailField";
 import ThePasswordField from "@/components/ThePasswordField";
+import TheLoginButtons from "@/components/TheLoginButtons";
 import { mapState } from "vuex";
 export default {
     data() {
+        //- Form to store variables
         const defaultForm = Object.freeze({
             email: "",
             password: ""
         });
         return {
             form: Object.assign({}, defaultForm),
+            defaultForm,
             // minCounterPassword: 8,
             // maxCounterPassword: 128,
             regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/,
             // maxCounterEmail: 100,
-            defaultForm,
             emailHasErrors: false,
-            passwordHasErrors: false
+            passwordHasErrors: false,
+            snackbarSuccess: false
         };
-    },
-    methods: {
-        login() {
-            this.$store.dispatch("login");
-        }
     },
     computed: {
         ...mapState(["isLoggedIn"]),
-
+        //- Returns true if form is completed and all fields are valid (have no error)
+        formIsValid() {
+            return (
+                //- Check if value ist set
+                this.form.email !== "" &&
+                this.form.password !== "" &&
+                //- Check if all fields havn't errors
+                !this.emailHasErrors &&
+                !this.passwordHasErrors
+            );
+        },
         //- Getter for environment variables
         getMinCounterPassword() {
             return parseInt(process.env.VUE_APP_PASSWORD_MIN_COUNTER);
@@ -117,9 +132,26 @@ export default {
         //     return new RegExp(process.env.VUE_APP_PASSWORD_REGEX, "m");
         // }
     },
+    methods: {
+        login() {
+            this.$store.dispatch("login");
+        },
+        //- Resets the complete form
+        resetForm() {
+            this.form = Object.assign({}, this.defaultForm);
+            this.$refs.form.reset();
+        },
+        //- Submit form fields
+        submit() {
+            this.snackbarSuccess = true;
+            // this.resetForm(); // resets form after submit
+        }
+    },
     components: {
+        TheLoginSnackbar,
         TheEmailField,
-        ThePasswordField
+        ThePasswordField,
+        TheLoginButtons
     }
 };
 </script>
