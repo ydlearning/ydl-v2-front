@@ -22,7 +22,7 @@
                         v-model="form.password"
                         :minCounterPassword="getMinCounterPassword" 
                         :maxCounterPassword="getMaxCounterPassword"
-                        :regexExpression="regexExpression"
+                        :regexExpression="getRegex"
                         fieldName="Old password"
                         fieldLabel="Old password"
                         @errorCheck="passwordHasErrors=$event"
@@ -34,8 +34,8 @@
                         v-model="form.passwordSet"
                         :minCounterPassword="getMinCounterPassword" 
                         :maxCounterPassword="getMaxCounterPassword"
-                        :regexExpression="regexExpression"
-                        :regexExpressionSpecialChars="regexExpressionSpecialChars"
+                        :regexExpression="getRegex"
+                        :regexExpressionSpecialChars="getRegexSpecialCharacters"
                         fieldName="New password"
                         fieldLabel="New password"
                         @errorCheck="passwordSetHasErrors=$event"
@@ -46,7 +46,7 @@
                         v-model="form.passwordRepeat"
                         :minCounterPassword="getMinCounterPassword" 
                         :maxCounterPassword="getMaxCounterPassword"
-                        :regexExpression="regexExpression"
+                        :regexExpression="getRegex"
                         :confirmationField="form.passwordSet"
                         fieldName="Repeat password"
                         fieldLabel="Repeat password"
@@ -87,11 +87,6 @@ export default {
         return {
             form: Object.assign({}, defaultForm),
             defaultForm,
-            // minCounterPassword: 8,
-            // maxCounterPassword: 128,
-            // TODO: Source out regex to env
-            regexExpression: /^([a-zA-Z0-9$&+,:;=?@#'<>.^*()%!-]+)$/,
-            regexExpressionSpecialChars: /[$&+,:;=?@#'<>.^*()%!-]/,
             snackbarSuccess: false,
             snackbarError: false,
             passwordHasErrors: false,
@@ -132,6 +127,12 @@ export default {
         },
         getMaxCounterPassword() {
             return parseInt(process.env.VUE_APP_PASSWORD_MAX_COUNTER);
+        },
+        getRegex() {
+            return new RegExp(process.env.VUE_APP_PASSWORD_REGEX);
+        },
+        getRegexSpecialCharacters() {
+            return new RegExp(process.env.VUE_APP_PASSWORD_REGEX);
         }
     },
     methods: {
