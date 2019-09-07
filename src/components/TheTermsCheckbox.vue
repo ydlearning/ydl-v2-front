@@ -1,7 +1,8 @@
 <template lang="pug">
+//- append-icon="mdi-draw"  
 v-checkbox(
     color="success"
-    @change="$emit('change',$event)"    
+    @change="$emit('change',$event)"  
 )
     template(v-slot:label)
         div(@click.stop="")
