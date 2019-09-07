@@ -12,6 +12,7 @@ v-text-field(
     :ref="passwordName" 
     :error-messages="errors.collect(passwordName)"
     :clearable="fieldClearable"
+    prepend-icon="mdi-key-variant"
     :append-icon=" showPassword ? 'mdi-eye' : 'mdi-eye-off'"
 @click:append="showPassword = !showPassword"
     :type="showPassword ? 'text' : passwordName"
