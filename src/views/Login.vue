@@ -39,9 +39,7 @@
                                 @errorCheck="passwordHasErrors=$event"
                             )
 
-                            //- a(to="/signup") Forgot username?
-                            //- v-chip(x-small color="warning") TODO
-
+                            //- TODO: Add site for Forgot username
                             //- Forgot username Button
                             v-btn.mb-1(
                                 outlined
@@ -51,9 +49,7 @@
                                 to="") Forgot username?
                             br
 
-                            //- a Forgot password?
-                            //- v-chip(x-small color="warning") TODO
-
+                            //- TODO: Add site for Forgot password
                             //- Forgot username password
                             v-btn(
                                 outlined
@@ -61,11 +57,6 @@
                                 color="primary"
                                 x-small
                                 to="") Forgot password?
-
-                    //- v-card-actions
-                        v-btn(color='primary' to="/Signup" outlined) Go to sign up
-                        v-spacer
-                        v-btn(color='primary' @click="login()" ) Log in
 
                     //- Card buttons
                     TheLoginButtons(
