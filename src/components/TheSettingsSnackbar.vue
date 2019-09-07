@@ -23,18 +23,7 @@ div
 <script>
 export default {
     name: "TheSettingsSnackbar",
-    computed: {
-        // showSucces() {
-        //     return (
-        //         this.snackbarSucces
-        //     )
-        // },
-        // showError() {
-        //     return (
-        //         this.snackbarError
-        //     )
-        // }
-    },
+    computed: {},
     props: {
         value: {
             type: String,
@@ -52,10 +41,7 @@ export default {
         }
     },
     data() {
-        return {
-            // snackbarSucces: false,
-            // snackbarError: false
-        };
+        return {};
     }
 };
 </script>
