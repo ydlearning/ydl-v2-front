@@ -9,6 +9,7 @@ v-select(
     :label="fieldLabel"
     :error-messages="errors.collect(fieldName)"
     :ref="componentName"
+    prepend-icon="mdi-city-variant-outline"
     @input="$emit('input',$event)"
     @update:error="$emit('errorCheck',errors.has(fieldName))"
     :disabled="fieldDisable"
