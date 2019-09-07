@@ -4,7 +4,6 @@ div
     v-snackbar(
         :value="snackbarSuccess"  
         top 
-        right 
         color="success"
         @input="$emit('snackbarRemoveSuccess')")
             span Changes apply successfully!
@@ -12,8 +11,7 @@ div
     //- Snackbar - Info Cancel, form cleared!
     v-snackbar(
         :value="snackbarError"  
-        top 
-        right 
+        top  
         color="error"
         @input="$emit('snackbarRemoveError')")
             span Cancel, form cleared!
