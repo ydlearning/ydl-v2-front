@@ -2,15 +2,6 @@
     v-container.pa-0(fluid)
         v-row.ma-0
             v-col
-                v-toolbar
-                    v-text-field(
-                        prepend-icon="mdi-magnify"
-                        hide-details
-                        clearable
-                        label="Search"
-                    )
-        v-row.ma-0
-            v-col
                 v-card(width=512)
                     v-card-title
                         v-btn(v-show="step>=2" icon @click="decreaseStep" small)
@@ -23,7 +14,7 @@
                             v-window-item(:value="1")
                                 v-list
                                     v-list-item-group(v-model="selectedItem")
-                                        v-list-item(v-for="category in categories" :key="category.name" :value="category.name" @click="increaseStep(category.name)")
+                                        v-list-item(v-for="category in categories" :key="category.name" :value="category.name" @click="increaseStep")
                                             v-list-item-content
                                                 v-list-item-title {{category.name}}
                             v-window-item(:value="2")
@@ -74,8 +65,8 @@ export default {
         }
     },
     methods: {
-        increaseStep(itemName) {
-            this.items[0].text = itemName;
+        increaseStep() {
+            // this.items[0].text = itemName;
             this.step++;
         },
         decreaseStep() {
