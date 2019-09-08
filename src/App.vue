@@ -78,24 +78,7 @@
 							v-list-item-icon.rotate-180
 								v-icon mdi-logout-variant
 							v-list-item-title [Logout]
-<<<<<<< HEAD
 		v-navigation-drawer(v-model="drawer" app clipped color="#131313")
-=======
-		//- v-btn(
-			v-scroll="onScroll" 
-			v-show="fab" 
-			fab 
-			dark 
-			fixed 
-			bottom 
-			right 
-			x-small
-			color="grey" 
-			@click="toTop")
-			v-icon mdi-arrow-up-circle-outline
-
-		v-navigation-drawer(v-model="drawer" app clipped)
->>>>>>> 97d9191b06cef4e57aa1530b59f4ef66cc8d4564
 			TheDashboardList
 		v-content
 			router-view
