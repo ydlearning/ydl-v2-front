@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card(flat)
+v-card(flat color="transparent")
     v-card-text
         v-toolbar(dense)
             v-toolbar-title {{ title }}
@@ -13,6 +13,7 @@ v-card(flat)
         v-divider(v-if="hasBody")
         slot(name="resourceList")
         //- CourseContentItemResourcesList
+        v-divider
 </template>
 
 <script>
