@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-list(dense)
+    v-list(dense color="transparent")
         //- My Dashboard
         v-list-item(to="/dashboard")
             v-list-item-action
