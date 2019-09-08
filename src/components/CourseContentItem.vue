@@ -1,7 +1,7 @@
 <template lang="pug">
 v-card(flat color="transparent")
     v-card-text
-        v-toolbar(dense)
+        v-toolbar(dense color="#131313")
             v-toolbar-title {{ title }}
             v-spacer
             v-toolbar-item
@@ -10,6 +10,7 @@ v-card(flat color="transparent")
         v-card-text
             slot(name="content")
             //- CourseContentItemContent
+        //- TODO: maybe remove both dividers
         v-divider(v-if="hasBody")
         slot(name="resourceList")
         //- CourseContentItemResourcesList
