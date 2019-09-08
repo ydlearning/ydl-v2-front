@@ -41,22 +41,41 @@
 
                             //- TODO: Add site for Forgot username
                             //- Forgot username Button
-                            v-btn.mb-1(
+                            //- v-btn.mb-1.ml-4(
                                 outlined
                                 rounded
                                 color="primary"
                                 x-small
-                                to="") Forgot username?
-                            br
+                                to="/forgot_username") 
+                                v-icon(left) mdi-account-search-outline
+                                | Forgot username?
+                            //- br
 
                             //- TODO: Add site for Forgot password
                             //- Forgot username password
-                            v-btn(
+                            //- v-btn.ml-4(
                                 outlined
                                 rounded
                                 color="primary"
                                 x-small
-                                to="") Forgot password?
+                                to="/reset_password")
+                                v-icon(left) mdi-key-variant
+                                | Forgot password?
+                            //- br 
+
+                            //- Forgot username button
+                            ForgotButton.mb-1.ml-8(
+                                goToLink="/forgot_username"
+                                icon="mdi-account-search-outline"
+                                forgotText="username"
+                            )
+                            br
+                            //- Forgot password button
+                            ForgotButton.ml-8(
+                                goToLink="/reset_password"
+                                icon="mdi-key-variant"
+                                forgotText="password"
+                            )
 
                     //- Card buttons
                     TheLoginButtons(
@@ -73,6 +92,8 @@ import TheLoginSnackbar from "@/components/TheLoginSnackbar";
 import TheEmailField from "@/components/TheEmailField";
 import ThePasswordField from "@/components/ThePasswordField";
 import TheLoginButtons from "@/components/TheLoginButtons";
+import ForgotButton from "@/components/ForgotButton";
+// import Footer from "@/components/Footer";
 import { mapState } from "vuex";
 export default {
     data() {
@@ -136,7 +157,9 @@ export default {
         TheLoginSnackbar,
         TheEmailField,
         ThePasswordField,
-        TheLoginButtons
+        TheLoginButtons,
+        ForgotButton
+        // Footer
     }
 };
 </script>
