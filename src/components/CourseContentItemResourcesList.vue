@@ -6,16 +6,17 @@
             v-list-item-content
                 v-list-item-title {{ resource.name }}
             v-list-item-action(v-if="user.courses_to_edit.includes(current_course.id)")
-                v-btn(icon small)
-                    v-icon mdi-pencil
+                ResourceEditDialog
 </template>
 
 <script>
 import { mapState } from "vuex";
+import ResourceEditDialog from "@/components/ResourceEditDialog";
 
 export default {
     name: "CourseContentItemResourcesList",
     computed: mapState(["user", "current_course"]),
+    components: { ResourceEditDialog },
     props: {
         fileTypeIconMapping: {
             type: Object,
