@@ -37,9 +37,39 @@ export default new Router({
             component: () => import("./views/Signup.vue")
         },
         {
+            path: "/forgot_username",
+            name: "Forgot Username",
+            component: () => import("./views/ForgotUsername.vue")
+        },
+        {
+            path: "/reset_password",
+            name: "Reset Password",
+            component: () => import("./views/ResetPassword.vue")
+        },
+        {
             path: "/dashboard",
             name: "Dashboard",
             component: () => import("./views/Dashboard.vue")
+        },
+        {
+            path: "/datenschutzerklaerung",
+            name: "Datenschutzerklärung",
+            component: () => import("./views/Datenschutzerklaerung.vue")
+        },
+        {
+            path: "/privacy_policy",
+            name: "Privacy Policy",
+            component: () => import("./views/PrivacyPolicy.vue")
+        },
+        {
+            path: "/impressum",
+            name: "Impressum",
+            component: () => import("./views/Impressum.vue")
+        },
+        {
+            path: "/legal_disclosure",
+            name: "Legal Disclosure",
+            component: () => import("./views/LegalDisclosure.vue")
         },
         {
             path: "/courses",
