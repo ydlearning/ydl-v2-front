@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-list(dense)  
+    v-list(dense color="transparent")  
         v-list-item-group
             v-list-item(v-for="resource in resources" :key="resource.name")
                 v-list-item-icon
