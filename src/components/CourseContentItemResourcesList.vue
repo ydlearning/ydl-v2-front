@@ -1,11 +1,10 @@
 <template lang="pug">
     v-list(dense color="transparent")  
-        v-list-item-group
-            v-list-item(v-for="resource in resources" :key="resource.name")
-                v-list-item-icon
-                    v-icon {{ fileTypeIconMapping[resource.type] }}
-                v-list-item-content
-                    v-list-item-title {{ resource.name }}
+        v-list-item(v-for="resource in resources" :key="resource.name")
+            v-list-item-icon
+                v-icon {{ fileTypeIconMapping[resource.type] }}
+            v-list-item-content
+                v-list-item-title {{ resource.name }}
 </template>
 
 <script>
