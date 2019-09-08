@@ -1,7 +1,11 @@
 <template lang="pug">
+//- TheSettingsButtons component
 v-card-actions
+
+    //- Tooltip for left button
     v-tooltip(bottom color="red")
         template(v-slot:activator="{ on: tooltip }")
+            //- Left button
             v-btn(
                 color="primary"
                 @click="$emit('cancel')"
@@ -11,7 +15,10 @@ v-card-actions
         span
             v-icon(size="15px") mdi-alert
             |  All Fields will be deleted!
+
     v-spacer
+
+    //- Right button
     v-btn(
         color="primary"
         type="submit"
@@ -33,9 +40,6 @@ export default {
             default: false,
             required: false
         }
-    },
-    data() {
-        return {};
     }
 };
 </script>
