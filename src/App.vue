@@ -5,7 +5,6 @@
 			v-toolbar-title.headline
 				span Y&D
 				span.font-weight-light Learning
-				span {{ process }}
 			v-spacer
 			v-toolbar-items
 				v-btn(text to="/").tile Home 
