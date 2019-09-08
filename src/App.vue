@@ -79,7 +79,7 @@
 							v-list-item-icon.rotate-180
 								v-icon mdi-logout-variant
 							v-list-item-title [Logout]
-		v-navigation-drawer(v-model="drawer" app clipped)
+		v-navigation-drawer(v-model="drawer" app clipped color="#131313")
 			TheDashboardList
 		v-content
 			router-view
