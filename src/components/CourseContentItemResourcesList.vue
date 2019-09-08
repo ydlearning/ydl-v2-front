@@ -1,15 +1,21 @@
 <template lang="pug">
-    v-list(dense color="transparent")  
+    v-list(dense color="transparent")
         v-list-item(v-for="resource in resources" :key="resource.name")
             v-list-item-icon
                 v-icon {{ fileTypeIconMapping[resource.type] }}
             v-list-item-content
                 v-list-item-title {{ resource.name }}
+            v-list-item-action(v-if="user.courses_to_edit.includes(current_course.id)")
+                v-btn(icon small)
+                    v-icon mdi-pencil
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
     name: "CourseContentItemResourcesList",
+    computed: mapState(["user", "current_course"]),
     props: {
         fileTypeIconMapping: {
             type: Object,
