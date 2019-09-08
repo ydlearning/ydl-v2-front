@@ -1,8 +1,8 @@
 <template lang="pug">
-    v-container.pa-0(fluid)
-        v-row.ma-0
-            v-col
-                v-card(width=512)
+    v-container.pa-0(fluid fill-height)
+        v-row.ma-0(align="center" justify="center")
+            v-col(cols=12 xs=8 sm=6 md=4)
+                v-card
                     v-card-title
                         v-btn(v-show="step>=2" icon @click="decreaseStep" small)
                             v-icon mdi-arrow-left
