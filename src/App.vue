@@ -79,32 +79,57 @@
 							v-list-item-icon.rotate-180
 								v-icon mdi-logout-variant
 							v-list-item-title [Logout]
+		//- v-btn(
+			v-scroll="onScroll" 
+			v-show="fab" 
+			fab 
+			dark 
+			fixed 
+			bottom 
+			right 
+			x-small
+			color="grey" 
+			@click="toTop")
+			v-icon mdi-arrow-up-circle-outline
+
 		v-navigation-drawer(v-model="drawer" app clipped)
 			TheDashboardList
 		v-content
 			router-view
 		TheDebug(v-show="show_debug_ui")
+		Footer
 </template>
 
 <script>
 import { mapState } from "vuex";
 import TheDashboardList from "@/components/TheDashboardList";
 import TheDebug from "@/components/TheDebug";
+import Footer from "@/components/Footer";
 export default {
     name: "App",
     data() {
         return {
             drawer: false,
-            menuClick: false
+            menuClick: false,
+            fab: false
         };
     },
     components: {
         TheDashboardList,
-        TheDebug
+        TheDebug,
+        Footer
     },
     methods: {
         logout() {
             this.$store.dispatch("logout");
+        },
+        onScroll(e) {
+            if (typeof window === "undefined") return;
+            const top = window.pageYOffset || e.target.scrollTop || 0;
+            this.fab = top > 20;
+        },
+        toTop() {
+            this.$vuetify.goTo(0);
         }
     },
     mounted() {
