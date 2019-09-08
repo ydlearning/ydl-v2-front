@@ -55,15 +55,7 @@ export default {
         return {
             step: 1,
             categories: json.data.AllCategories.category,
-            selectedItem: "",
-            items: [
-                {
-                    text: ""
-                },
-                {
-                    text: "ooo"
-                }
-            ]
+            selectedItem: ""
         };
     },
     computed: {
@@ -74,7 +66,7 @@ export default {
                 case 2:
                     return "Select Course";
                 default:
-                    return "Accccc";
+                    return "Nothing Selected";
             }
         },
         filteredItems() {
