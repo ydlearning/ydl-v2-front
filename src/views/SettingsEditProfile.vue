@@ -37,8 +37,8 @@
                     //- Full name field
                     TheFullNameField(
                         v-model="form.fullname"
-                        :minCounter="getMinCounterUsername"
-                        :maxCounter="getMaxCounterUsername"
+                        :minCounter="getMinCounterFullName"
+                        :maxCounter="getMinCounterFullName"
                         fieldName="Full name"
                         fieldLabel="Full name"
                         @errorCheck="fullNameHasErrors=$event")
@@ -91,6 +91,12 @@ export default {
         },
         getMaxCounterUsername() {
             return parseInt(process.env.VUE_APP_USERNAME_MAX_COUNTER);
+        },
+        getMinCounterFullName() {
+            return parseInt(process.env.VUE_APP_FULLNAME_MIN_COUNTER);
+        },
+        getMaxCounterFullName() {
+            return parseInt(process.env.VUE_APP_FULLNAME_MAX_COUNTER);
         }
     },
     components: {
