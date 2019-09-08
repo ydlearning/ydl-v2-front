@@ -4,8 +4,9 @@ v-card(flat)
         v-toolbar(dense)
             v-toolbar-title {{ title }}
             v-spacer
-            slot(name="resourceDownload")
-            //- ResourceDownloadDialog
+            v-toolbar-item
+                slot(name="resourceDownload")
+                //- ResourceDownloadDialog
         v-card-text
             slot(name="content")
             //- CourseContentItemContent
