@@ -16,7 +16,8 @@ export default new Vuex.Store({
                 status: "public" //public | private | contacts
             },
             password: "AbCd1234+-",
-            role: "Student"
+            role: "Student",
+            courses_to_edit: [1] // return ids to identify which courses the person can edit
         },
         my_courses: [
             {
@@ -165,6 +166,7 @@ export default new Vuex.Store({
             }
         ],
         current_course: {
+            id: 1,
             name: "Computergraphics",
             term: "WS",
             start: "2019-08-31T22:34:54+0000",
