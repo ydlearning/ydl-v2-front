@@ -53,9 +53,9 @@ This is a documentation for used Vue components.
 
 Visit:
 
-- <a target="_blank" href="https://Re-Krass.github.io/">Homepage
+- <a target="_blank" href="https://ydlearning.github.io/ydl-v2-front/#/">Homepage
   </a>
-- <a target="_blank" href="https://github.com/Re-Krass/Re-Krass.github.io-Vue/wiki">Wiki
+- <a target="_blank" href="https://github.com/ydlearning/ydl-v2-front/wiki">Wiki
   </a>
-- <a target="_blank" href="https://github.com/Re-Krass/Re-Krass.github.io/">GitHub Repo
+- <a target="_blank" href="https://github.com/ydlearning/ydl-v2-front">GitHub Repo
   </a>
