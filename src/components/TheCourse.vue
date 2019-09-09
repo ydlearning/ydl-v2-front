@@ -6,7 +6,7 @@
                     v-toolbar-title [{{ new Date(current_course.start).format("YY") + "/" + new Date(current_course.end).format("YY") + " " + current_course.term }}] {{ current_course.name }}
                     v-spacer
                     v-toolbar-title.grey--text.ma-4 {{ new Date(current_course.start).format("DD.MM.YY") + " - " + new Date(current_course.end).format("DD.MM.YY") }}
-                    v-toolbar-item
+                    v-toolbar-items
                         ResourceDownloadDialog
                 v-card-text
                     CourseContentItem(
