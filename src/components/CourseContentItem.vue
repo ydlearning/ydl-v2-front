@@ -4,7 +4,7 @@ v-card(flat color="transparent")
         v-toolbar(dense color="#131313")
             v-toolbar-title {{ title }}
             v-spacer
-            v-toolbar-item
+            v-toolbar-items
                 slot(name="resourceDownload")
                 //- ResourceDownloadDialog
         v-card-text
