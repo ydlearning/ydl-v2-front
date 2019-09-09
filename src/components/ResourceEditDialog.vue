@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-dialog(v-model="showDialog" :max-width="550" max-height="430" min-height="400")
+    v-dialog(v-model="showDialog" @click:outside="reset()" :max-width="550" max-height="430" min-height="400")
         template(v-slot:activator="{ on }")
             v-btn(icon small v-on="on")
                 v-icon mdi-pencil
@@ -55,6 +55,12 @@ export default {
                 clearInterval(this.timer);
                 this.showDialog = false;
             }
+        },
+        reset() {
+            clearInterval(this.timer);
+            this.timerCount = 5;
+            this.shouldAskDelete = true;
+            this.showTimer = false;
         }
     },
     props: {
