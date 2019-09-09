@@ -10,15 +10,19 @@
                     v-list-item-icon
                         v-icon mdi-pencil
                     v-list-item-content Edit: {{ resource.name }}
-            v-card-text
-                v-row
-                    v-col(cols=12)
-                        v-form(ref="form" @submit.prevent="submit")
-                            v-text-field(label="Name" :value="resource.name")
-                            v-file-input(v-model="file")
-                    v-col(cols=12)
-                        div First Upload: {{ new Date(resource.uploaded).format("YYYY/MM/DD hh:mm:ss a") }}
-                        div Last Edit: {{ new Date(resource.last_edit).format("YYYY/MM/DD hh:mm:ss a") }}
+                v-card-text
+                    v-row
+                        template(v-if="['pdf', 'movie'].includes(resource.type)")
+                            v-col(cols=12)
+                                v-form(ref="form" @submit.prevent="submit")
+                                    v-text-field(label="Name" :value="resource.name")
+                                    v-file-input(v-model="file")
+                            v-col(cols=12)
+                                div First Upload: {{ new Date(resource.uploaded).format("YYYY/MM/DD hh:mm:ss a") }}
+                                div Last Edit: {{ new Date(resource.last_edit).format("YYYY/MM/DD hh:mm:ss a") }}
+                        template(v-else-if="['forum', 'quiz'].includes(resource.type)")
+                            v-col(cols=12)
+                                v-checkbox(label="Is Active")
 
             v-divider
             v-card-actions
