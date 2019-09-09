@@ -6,7 +6,7 @@
             v-list-item-content
                 v-list-item-title {{ resource.name }}
             v-list-item-action(v-if="user.courses_to_edit.includes(current_course.id)")
-                ResourceEditDialog
+                ResourceEditDialog(:resource="resource")
 </template>
 
 <script>
