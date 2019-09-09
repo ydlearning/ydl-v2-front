@@ -3,6 +3,7 @@
         template(v-slot:activator="{ on }")
             v-btn(icon small v-on="on")
                 v-icon mdi-pencil
+        //- TODO: needs to be improved (visually)
         v-card(width="100%")
             v-card-title
                 v-list-item
