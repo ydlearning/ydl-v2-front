@@ -2,7 +2,7 @@
     v-row(no-gutters align="center" justify="center")
         v-col(cols=12 xs=10 md=8)
             v-card.pa-4.grey.darken-4
-                v-toolbar(floating color="#131313")
+                v-toolbar(color="#131313")
                     v-toolbar-title [{{ new Date(current_course.start).format("YY") + "/" + new Date(current_course.end).format("YY") + " " + current_course.term }}] {{ current_course.name }}
                     v-spacer
                     v-toolbar-title.grey--text.ma-4 {{ new Date(current_course.start).format("DD.MM.YY") + " - " + new Date(current_course.end).format("DD.MM.YY") }}
