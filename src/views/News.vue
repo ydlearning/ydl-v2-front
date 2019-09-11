@@ -12,6 +12,7 @@
 import TheNews from "@/components/TheNews";
 
 export default {
+    name: "TheNews",
     components: { TheNews }
 };
 </script>
