@@ -21,6 +21,7 @@
 <script>
 import TheNews from "@/components/TheNews";
 export default {
+    name: "Home",
     components: { TheNews }
 };
 </script>
