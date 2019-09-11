@@ -53,6 +53,7 @@ v-layout(align-center justify-center)
 
 <script>
 export default {
+    name: "Calender",
     data: () => ({
         today: "2019-01-08",
         focus: "2019-01-08",
