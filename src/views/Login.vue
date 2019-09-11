@@ -96,6 +96,7 @@ import ForgotButton from "@/components/ForgotButton";
 // import Footer from "@/components/Footer";
 import { mapState } from "vuex";
 export default {
+    name: "Login",
     data() {
         //- Form to store variables
         const defaultForm = Object.freeze({
