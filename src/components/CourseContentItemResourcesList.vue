@@ -1,6 +1,6 @@
 <template lang="pug">
     v-list(dense color="transparent")
-        v-list-item(v-for="resource in resources" :key="resource.name")
+        v-list-item(v-for="resource in resources" :key="resource.name" :to="'/' + resource.name")
             v-list-item-icon
                 v-icon {{ fileTypeIconMapping[resource.type] }}
             v-list-item-content
