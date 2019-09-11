@@ -113,6 +113,7 @@ import TheRoleSelect from "@/components/TheRoleSelect";
 
 import { mapState } from "vuex";
 export default {
+    name: "Signup",
     data() {
         //- Form to store variables
         const defaultForm = Object.freeze({
