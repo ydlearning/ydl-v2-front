@@ -18,6 +18,7 @@ import TheCourseList from "@/components/TheCourseList";
 import { mapState } from "vuex";
 
 export default {
+    name: "Dashboard",
     components: {
         TheNotification,
         TheTask,
