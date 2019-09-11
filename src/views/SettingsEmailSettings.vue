@@ -59,6 +59,7 @@ import TheSettingsButtons from "@/components/TheSettingsButtons";
 import TheSettingsSnackbar from "@/components/TheSettingsSnackbar";
 
 export default {
+    name: "SettingsEmailSettings",
     data() {
         //- Form to store variables
         const defaultForm = Object.freeze({
