@@ -11,6 +11,7 @@ v-container(fluid)
 import TheSettings from "@/components/TheSettings";
 
 export default {
+    name: "Settings",
     components: { TheSettings }
 };
 </script>
