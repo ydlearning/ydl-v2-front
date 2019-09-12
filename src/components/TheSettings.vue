@@ -28,9 +28,6 @@
 
 <script>
 export default {
-    name: "AnnouncementCard",
-    components: {}
+    name: "AnnouncementCard"
 };
 </script>
-
-<style lang="sass"></style>
