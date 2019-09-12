@@ -32,7 +32,7 @@
                                                 v-spacer
                                                 //- maybe put this button inside the header
                                                 v-btn(
-                                                    :to="{ name: 'MyCoursesEnrolled', params: {id: 1}}"
+                                                    :to="{ name: 'CourseEnrolled', params: {id: 1}}"
                                                 ) Enroll
                                             
 </template>
