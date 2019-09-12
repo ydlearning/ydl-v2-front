@@ -30,7 +30,11 @@ export default {
     name: "TheCourseList",
     data() {
         return {
-            filteredCourses: this.courses
+            filteredCourses: this.courses.filter(course => {
+                //- TODO: workaround to initially set the extra property search_name
+                course.search_name = course.name;
+                return true;
+            })
         };
     },
     components: {
@@ -46,6 +50,8 @@ export default {
                         searchtext,
                         "<mark>" + searchtext + "</mark>"
                     );
+                } else {
+                    course.search_name = course.name;
                 }
                 return matched;
             });
