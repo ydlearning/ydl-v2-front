@@ -4,9 +4,6 @@
 
 <script>
 export default {
-    name: "About",
-    components: {}
+    name: "About"
 };
 </script>
-
-<style lang="sass"></style>
