@@ -7,7 +7,7 @@
             v-card-title.align-start.fill-height.justify-end
                 v-btn(icon)
                     v-icon mdi-message
-        v-card-actions {{ header }}
+        v-card-actions(v-html="header")
             v-spacer
             v-btn(icon small)
                 v-icon(size=16) mdi-star
