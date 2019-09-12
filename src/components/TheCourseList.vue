@@ -12,11 +12,12 @@
                             clearable
                             label="Search"
                             value="Mana"
+                            @input="searchText"
                         )
             v-row
-                v-col(v-for="course in courses" :key="course.name" cols=12 sm=6 lg=3)
+                v-col(v-for="course in filteredCourses" :key="course.name" cols=12 sm=6 lg=3)
                     CourseItem(
-                        :header="course.name"
+                        :header="course.search_name"
                     )
 
 </template>
@@ -27,9 +28,28 @@ import CourseItem from "@/components/CourseItem";
 
 export default {
     name: "TheCourseList",
+    data() {
+        return {
+            filteredCourses: this.courses
+        };
+    },
     components: {
         BaseDashboardItem,
         CourseItem
+    },
+    methods: {
+        searchText(searchtext) {
+            this.filteredCourses = this.courses.filter(course => {
+                let matched = course.name.includes(searchtext);
+                if (matched) {
+                    course.search_name = course.name.replace(
+                        searchtext,
+                        "<mark>" + searchtext + "</mark>"
+                    );
+                }
+                return matched;
+            });
+        }
     },
     props: {
         courses: {
