@@ -8,8 +8,7 @@
 
 <script>
 export default {
-    name: "Profile",
-    components: {}
+    name: "Profile"
 };
 </script>
 
