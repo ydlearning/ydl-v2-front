@@ -12,7 +12,7 @@
 import TheNews from "@/components/TheNews";
 
 export default {
-    name: "TheNews",
+    name: "News",
     components: { TheNews }
 };
 </script>
