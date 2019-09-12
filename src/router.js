@@ -78,15 +78,12 @@ export default new Router({
         },
         {
             path: "/courses/:id",
-            name: "MyCourses",
-            // props: {
-            //     showWelcomeScreen: true
-            // },
+            name: "Course",
             component: () => import("./views/Course.vue")
         },
         {
             path: "/courses/:id",
-            name: "MyCoursesEnrolled",
+            name: "CourseEnrolled",
             props: {
                 showWelcomeScreen: true
             },
@@ -126,7 +123,7 @@ export default new Router({
         },
         {
             path: "/mycourses",
-            name: "My-Courses",
+            name: "MyCourses",
             component: () => import(/* webpackChunkName: "about" */ "./views/MyCourses.vue")
         }
     ]
