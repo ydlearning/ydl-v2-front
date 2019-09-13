@@ -1,7 +1,7 @@
 <template lang="pug">
+    //- Impressum / Legal Disclosure / Legal Notice site
     v-container.container-padding(
         fluid 
-        width="200px"
     )
         v-row(align='center' justify='center')
                 v-card.elevation-12
@@ -26,23 +26,9 @@
                     v-card-text.body-1
                         div 
                             h2 Angaben gemäß § 5 TMG
-                            p
-                                //- | {{ name }}
-                                //- br
-                                |     {{ company }}
-                                //- br
-                                //- |     {{ street }}
-                                //- br
-                                //- |     {{ building }}
-                                //- br
-                                //- |     {{ postCode }} {{ town }}
-                            //- h2 Kontakt
-                            //- p
-                                | Telefon: {{ phoneNumber}}
-                                br
-                                |     Telefax: {{ faxNumber }}
-                                br
-                                |     E-Mail: {{ email }}
+
+                            KontaktDaten() 
+
                             h2 Streitschlichtung
                             p
                                 | Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
@@ -93,24 +79,15 @@
 </template>
 
 <script>
+import KontaktDaten from "@/components/KontaktDaten";
 import { mapState } from "vuex";
 export default {
     name: "Impressum",
-    data() {
-        return {
-            name: "",
-            company: "Y&D Learning",
-            street: "",
-            building: "",
-            postCode: "",
-            town: "",
-            phoneNumber: "",
-            faxNumber: "",
-            email: ""
-        };
-    },
     computed: {
         ...mapState(["isLoggedIn"])
+    },
+    components: {
+        KontaktDaten
     }
 };
 </script>
