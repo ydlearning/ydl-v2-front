@@ -1,7 +1,7 @@
 <template lang="pug">
+    //- Privacy Policy / Datenschutzerklärung
     v-container.container-padding(
         fluid 
-        width="200px"
     )
         v-row(align='center' justify='center')
                 v-card.elevation-12
@@ -52,46 +52,9 @@
                             h3 I. Information about us as controllers of your data
                             p
                                 | The party responsible for this website (the "controller") for purposes of data protection law is:
-                            p
-                                | {{ company }}
-                            //- p
-                                br
-                                | {{ street }}
-                                br
-                                | {{ town }}
-                                br
-                                | {{ state }}
-                            //- p
-                                | {{ phoneNumber }}
-                                br
-                                | {{ faxNumber }}
-                                br
-                                | {{ email }}
-                            p The controller's data protection officer is:
-                            p
-                                | {{ name }}
-                            //- p
-                                span(style="color: rgb(255, 0, 0); --darkreader-inline-color:#ff3333;" data-darkreader-inline-color="")
-                                    | [The
-                                    | following information must be added if an external data protection officer has been appointed].
-                            //- p
-                                span(style="color: rgb(255, 0, 0); --darkreader-inline-color:#ff3333;" data-darkreader-inline-color="")
-                                    | Any street
-                                    | 1
-                                br
-                                span(style="color: rgb(255, 0, 0); --darkreader-inline-color:#ff3333;" data-darkreader-inline-color="") 12345 Anytown
-                                br
-                                span(style="color: rgb(255, 0, 0); --darkreader-inline-color:#ff3333;" data-darkreader-inline-color="") Germany
-                            //- p
-                                span(style="color: rgb(255, 0, 0); --darkreader-inline-color:#ff3333;" data-darkreader-inline-color="")
-                                    | Telephone:
-                                    | Telephone number
-                                br
-                                span(style="color: rgb(255, 0, 0); --darkreader-inline-color:#ff3333;" data-darkreader-inline-color="") Fax: Fax number
-                                br
-                                span(style="color: rgb(255, 0, 0); --darkreader-inline-color:#ff3333;" data-darkreader-inline-color="")
-                                    | Email:
-                                    | datenschutz@mustermail.xy
+
+                            ContactUsData()
+
                             h3 II. The rights of users and data subjects
                             p
                                 | With regard to the data processing to be described in more detail below, users and data subjects have the right
@@ -286,23 +249,15 @@
 </template>
 
 <script>
+import ContactUsData from "@/components/ContactUsData";
 import { mapState } from "vuex";
 export default {
     name: "PrivacyPolicy",
-    data() {
-        return {
-            company: "Y&D Learning",
-            street: "",
-            postcode: "",
-            state: "",
-            town: "",
-            phoneNumber: "",
-            faxNumber: "",
-            email: ""
-        };
-    },
     computed: {
         ...mapState(["isLoggedIn"])
+    },
+    components: {
+        ContactUsData
     }
 };
 </script>
