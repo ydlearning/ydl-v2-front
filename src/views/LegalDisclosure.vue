@@ -1,7 +1,7 @@
 <template lang="pug">
+    //- Legal Disclosure / Legal Notice site / Impressum 
     v-container.container-padding(
         fluid 
-        width="200px"
     )
         v-row(align='center' justify='center')
                 v-card.elevation-12
@@ -27,23 +27,8 @@
                     v-card-text.body-1
                         div 
                             h3 The following information (Impressum) is required under German law.
-                            p
-                                //- | {{ name }}
-                                //- br
-                                |     {{ company }}
-                                //- br
-                                //- |     {{ street }}
-                                //- br
-                                //- |     {{ building }}
-                                //- br
-                                //- |     {{ postCode }} {{ town }}
-                            //- h2 Kontakt
-                            //- p
-                                | Telefon: {{ phoneNumber}}
-                                br
-                                |     Telefax: {{ faxNumber }}
-                                br
-                                |     E-Mail: {{ email }}
+
+                            ContactUsData()
 
                             h2 Online Dispute Resolution website of the EU Commission
                             p In order for consumers and traders to resolve a dispute out-of-court, the European Commission developed the Online Dispute Resolution Website: www.ec.europa.eu/consumers/odr
@@ -59,23 +44,14 @@
 
 <script>
 import { mapState } from "vuex";
+import ContactUsData from "@/components/ContactUsData";
 export default {
     name: "LegalDisclosure",
-    data() {
-        return {
-            name: "",
-            company: "Y&D Learning",
-            street: "",
-            building: "",
-            postCode: "",
-            town: "",
-            phoneNumber: "",
-            faxNumber: "",
-            email: ""
-        };
-    },
     computed: {
         ...mapState(["isLoggedIn"])
+    },
+    components: {
+        ContactUsData
     }
 };
 </script>
