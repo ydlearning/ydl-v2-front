@@ -1,7 +1,7 @@
 <template lang="pug">
+    //- Datenschutzerklärung / Privacy Policy
     v-container.container-padding(
         fluid 
-        width="200px"
     )
         v-row(align='center' justify='center')
                 v-card.elevation-12
@@ -95,16 +95,9 @@
                                 | Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht
                                 | möglich.
                             h3 Hinweis zur verantwortlichen Stelle
-                            p
-                                | {{ company }}
-                                //- br
-                                //- |     {{ street }}
-                                //- br
-                                //- |     {{ postcode }} {{ town }}
-                            //- p
-                                | Telefon: {{ phoneNumber }}
-                                br
-                                |     E-Mail: {{ email }}
+
+                            KontaktDaten() 
+
                             p
                                 | Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen
                                 | über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z.B. Namen, E-Mail-Adressen o.
@@ -353,21 +346,15 @@
 </template>
 
 <script>
+import KontaktDaten from "@/components/KontaktDaten";
 import { mapState } from "vuex";
 export default {
     name: "Datenschutzerklaerung",
-    data() {
-        return {
-            company: "Y&D Learning",
-            street: "",
-            postcode: "",
-            town: "",
-            phoneNumber: "",
-            email: ""
-        };
-    },
     computed: {
         ...mapState(["isLoggedIn"])
+    },
+    components: {
+        KontaktDaten
     }
 };
 </script>
