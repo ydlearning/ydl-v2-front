@@ -72,6 +72,16 @@ export default new Router({
             component: () => import("./views/LegalDisclosure.vue")
         },
         {
+            path: "/kontakt",
+            name: "Kontakt",
+            component: () => import("./views/Kontakt.vue")
+        },
+        {
+            path: "/contact_us",
+            name: "Contact us",
+            component: () => import("./views/ContactUs.vue")
+        },
+        {
             path: "/courses",
             name: "Courses",
             component: () => import("./views/Courses.vue")
