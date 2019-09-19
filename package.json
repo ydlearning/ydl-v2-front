@@ -34,6 +34,8 @@
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "^0.6.3",
+    "vue-cookie": "^1.1.4",
+    "vue-cookie-accept-decline": "^5.2.3",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.2.2"
   },
