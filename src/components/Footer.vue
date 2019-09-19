@@ -3,7 +3,7 @@
 div 
     //- Footer
     v-footer(
-        dark 
+        dark
         padless
         width="100%" 
         color="primary"
@@ -64,10 +64,31 @@ div
             v-card-text.pa-0.white--text
                 v-container(fluid)
                     v-row(no-gutters)
+                        //- Left column
                         v-col(
                             cols="12" 
                             sm="4")
                             v-card.pa-0(flat)
+                                v-card-actions.pa-0.ma-0
+                                    v-tooltip(
+                                        right
+                                    )
+                                        template(
+                                            v-slot:activator="{ on: tooltip }"
+                                        )
+                                            v-btn.ma-0(
+                                                fab
+                                                x-small
+                                                depressed
+                                                color="transparent" 
+                                                v-on="{ ...tooltip }"
+                                                @click="switchTheme")
+                                                v-icon(v-if="$vuetify.theme.dark") mdi-lightbulb-on
+                                                v-icon(v-if="!$vuetify.theme.dark") mdi-lightbulb-outline
+                                        span(v-if="$vuetify.theme.dark") Switch to light theme
+                                        span(v-else) Switch to dark theme
+
+                        //- Center column
                         v-col.text-center(
                             cols="12" 
                             sm="4"
@@ -75,25 +96,36 @@ div
                             v-card.pa-0(flat)
                                 | {{ new Date().getFullYear() }} — 
                                 strong Y&D Learning
+
+                        //- Right column
                         v-col(
                             cols="12" 
                             sm="4")
                             v-card.pa-0(flat) 
                                 v-card-actions.pa-0.ma-0
                                     v-spacer
-                                    v-btn.ma-0(
-                                        dark
-                                        fab
-                                        x-small
-                                        depressed
-                                        color="transparent" 
-                                        @click="toTop")
-                                        v-icon mdi-arrow-up-circle-outline
+                                    v-tooltip(
+                                        left
+                                    )
+                                        template(
+                                            v-slot:activator="{ on: tooltip }"
+                                        )
+                                            v-btn.ma-0(
+                                                fab
+                                                x-small
+                                                depressed
+                                                v-on="{ ...tooltip }"
+                                                color="transparent" 
+                                                @click="toTop")
+                                                v-icon mdi-arrow-up-circle-outline
+                                        span Scroll to top
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
     name: "Footer",
+    inject: ["theme"],
     data: () => ({
         sites: [
             {
@@ -113,6 +145,11 @@ export default {
             },
             {
                 id: 4,
+                name: "Cookies",
+                to: "/cookies"
+            },
+            {
+                id: 5,
                 name: "Contact Us",
                 to: "/contact_us"
             }
@@ -144,9 +181,18 @@ export default {
             default: ""
         }
     },
+    computed: {
+        ...mapState(["darkTheme"])
+        // switchThemezzz() {
+        //     return (this.darkTheme = false);
+        // }
+    },
     methods: {
         toTop() {
             this.$vuetify.goTo(0);
+        },
+        switchTheme() {
+            this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
         }
     }
 };
