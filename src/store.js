@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         isLoggedIn: false,
+        darkTheme: true,
         // isLoggedIn: true, // Test!! (Debug)
         user: {
             username: "Max-Mustermann",
