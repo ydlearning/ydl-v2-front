@@ -10,6 +10,16 @@ import {} from "./vendor/datePrototypes";
 
 Vue.config.productionTip = false;
 
+// Require dependencies
+// var Vue = require('vue');
+var VueCookie = require("vue-cookie");
+// Tell Vue to use the plugin
+Vue.use(VueCookie);
+
+import "vue-cookie-accept-decline/dist/vue-cookie-accept-decline.css";
+import VueCookieAcceptDecline from "vue-cookie-accept-decline";
+Vue.component("vue-cookie-accept-decline", VueCookieAcceptDecline);
+
 new Vue({
     router,
     store,
