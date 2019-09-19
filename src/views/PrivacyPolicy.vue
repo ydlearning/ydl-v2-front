@@ -136,6 +136,9 @@
                                 | documentation for your Flash player or contact its maker for support.
                             p
                                 | If you prevent or restrict the installation of cookies, not all of the functions on our site may be fully usable.
+                            p
+                                | Go to: 
+                                router-link(to="/cookies") Cookkie settings
                             h4 Order processing
                             p
                                 | The data you submit when ordering goods and/or services from us will have to be processed in order to fulfill your
