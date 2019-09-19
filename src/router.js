@@ -77,6 +77,11 @@ export default new Router({
             component: () => import("./views/Kontakt.vue")
         },
         {
+            path: "/cookies",
+            name: "Cookies",
+            component: () => import("./views/Cookies.vue")
+        },
+        {
             path: "/contact_us",
             name: "Contact us",
             component: () => import("./views/ContactUs.vue")
