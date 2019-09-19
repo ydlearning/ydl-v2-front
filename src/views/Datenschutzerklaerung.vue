@@ -210,6 +210,9 @@
                             p
                                 | Soweit andere Cookies (z.B. Cookies zur Analyse Ihres Surfverhaltens) gespeichert werden, werden diese in
                                 | dieser Datenschutzerklärung gesondert behandelt.
+                            p
+                                | Gehe zu den: 
+                                router-link(to="/cookies") Cookkie Einstellungen
                             h3 Server-Log-Dateien
                             p
                                 | Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr
