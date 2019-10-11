@@ -1,67 +1,9 @@
 <template lang="pug">
-	//- :dark="setTheme"
-	//- v-app#app--light
-	//- v-app(v-bind:id="[this.$vuetify.theme.dark ? 'app--dark' : 'app--light']")
 	v-app(v-bind:id="this.$vuetify.theme.dark ? 'app--dark' : 'app--light'")
 		TheToolbar
 		v-navigation-drawer(v-model="drawer" app clipped color="#131313")
 			TheDashboardList
-			//- v-menu.hidden-md-and-up
-			//- 	span khjk
-			//- 	v-icon mdi-cookie
-			//- 	v-list
-			//- 		v-list-tile
-			//- 			v-list-tile-content
-			//- 				v-list-tile-title Titel
-
-		//- v-toolbar(
-			color="primary" 
-			dark 
-			fixed 
-			top)
-			v-toolbar-title Toolbar Mobile Menu
-			v-spacer
-			v-toolbar-items.hidden-sm-and-down
-				v-btn( 
-					text)
-					| Item 1
-				v-btn( 
-					text)
-					| Item 2
-			v-app-bar-nav-icon.hidden-md-and-down(v-slot:activator="{ on }")
-			v-menu.hidden-md-and-down
-				//- v-btn(icon v-slot:activator="{ on }")
-				//- 	v-icon mdi-dots-vertical
-				v-app-bar-nav-icon(v-slot:activator="{ on }")
-				v-menu(bottom offset-y)
-					template(v-slot:activator='{ on: menu }')
-				//- v-toolbar-side-icon(slot="activator")
-				v-list
-					v-list-tile
-						v-list-tile-content
-					v-list-tile-title Title
-
-		//- v-toolbar(
-				color="primary" 
-				dark 
-				fixed 
-				top)
-			v-toolbar-title Toolbar Mobile Menu
-			v-spacer
-			v-toolbar-items.hidden-sm-and-down
-				v-btn(v-for="item in menu" :key="item.icon" :to="item.link" text) {{ item.title }}
-			v-app-bar-nav-icon.hidden-md-and-down(v-slot:activator="{ on }")
-			v-menu.hidden-md-and-up
-				v-toolbar-side-icon(slot="activator")
-				v-list
-					v-list-tile(v-for="item in menu" :key="item.icon")
-						v-list-tile-content
-							v-list-tile-title {{ item.title }}
-
 		v-content
-			//- v-switch(
-				:label="`Dark Theme`" 
-				v-model="darkTheme")
 			v-btn(
 				fab
 				small
