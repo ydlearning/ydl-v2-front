@@ -13,7 +13,8 @@ export default new Vuetify({
         current: "en"
     },
     theme: {
-        dark: true,
+        // save dark mode as isLightTheme because than the dark mode is at first enabled
+        dark: localStorage.getItem("isLightTheme") === "true" ? false : true,
         // light: true,
         themes: {
             light: {
