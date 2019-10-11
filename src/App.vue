@@ -62,6 +62,17 @@
 			//- v-switch(
 				:label="`Dark Theme`" 
 				v-model="darkTheme")
+			v-btn(
+				fab
+				small
+				bottom
+				right
+				fixed
+				@click="switchTheme()"
+			)
+				v-icon(v-if="$vuetify.theme.dark" small) mdi-lightbulb-on
+				v-icon(v-else small) mdi-lightbulb
+			div {{$vuetify.theme.dark}}
 			router-view
 		
 			vue-cookie-accept-decline.cookie(
@@ -154,7 +165,12 @@ export default {
         },
         menuItems() {
             return this.menu;
-        }
+		},
+		switchTheme() {
+			this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+			// update localStorage
+			localStorage.setItem("isLightTheme", !this.$vuetify.theme.dark);
+		}
     },
     mounted() {
         console.log(process.env.NODE_ENV);
