@@ -72,7 +72,6 @@
 			)
 				v-icon(v-if="$vuetify.theme.dark" small) mdi-lightbulb-on
 				v-icon(v-else small) mdi-lightbulb
-			div {{$vuetify.theme.dark}}
 			router-view
 		
 			vue-cookie-accept-decline.cookie(
