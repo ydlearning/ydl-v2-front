@@ -4,15 +4,10 @@
 		v-navigation-drawer(v-model="drawer" app clipped color="#131313")
 			TheDashboardList
 		v-content
-			v-btn(
-				fab
-				small
-				bottom
-				right
-				fixed
-				@click="switchTheme()"
-			)
-				v-icon(v-if="$vuetify.theme.dark" small) mdi-lightbulb-on
+			v-sheet.pa-4(style="position: fixed; right:0; bottom:0" color="transparent")
+				v-hover( v-slot:default="{ hover }")
+					v-btn.mr-2(fab small @click="switchTheme()")
+						v-icon(v-if="$vuetify.theme.dark" small :color="!hover ? 'white' : 'yellow'") mdi-lightbulb-on
 				v-icon(v-else small) mdi-lightbulb
 			router-view
 		
