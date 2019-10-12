@@ -8,7 +8,7 @@
 						v-icon(v-if="$vuetify.theme.dark" small :color="!hover ? 'white' : 'yellow'") mdi-lightbulb-on
 						v-icon(v-else small) mdi-lightbulb
 				v-btn.ml-2(fab small)
-					cf-country-flag(country="en" size="small")
+					cf-country-flag(:country="getLocale" size="small") 
 
 			router-view
 		
@@ -58,7 +58,12 @@ export default {
         return {
             drawer: false,
             menuClick: false,
-            status: null,
+			status: null,
+			locales: [
+				"en",
+				"de",
+				"jp"
+			],
             // darkTheme: true,
             menu: [
                 { icon: "home", title: "Link A" },
@@ -127,7 +132,15 @@ export default {
         },
         getLocalStorage() {
             return localStorage.getItem("vue-cookie-accept-decline-cookiePanel");
-        }
+		},
+		getLocale: function () {
+			var locale = this.$i18n.locale
+			// the icon component does not have flag for en
+			if (locale === "en") {
+				return "us"
+			}
+			return locale
+		}
     }
 };
 </script>

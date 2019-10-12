@@ -18,6 +18,7 @@ Vue.use(VueCookie);
 
 import "vue-cookie-accept-decline/dist/vue-cookie-accept-decline.css";
 import VueCookieAcceptDecline from "vue-cookie-accept-decline";
+import i18n from './i18n'
 Vue.component("vue-cookie-accept-decline", VueCookieAcceptDecline);
 
 new Vue({
@@ -25,5 +26,6 @@ new Vue({
     store,
     veevalidate,
     vuetify,
+    i18n,
     render: h => h(App)
 }).$mount("#app");

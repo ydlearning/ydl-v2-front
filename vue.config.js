@@ -5,6 +5,7 @@ module.exports = {
     runtimeCompiler: undefined,
     productionSourceMap: undefined,
     parallel: undefined,
+
     css: {
         loaderOptions: {
             sass: {
@@ -12,5 +13,15 @@ module.exports = {
             }
         }
     },
-    lintOnSave: undefined
+
+    lintOnSave: undefined,
+
+    pluginOptions: {
+      i18n: {
+        locale: 'en',
+        fallbackLocale: 'en',
+        localeDir: 'locales',
+        enableInSFC: false
+      }
+    }
 };
