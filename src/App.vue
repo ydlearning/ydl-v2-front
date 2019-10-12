@@ -8,7 +8,7 @@
 				v-hover( v-slot:default="{ hover }")
 					v-btn.mr-2(fab small @click="switchTheme()")
 						v-icon(v-if="$vuetify.theme.dark" small :color="!hover ? 'white' : 'yellow'") mdi-lightbulb-on
-				v-icon(v-else small) mdi-lightbulb
+						v-icon(v-else small) mdi-lightbulb
 				v-btn.ml-2(fab small)
 					cf-country-flag(country="en" size="small")
 
