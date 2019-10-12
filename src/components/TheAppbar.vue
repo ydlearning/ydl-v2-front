@@ -87,15 +87,13 @@ v-app-bar(
                     v-list-item-icon.rotate-180
                         v-icon mdi-logout-variant
                     v-list-item-title [Logout]
-    v-navigation-drawer(v-model="drawer" app clipped color="#131313")
-        TheDashboardList
 </template>
 
 <script>
 import { mapState } from "vuex";
 import TheDashboardList from "@/components/TheDashboardList";
 export default {
-    name: "TheToolbar",
+    name: "TheAppbar",
     data() {
         return {
             drawer: false,
