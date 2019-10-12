@@ -9,6 +9,9 @@
 					v-btn.mr-2(fab small @click="switchTheme()")
 						v-icon(v-if="$vuetify.theme.dark" small :color="!hover ? 'white' : 'yellow'") mdi-lightbulb-on
 				v-icon(v-else small) mdi-lightbulb
+				v-btn.ml-2(fab small)
+					cf-country-flag(country="en" size="small")
+
 			router-view
 		
 			vue-cookie-accept-decline.cookie(
@@ -49,6 +52,8 @@ import TheDashboardList from "@/components/TheDashboardList";
 import TheDebug from "@/components/TheDebug";
 import Footer from "@/components/Footer";
 import TheToolbar from "@/components/TheToolbar";
+import CountryFlag from "vue-country-flag";
+
 export default {
     name: "App",
     data() {
@@ -68,7 +73,9 @@ export default {
         TheDashboardList,
         TheDebug,
         Footer,
-        TheToolbar
+		TheToolbar,
+		// somehow indicate that this is a third party component (cf-)
+		"cf-country-flag": CountryFlag
     },
     methods: {
         logout() {
