@@ -1,7 +1,5 @@
 <template lang="pug">
 	v-app(v-bind:id="this.$vuetify.theme.dark ? 'app--dark' : 'app--light'")
-		v-navigation-drawer(v-model="drawer" app clipped color="#131313")
-			TheDashboardList
 		TheAppbar
 		v-content
 			v-sheet.pa-4(style="position: fixed; right:0; bottom:0" color="transparent")
