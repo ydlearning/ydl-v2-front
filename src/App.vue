@@ -1,8 +1,8 @@
 <template lang="pug">
 	v-app(v-bind:id="this.$vuetify.theme.dark ? 'app--dark' : 'app--light'")
-		TheToolbar
 		v-navigation-drawer(v-model="drawer" app clipped color="#131313")
 			TheDashboardList
+		TheAppbar
 		v-content
 			v-sheet.pa-4(style="position: fixed; right:0; bottom:0" color="transparent")
 				v-hover( v-slot:default="{ hover }")
@@ -51,7 +51,7 @@ import { mapState } from "vuex";
 import TheDashboardList from "@/components/TheDashboardList";
 import TheDebug from "@/components/TheDebug";
 import Footer from "@/components/Footer";
-import TheToolbar from "@/components/TheToolbar";
+import TheAppbar from "@/components/TheAppbar";
 import CountryFlag from "vue-country-flag";
 
 export default {
@@ -73,7 +73,7 @@ export default {
         TheDashboardList,
         TheDebug,
         Footer,
-		TheToolbar,
+		TheAppbar,
 		// somehow indicate that this is a third party component (cf-)
 		"cf-country-flag": CountryFlag
     },
