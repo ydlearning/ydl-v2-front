@@ -1,8 +1,5 @@
 <template lang="pug">
-BaseFooterItem(icon="mdi-cookie")
-    v-card-title
-        v-icon(left) mdi-cookie
-        span.justify-content-center Cookie status
+BaseFooterItem(icon="mdi-cookie" width="30%")
 
     v-text-field.status(
         readonly
