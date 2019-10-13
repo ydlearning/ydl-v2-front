@@ -1,31 +1,48 @@
 <template lang="pug">
 BaseFooterItem(icon="mdi-cookie" width="30%")
+    v-container(fluid)
+        v-row
+            template(v-for="cookie in cookies")
+                v-col(:key="cookie.name" cols=12)
+                    v-card(outlined tile)
+                        v-card-text
+                            div.overline.mb-4
+                                | {{cookie.name}}
+                                |
+                                code true
+                                v-btn(top right small icon absolute)
+                                    v-icon(size=16) mdi-restore
+                            div(v-text="cookie.description")
+                            v-switch(color="success" hide-details)
+    //- v-card-title
+    //-     v-icon(left) mdi-cookie
+    //-     span.justify-content-center Cookie status
 
-    v-text-field.status(
-        readonly
-        :value="statusText"
-        solo
-        style="text-align:center"
-        background-color="success"
-        v-if="getCookiePanelAccepted"
-    ) 
-    v-text-field.status(
-        readonly
-        value="No cookie set"
-        solo
-        style="text-align:center"
-        background-color="info"
-        v-else
-    ) 
-        //- prepend-inner-icon="mdi-cookie"
+    //- v-text-field.status(
+    //-     readonly
+    //-     :value="statusText"
+    //-     solo
+    //-     style="text-align:center"
+    //-     background-color="success"
+    //-     v-if="getCookiePanelAccepted"
+    //- ) 
+    //- v-text-field.status(
+    //-     readonly
+    //-     value="No cookie set"
+    //-     solo
+    //-     style="text-align:center"
+    //-     background-color="info"
+    //-     v-else
+    //- ) 
+    //-     //- prepend-inner-icon="mdi-cookie"
         
-    v-btn(
-        icon
-        color="error"
-        depressed
-        @click="removeCookie"
-        @status="cookieStatus"
-    )
+    //- v-btn(
+    //-     icon
+    //-     color="error"
+    //-     depressed
+    //-     @click="removeCookie"
+    //-     @status="cookieStatus"
+    //- )
         v-icon(left) mdi-close-circle
 </template>
 
@@ -40,7 +57,19 @@ export default {
     },
     data() {
         return {
-            status: null
+            status: null,
+            cookies: [
+                {
+                    name: "cookie_accepted",
+                    displayName: "Cookie",
+                    description: "Dürfen Cookies gespeichert werden?"
+                },
+                {
+                    name: "is_light_theme",
+                    displayName: "Theme",
+                    description: "Soll die Webseite mit dem hellen Theme angezeight werden?"
+                }
+            ]
         };
     },
     methods: {
