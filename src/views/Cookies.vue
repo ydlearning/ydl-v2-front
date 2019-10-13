@@ -1,5 +1,5 @@
 <template lang="pug">
-BaseFooterItem
+BaseFooterItem(icon="mdi-cookie")
     v-card-title
         v-icon(left) mdi-cookie
         span.justify-content-center Cookie status
@@ -67,11 +67,6 @@ export default {
     computed: {
         ...mapState(["isLoggedIn"]),
         statusText() {
-            // if (this.getCookiePanel) {
-            //     return "accept";
-            // } else {
-            //     return "No cookie set";
-            // }
             return this.getCookiePanel || "No cookie set";
         },
         getCookiePanelAccepted() {
@@ -82,12 +77,6 @@ export default {
             }
             // return localStorage.getItem("vue-cookie-accept-decline-cookiePanel");
         },
-        getCookiePanel() {
-            return localStorage.getItem("vue-cookie-accept-decline-cookiePanel");
-        },
-        removeCookiePanel() {
-            return localStorage.removeItem("vue-cookie-accept-decline-cookiePanel");
-        }
     }
 };
 </script>
