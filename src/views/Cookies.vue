@@ -73,7 +73,7 @@ export default {
                 return false;
             }
             // return localStorage.getItem("vue-cookie-accept-decline-cookiePanel");
-        },
+        }
     }
 };
 </script>
