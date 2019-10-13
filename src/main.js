@@ -4,6 +4,7 @@ import veevalidate from "./plugins/vee-validate";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import LocalStorageWrapper from "./plugins/localStorageWrapper";
 
 // override the format function for the date object
 import {} from "./vendor/datePrototypes";
@@ -15,6 +16,7 @@ Vue.config.productionTip = false;
 var VueCookie = require("vue-cookie");
 // Tell Vue to use the plugin
 Vue.use(VueCookie);
+Vue.use(LocalStorageWrapper);
 
 import "vue-cookie-accept-decline/dist/vue-cookie-accept-decline.css";
 import VueCookieAcceptDecline from "vue-cookie-accept-decline";
