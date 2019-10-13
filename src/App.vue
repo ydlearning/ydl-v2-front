@@ -11,7 +11,8 @@
 					cf-country-flag(:country="getLocale" size="small") 
 
 			router-view
-		
+
+			TheCookie
 			vue-cookie-accept-decline.cookie(
 				:ref="'cookiePanel'" 
 				:elementId="'cookiePanel'" 
@@ -50,6 +51,7 @@ import TheDashboardList from "@/components/TheDashboardList";
 import TheDebug from "@/components/TheDebug";
 import Footer from "@/components/Footer";
 import TheAppbar from "@/components/TheAppbar";
+import TheCookie from "@/components/TheCookie";
 import CountryFlag from "vue-country-flag";
 
 export default {
@@ -77,6 +79,7 @@ export default {
         TheDebug,
         Footer,
 		TheAppbar,
+		TheCookie,
 		// somehow indicate that this is a third party component (cf-)
 		"cf-country-flag": CountryFlag
     },
