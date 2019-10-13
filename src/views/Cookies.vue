@@ -1,81 +1,46 @@
 <template lang="pug">
-    v-container.container-padding(
-        fluid 
+BaseFooterItem
+    v-card-title
+        v-icon(left) mdi-cookie
+        span.justify-content-center Cookie status
+
+    v-text-field.status(
+        readonly
+        :value="statusText"
+        solo
+        style="text-align:center"
+        background-color="success"
+        v-if="getCookiePanelAccepted"
+    ) 
+    v-text-field.status(
+        readonly
+        value="No cookie set"
+        solo
+        style="text-align:center"
+        background-color="info"
+        v-else
+    ) 
+        //- prepend-inner-icon="mdi-cookie"
+        
+    v-btn(
+        icon
+        color="error"
+        depressed
+        @click="removeCookie"
+        @status="cookieStatus"
     )
-        v-row(align='center' justify='center')
-            v-card.elevation-12(width="60%")
-
-                //- Toolbar / App Title
-                v-toolbar(color='primary' flat)
-                    v-icon.pr-1 mdi-cookie
-                    v-toolbar-title {{ this.$route.name }}
-                    .flex-grow-1
-                    //- v-tooltip(
-                        bottom)
-                        template(
-                            v-slot:activator="{ on: tooltip }"
-                        )
-                            v-btn(
-                                icon
-                                v-on="{ ...tooltip }"
-                                to="/kontakt"
-                            ) 
-                                v-icon mdi-web
-                        span Deutsch
-
-                v-card-text.body-1
-                    div 
-                        div.text-center.pb-1
-                            v-icon(left) mdi-cookie
-                            span.justify-content-center Cookie status
-                        
-                        //- v-btn.mb-4(
-                            style="color: red;"
-                            large
-                            color="info"
-                            block
-                            depressed
-                            disabled=true
-                            @status="cookieStatus"
-                            @click="cookieRemovedCookie")
-                            v-icon(left) mdi-cookie
-                            span(v-if="getCookiePanelAccepted") Accept
-                            span(v-else) No cookie set
-
-                        v-text-field.status(
-                            readonly
-                            :value="statusText"
-                            solo
-                            style="text-align:center"
-                            background-color="success"
-                            v-if="getCookiePanelAccepted"
-                        ) 
-                        v-text-field.status(
-                            readonly
-                            value="No cookie set"
-                            solo
-                            style="text-align:center"
-                            background-color="info"
-                            v-else
-                        ) 
-                            //- prepend-inner-icon="mdi-cookie"
-                            
-                        v-btn(
-                            large
-                            color="error"
-                            block
-                            depressed
-                            @click="removeCookie"
-                            @status="cookieStatus"
-                        )
-                            v-icon(left) mdi-close-circle
-                            span Remove cookie
+        v-icon(left) mdi-close-circle
 </template>
 
 <script>
 import { mapState } from "vuex";
+import BaseFooterItem from "@/components/BaseFooterItem";
+
 export default {
     name: "Cookies",
+    components: {
+        BaseFooterItem
+    },
     data() {
         return {
             status: null
@@ -124,7 +89,6 @@ export default {
             return localStorage.removeItem("vue-cookie-accept-decline-cookiePanel");
         }
     },
-    components: {}
 };
 </script>
 
