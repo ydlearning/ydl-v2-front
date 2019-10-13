@@ -1,7 +1,7 @@
 <template lang="pug">
 v-container.container-padding(fluid)
     v-row(align='center' justify='center')
-        v-card.elevation-12(width="85%")
+        v-card.elevation-12(:width="width")
             //- Toolbar / App Title
             v-toolbar(color='primary' flat)
                 v-icon.pr-1 {{ icon }}
@@ -19,6 +19,10 @@ export default {
         icon: {
             type: String,
             default: null
+        },
+        width: {
+            type: [Number, String],
+            default: "80%"
         }
     }
 };
