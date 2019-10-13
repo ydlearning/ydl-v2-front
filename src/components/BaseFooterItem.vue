@@ -15,5 +15,5 @@ v-container.container-padding(fluid)
 <script>
 export default {
     name: "BaseFooterItem"
-}
+};
 </script>

@@ -1,7 +1,5 @@
-import Vue from "vue";
-
 // used for wrap the guard function arround a function call
-function guard (name, ...options) {
+function guard(name, ...options) {
     if (localStorage.getItem("cookie_accepted") === "true") {
         if (options) {
             return localStorage[name](...options);
@@ -32,7 +30,7 @@ const wrapper = {
 };
 
 const LocalStorageWrapper = {
-    install(Vue, options) {
+    install(Vue) {
         Vue.prototype.$localStorage = wrapper;
     }
 };

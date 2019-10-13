@@ -88,7 +88,7 @@ export default {
         removeCookiePanel() {
             return localStorage.removeItem("vue-cookie-accept-decline-cookiePanel");
         }
-    },
+    }
 };
 </script>
 

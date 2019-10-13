@@ -20,7 +20,7 @@ Vue.use(LocalStorageWrapper);
 
 import "vue-cookie-accept-decline/dist/vue-cookie-accept-decline.css";
 import VueCookieAcceptDecline from "vue-cookie-accept-decline";
-import i18n from './i18n'
+import i18n from "./i18n";
 Vue.component("vue-cookie-accept-decline", VueCookieAcceptDecline);
 
 new Vue({
