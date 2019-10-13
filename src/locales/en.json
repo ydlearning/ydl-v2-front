@@ -1,3 +1,7 @@
 {
-  "message": "hello i18n !!"
+  "message": "hello i18n !!",
+  "TheCookie": {
+    "message": "We use cookies 🍪 to ensure you get the best experience on our website.",
+    "learn_more": "Learn more..."
+  }
 }
