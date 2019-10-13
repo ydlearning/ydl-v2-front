@@ -118,7 +118,7 @@ export default {
 		switchTheme() {
 			this.$vuetify.theme.dark = !this.$vuetify.theme.dark
 			// update localStorage
-			localStorage.setItem("isLightTheme", !this.$vuetify.theme.dark);
+			this.$localStorage.setItem("isLightTheme", !this.$vuetify.theme.dark);
 		}
     },
     mounted() {
