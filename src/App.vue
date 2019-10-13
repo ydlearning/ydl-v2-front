@@ -60,12 +60,8 @@ export default {
         return {
             drawer: false,
             menuClick: false,
-			status: null,
-			locales: [
-				"en",
-				"de",
-				"jp"
-			],
+            status: null,
+            locales: ["en", "de", "jp"],
             // darkTheme: true,
             menu: [
                 { icon: "home", title: "Link A" },
@@ -78,10 +74,10 @@ export default {
         TheDashboardList,
         TheDebug,
         Footer,
-		TheAppbar,
-		TheCookie,
-		// somehow indicate that this is a third party component (cf-)
-		"cf-country-flag": CountryFlag
+        TheAppbar,
+        TheCookie,
+        // somehow indicate that this is a third party component (cf-)
+        "cf-country-flag": CountryFlag
     },
     methods: {
         logout() {
@@ -114,12 +110,12 @@ export default {
         },
         menuItems() {
             return this.menu;
-		},
-		switchTheme() {
-			this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-			// update localStorage
-			this.$localStorage.setItem("isLightTheme", !this.$vuetify.theme.dark);
-		}
+        },
+        switchTheme() {
+            this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+            // update localStorage
+            this.$localStorage.setItem("isLightTheme", !this.$vuetify.theme.dark);
+        }
     },
     mounted() {
         console.log(process.env.NODE_ENV);
@@ -135,15 +131,15 @@ export default {
         },
         getLocalStorage() {
             return localStorage.getItem("vue-cookie-accept-decline-cookiePanel");
-		},
-		getLocale: function () {
-			var locale = this.$i18n.locale
-			// the icon component does not have flag for en
-			if (locale === "en") {
-				return "us"
-			}
-			return locale
-		}
+        },
+        getLocale: function() {
+            var locale = this.$i18n.locale;
+            // the icon component does not have flag for en
+            if (locale === "en") {
+                return "us";
+            }
+            return locale;
+        }
     }
 };
 </script>
