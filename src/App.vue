@@ -33,8 +33,8 @@ export default {
         return {
             drawer: false,
             menuClick: false,
-			status: null,
-			html: document.getElementById("html"),
+            status: null,
+            html: document.getElementById("html"),
             locales: ["en", "de", "jp"],
             // darkTheme: true,
             menu: [
@@ -63,8 +63,9 @@ export default {
         switchTheme() {
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
             // update localStorage
-			this.$localStorage.setItem("is_light_theme", !this.$vuetify.theme.dark);
-			this.html.classList.add("html--dark");
+            this.$localStorage.setItem("is_light_theme", !this.$vuetify.theme.dark);
+            this.html.classList.toggle("html--dark");
+            this.html.classList.toggle("html--light");
         }
     },
     computed: {
@@ -101,7 +102,7 @@ export default {
 	// background-color: #424242
 	// color for grey
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAADM0lEQVRogdXa7U7qMBjA8ecUyBpOETc99+OlYDRqjJdj/GTUD96dCqg7C7HZ40mRHkrbteheaJuYyP7WyNruZ4y/jo6O4PPzExBRfIySJPlbFAU+Pj6CGKenp2ofJ0ny7uiHSZJMb25usN/v2/pBkiQzx/wm+rwoilJ2AusxAoD3xWKBjLHl9bOzMyXDHgC8OvohADyLfnV1ZesZALw45jfVS8ZYT3a5ggwRc3EX5N0AgN5wOCxX1/YQ8c3RDxDxRfa7uzuYTCZqzxBx6pjfWhd3ggFADtpgjJWLxYKsVu7N0Q/EnVPbZDJRewoAU8f8Or3n64RzXuhRDkrpb8658eaVnnLOZ0ZY9zHn/NUIzfU9zrlx89VOBoMBIiIx6upMOvpyzzu6uLOzDnrp6uT29hbu7++REKJ+0Vi8OfmCEKL3P+q2sHSxbWch9OWz/OTkRBxMHAwG5OPjQ6ycsS2Unj08PDyp7fz8XO2pfia1+Z12IhyRg3M+opS+6z+c0jNK6caBvri4UHtKKa08k7vo6rIazmnDcO7y8lL9CsMxbeyky082KMjzHPM87ymTxZ5+li+ur69ROKd986lj/s566M7VdpIE7lzd7nQwFOd+2vddDkbjnKPPocLBqJyz9H2Xg9E5p/V9SulcvaYua5TOaX1a5WC0zq1GWtVjd052Y9vKTiJ3rpaDUTjn6fMqB6NxrqJnsi8vqg7aziQozgTQsy36+pcUzcHonPN1fVmjc04Zqa331cnyonBE/l0xkG44Z+kzW4/euW0cdDkSvHMxO7iVczE7uJVzvh6ig99yztdDc9BwrG4PzUHDMWVYnfP1UBz8sXO+Hr1zsTvodS5kBxtxLmQHG3HO13fhYKPO+XrXDhpOtd27dtBwShlWx+r2rhxszTlfj9650B2s7dwuHezEOUcft+1gJ845+nJl23CwU+csPW3TQcOhjvuYUrpxJpt20HBIGVanGu6z7zhIhsMhOnoQzvm6sWflYIxhDM7Jp3VVb9vB1p3z/L/oqI6DQTjn6a9bOSiewpY+d/Ssg66urN7F4qwdPD4+rnSuLL/OcZVzFf3/mW2hbzwTKvrX4gDAP+QtOL+aMRJmAAAAAElFTkSuQmCC)
-html
+.html--dark
 	// remove scroll bar
 	// overflow: hidden
 	/* own scrollbar */
@@ -125,6 +126,30 @@ html
 	::-webkit-scrollbar-track-piece
 		/* not handle on */
 		background: rgb(1, 1, 1)
+.html--light
+	// remove scroll bar
+	// overflow: hidden
+	/* own scrollbar */
+	/* scrollbar firefox */
+	scrollbar-color: rgb(1, 1, 1) rgb(1, 1, 1)
+	/* Note: The -webkit-scrollbar is not supported by Firefox or IE and Edge. */
+	::-webkit-scrollbar
+		/* width */
+		width: 12px
+	::-webkit-scrollbar-track
+		/* Track */
+		box-shadow: inset 0 0 5px grey
+		border-radius: 8px
+	::-webkit-scrollbar-thumb
+		/* Handle */
+		background: rgb(1, 1, 1)
+		border-radius: 10px
+	::-webkit-scrollbar-thumb:hover
+		/* Handle on hover */
+		background: rgb(1, 1, 1)
+	::-webkit-scrollbar-track-piece
+		/* not handle on */
+		background: rgb(200, 200, 200)
 	// .link
 		// color: rgb(250,250,250)!important
 .rotate-180
