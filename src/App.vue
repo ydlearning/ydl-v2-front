@@ -13,34 +13,7 @@
 			router-view
 
 			TheCookie
-			vue-cookie-accept-decline.cookie(
-				:ref="'cookiePanel'" 
-				:elementId="'cookiePanel'" 
-				:position="'bottom-left'" 
-				:type="'floating'" 
-				:transitionName="'slideFromBottom'" 
-				:debug="false" 
-				:disableDecline="true" 
-				:showPostponeButton="false"
-				@status="cookieStatus" 
-				@clicked-accept="cookieClickedAccept" 
-				@clicked-decline="cookieClickedDecline"
-				@clicked-postpone="cookieClickedPostpone" 
-				@removed-cookie="cookieRemovedCookie")
-
-				// Optional
-				div(slot="message")
-					| We use cookies to ensure you get the best experience on our website. 
-					router-link(to="/privacy_policy" target="_blank") Learn More...
-				// Optional
-				div(slot="declineContent")
-					| OPT OUT
-				// Optional
-				div(slot="acceptContent")
-					| GOT IT!
-				// Optional
-				div(slot="postponeContent")
-					| &times;
+			
 		Footer
 		TheDebug(v-show="show_debug_ui")
 </template>
@@ -83,31 +56,6 @@ export default {
         logout() {
             this.$store.dispatch("logout");
         },
-        cookieStatus(status) {
-            console.log("cookie status: " + status);
-            this.status = status;
-        },
-        cookieClickedAccept() {
-            console.log("here in accept");
-            this.status = "accept";
-        },
-        cookieClickedDecline() {
-            console.log("here in decline");
-            this.status = "decline";
-        },
-        cookieClickedPostpone() {
-            console.log("here in postpone");
-            this.status = "postpone";
-        },
-        cookieRemovedCookie() {
-            console.log("here in cookieRemoved");
-            this.status = null;
-            this.$refs.cookiePanel.init();
-        },
-        removeCookie() {
-            console.log("Cookie removed");
-            this.$refs.cookiePanel.removeCookie();
-        },
         menuItems() {
             return this.menu;
         },
@@ -125,12 +73,6 @@ export default {
         ...mapState(["isLoggedIn", "user", "darkTheme"]),
         show_debug_ui() {
             return process.env.VUE_APP_API_SHOW_UI == "true";
-        },
-        statusText() {
-            return this.getLocalStorage || "No cookie set";
-        },
-        getLocalStorage() {
-            return localStorage.getItem("vue-cookie-accept-decline-cookiePanel");
         },
         getLocale: function() {
             var locale = this.$i18n.locale;
