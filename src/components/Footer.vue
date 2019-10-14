@@ -23,6 +23,31 @@ div
                 :to="site.to"
             )
                 | {{ site.name }}
+
+            //- v-btn.my-0(
+            //-     color="white"
+            //-     text 
+            //-     to="/home"
+            //- )
+            //-     | site.name
+
+            v-speed-dial(
+                v-model="languageSelection"
+                direction="top" 
+                transition="slide-y-reverse-transition")
+                template(v-slot:activator)
+                    v-btn(
+                        text)
+                        cf-country-flag(:country="getLocale" size="small") 
+                v-btn(
+                    v-for="locale in getLocales"
+                    :key="locale"
+                    fab
+                    small
+                    color="primary"
+                    @click="$i18n.locale=locale"
+                )
+                        cf-country-flag(:country="locale !== 'en' ? locale : 'us'" size="small") 
         
         //- Footer card
         v-card.lighten-1.white--text.text-center(
@@ -123,10 +148,14 @@ div
 
 <script>
 import { mapState } from "vuex";
+import CountryFlag from "vue-country-flag";
+
 export default {
     name: "Footer",
     inject: ["theme"],
     data: () => ({
+        locales: ["en", "de", "jp"],
+        languageSelection: false,
         sites: [
             {
                 id: 1,
@@ -181,11 +210,26 @@ export default {
             default: ""
         }
     },
+    components: {
+        // somehow indicate that this is a third party component (cf-)
+        "cf-country-flag": CountryFlag
+    },
     computed: {
-        ...mapState(["darkTheme"])
+        ...mapState(["darkTheme"]),
         // switchThemezzz() {
         //     return (this.darkTheme = false);
         // }
+        getLocale: function() {
+            var locale = this.$i18n.locale;
+            // the icon component does not have flag for en
+            if (locale === "en") {
+                return "us";
+            }
+            return locale;
+        },
+        getLocales: function() {
+            return this.locales.filter(locale => locale !== this.$i18n.locale);
+        }
     },
     methods: {
         toTop() {
