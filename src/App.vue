@@ -60,7 +60,8 @@ export default {
         return {
             drawer: false,
             menuClick: false,
-            status: null,
+			status: null,
+			html: document.getElementById("html"),
             locales: ["en", "de", "jp"],
             // darkTheme: true,
             menu: [
@@ -114,12 +115,9 @@ export default {
         switchTheme() {
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
             // update localStorage
-            this.$localStorage.setItem("is_light_theme", !this.$vuetify.theme.dark);
+			this.$localStorage.setItem("is_light_theme", !this.$vuetify.theme.dark);
+			this.html.classList.add("html--dark");
         }
-    },
-    mounted() {
-        console.log(process.env.NODE_ENV);
-        console.log("show UI: " + process.env.VUE_APP_API_SHOW_UI);
     },
     computed: {
         ...mapState(["isLoggedIn", "user", "darkTheme"]),
