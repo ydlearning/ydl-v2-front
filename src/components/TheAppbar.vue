@@ -27,7 +27,7 @@ div
             v-menu(bottom offset-y)
                 template(v-slot:activator='{ on: menu }' v-if="!isLoggedIn")
                     v-btn(
-                        color='primary' 
+                        text
                         depressed v-on='{ ...menu }' 
                         @click.stop="menuClick = !menuClick"
                     ) Login / Sign up
@@ -37,7 +37,7 @@ div
                             v-icon(right large) mdi-account-circle-outline
                 template(v-slot:activator='{ on: menu }' v-else)
                     v-btn(
-                        color='primary' 
+                        text
                         depressed v-on='{ ...menu }' 
                         @click.stop="menuClick = !menuClick"
                     ) Hi {{ user.username }}
