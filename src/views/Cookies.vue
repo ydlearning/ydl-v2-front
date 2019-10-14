@@ -9,45 +9,15 @@ BaseFooterItem(icon="mdi-cookie" width="30%")
                             div.overline.mb-4
                                 | {{cookie.name}}
                                 |
-                                code true
-                                v-btn(top right small icon absolute)
-                                    v-icon(size=16) mdi-restore
-                            div(v-text="cookie.description")
-                            v-switch(color="success" hide-details)
-    //- v-card-title
-    //-     v-icon(left) mdi-cookie
-    //-     span.justify-content-center Cookie status
-
-    //- v-text-field.status(
-    //-     readonly
-    //-     :value="statusText"
-    //-     solo
-    //-     style="text-align:center"
-    //-     background-color="success"
-    //-     v-if="getCookiePanelAccepted"
-    //- ) 
-    //- v-text-field.status(
-    //-     readonly
-    //-     value="No cookie set"
-    //-     solo
-    //-     style="text-align:center"
-    //-     background-color="info"
-    //-     v-else
-    //- ) 
-    //-     //- prepend-inner-icon="mdi-cookie"
-        
-    //- v-btn(
-    //-     icon
-    //-     color="error"
-    //-     depressed
-    //-     @click="removeCookie"
-    //-     @status="cookieStatus"
-    //- )
-        v-icon(left) mdi-close-circle
+                                code(v-text="cookie.value")
+                            div {{ cookieMappings.hasOwnProperty(cookie.name) ? cookieMappings[cookie.name].description : null }}
+                        v-card-actions
+                            v-switch.ma-0.ml-1(color="success" hide-details)
+                            v-spacer
+                            v-btn.ma-0(small) delete
 </template>
 
 <script>
-import { mapState } from "vuex";
 import BaseFooterItem from "@/components/BaseFooterItem";
 
 export default {
@@ -58,18 +28,18 @@ export default {
     data() {
         return {
             status: null,
-            cookies: [
-                {
+            cookieMappings: {
+                cookie_accepted: {
                     name: "cookie_accepted",
                     displayName: "Cookie",
                     description: "Dürfen Cookies gespeichert werden?"
                 },
-                {
+                is_light_theme: {
                     name: "is_light_theme",
                     displayName: "Theme",
-                    description: "Soll die Webseite mit dem hellen Theme angezeight werden?"
+                    description: "Soll die Webseite mit dem hellen Theme angezeigt werden?"
                 }
-            ]
+            }
         };
     },
     methods: {
@@ -80,28 +50,26 @@ export default {
         cookieRemovedCookie() {
             console.log("here in cookieRemoved");
             this.status = null;
-            // this.$refs.cookiePanel.init();
-            // this.$app.$refs.cookiePanel.init();
         },
-        removeCookie() {
-            console.log("Cookie removed");
-            localStorage.removeItem("vue-cookie-accept-decline-cookiePanel");
-            this.cookieRemovedCookie();
-            // this.$refs.cookiePanel.removeCookie();
+        removeCookie(name) {
+            console.log(`remove cookie: ${name}`);
+            localStorage.removeItem(name);
         }
     },
     computed: {
-        ...mapState(["isLoggedIn"]),
-        statusText() {
-            return this.getCookiePanel || "No cookie set";
-        },
-        getCookiePanelAccepted() {
-            if (this.getCookiePanel) {
-                return true;
-            } else {
-                return false;
+        cookies() {
+            // dont use the wrapper function because regarding the setting we need to display the cookies here
+            let cookies = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                let value = localStorage.getItem(key);
+                console.log(key);
+                cookies.push({
+                    name: key,
+                    value: value
+                });
             }
-            // return localStorage.getItem("vue-cookie-accept-decline-cookiePanel");
+            return cookies;
         }
     }
 };
